@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<topology xmlns="http://www.cisco.com/VIRL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="0.9" xsi:schemaLocation="http://www.cisco.com/VIRL https://raw.github.com/CiscoVIRL/schema/v0.9/virl.xsd">
+    <extensions>
+        <entry key="management_network" type="String">flat</entry>
+    </extensions>
+    <node name="P03" type="SIMPLE" subtype="IOS XRv" location="383,280" ipv4="33.254.0.3">
+        <extensions>
+            <entry key="config" type="String">interface Loopback10&#xD; description ## MPLS &amp; Management (LOOP) ##&#xD; ip address 33.254.0.3
+!
+interface gi0/0/0/0
+ cdp ena
+ ip address 33.254.16.10 255.255.255.252
+ no shut
+ ip router isis
+ isis circuit-type level-2-only
+!
+interface gi0/0/0/1
+ cdp ena
+ ip address 33.254.16.6 255.255.255.252
+ no shut
+ ip router isis
+ isis circuit-type level-2-only
+!
+interface gi0/0/0/2
+ cdp ena
+ ip address 33.254.16.33 255.255.255.252
+ no shut
+ ip router isis
+ isis circuit-type level-2-only
+!
+interface gi0/0/0/3
+ cdp ena
+ ip address 33.254.16.41 255.255.255.252
+ no shut
+ ip router isis
+ isis circuit-type level-2-only
+!
+interface gi0/0/0/4
+ cdp ena
+ ip address 33.254.16.45 255.255.255.252
+ no shut
+ ip router isis
+ isis circuit-type level-2-only
+!
+interface gi0/0/0/5
+ cdp ena
+ ip address 33.254.16.53 255.255.255.252
+ no shut
+ ip router isis
+ isis circuit-type level-2-only
+!
+router isis
+ net 49.bba1.0332.5400.0003.00
+ is-type level-2-only
+</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/0/0/0"/>
+        <interface id="1" name="GigabitEthernet0/0/0/1"/>
+        <interface id="2" name="GigabitEthernet0/0/0/2"/>
+        <interface id="3" name="GigabitEthernet0/0/0/3"/>
+        <interface id="4" name="GigabitEthernet0/0/0/4"/>
+        <interface id="5" name="GigabitEthernet0/0/0/5"/>
+    </node>
+    <node name="P01" type="SIMPLE" subtype="IOS XRv" location="298,169" ipv4="33.254.0.1">
+        <extensions>
+            <entry key="config" type="String">interface Loopback10&#xD; description ## MPLS &amp; Management (LOOP) ##&#xD; ip address 33.254.0.1
+!&#xD;interface gi0/0/0/0
+ cdp ena
+ ip address 33.254.16.1 255.255.255.252
+ no shut
+ ip router isis
+ isis circuit-type level-2-only
+!
+interface gi0/0/0/1
+ cdp ena
+ ip address 33.254.16.9 255.255.255.252
+ no shut
+ ip router isis
+ isis circuit-type level-2-only
+!
+interface gi0/0/0/2
+ cdp ena
+ ip address 33.254.16.13 255.255.255.252
+ no shut
+!
+interface gi0/0/0/3
+ cdp ena
+ ip address 33.254.16.21 255.255.255.252
+ no shut
+ ip router isis
+ isis circuit-type level-2-only
+!
+interface gi0/0/0/4
+ cdp ena
+ ip address 33.254.16.29 255.255.255.252
+ no shut
+ ip router isis
+ isis circuit-type level-2-only
+!
+interface gi0/0/0/5
+ cdp ena
+ ip address 33.254.16.37 255.255.255.252
+ no shut
+ ip router isis
+ isis circuit-type level-2-only
+!
+router isis
+ net 49.bba1.0332.5400.0001.00
+ is-type level-2-only
+</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/0/0/0"/>
+        <interface id="1" name="GigabitEthernet0/0/0/1"/>
+        <interface id="2" name="GigabitEthernet0/0/0/2"/>
+        <interface id="3" name="GigabitEthernet0/0/0/3"/>
+        <interface id="4" name="GigabitEthernet0/0/0/4"/>
+        <interface id="5" name="GigabitEthernet0/0/0/5"/>
+    </node>
+    <node name="P02" type="SIMPLE" subtype="IOS XRv" location="479,170" ipv4="33.254.0.2">
+        <extensions>
+            <entry key="config" type="String">interface Loopback10&#xD; description ## MPLS &amp; Management (LOOP) ##&#xD; ip address 33.254.0.2
+!
+interface gi0/0/0/0
+ cdp ena
+ ip address 33.254.16.2 255.255.255.252
+ no shut
+ ip router isis
+ isis circuit-type level-2-only
+!
+interface gi0/0/0/1
+ cdp ena
+ ip address 33.254.16.5 255.255.255.252
+ no shut
+ ip router isis
+ isis circuit-type level-2-only
+!
+interface gi0/0/0/2
+ cdp ena
+ ip address 33.254.16.17 255.255.255.252
+ no shut
+!
+interface gi0/0/0/3
+ cdp ena
+ ip address 33.254.16.25 255.255.255.252
+ no shut
+ ip router isis
+ isis circuit-type level-2-only
+!
+interface gi0/0/0/4
+ cdp ena
+ ip address 33.254.16.49 255.255.255.252
+ no shut
+ ip router isis
+ isis circuit-type level-2-only
+!
+interface gi0/0/0/5
+ cdp ena
+ ip address 33.254.16.57 255.255.255.252
+ no shut
+ ip router isis
+ isis circuit-type level-2-only
+!
+router isis
+ net 49.bba1.0332.5400.0002.00
+ is-type level-2-only
+</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/0/0/0"/>
+        <interface id="1" name="GigabitEthernet0/0/0/1"/>
+        <interface id="2" name="GigabitEthernet0/0/0/2"/>
+        <interface id="3" name="GigabitEthernet0/0/0/3"/>
+        <interface id="4" name="GigabitEthernet0/0/0/4"/>
+        <interface id="5" name="GigabitEthernet0/0/0/5"/>
+    </node>
+    <node name="PE01" type="SIMPLE" subtype="IOS XRv" location="159,199" ipv4="33.254.0.11">
+        <extensions>
+            <entry key="config" type="String">interface Loopback10&#xD; description ## MPLS &amp; Management (LOOP) ##&#xD; ip address 33.254.0.11
+!
+interface gi0/0/0/0
+ cdp ena
+ ip address 33.254.16.30 255.255.255.252
+ no shut
+ ip router isis
+ isis circuit-type level-2-only
+!
+interface gi0/0/0/1
+ cdp ena
+ ip address 33.254.16.34 255.255.255.252
+ no shut
+ ip router isis
+ isis circuit-type level-2-only
+!
+router isis
+ net 49.bba1.0332.5400.0011.00
+ is-type level-2-only
+</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/0/0/0"/>
+        <interface id="1" name="GigabitEthernet0/0/0/1"/>
+        <interface id="2" name="GigabitEthernet0/0/0/2"/>
+    </node>
+    <node name="PE02" type="SIMPLE" subtype="IOS XRv" location="207,326" ipv4="33.254.0.12">
+        <extensions>
+            <entry key="config" type="String">interface Loopback10&#xD; description ## MPLS &amp; Management (LOOP) ##&#xD; ip address 33.254.0.12
+!
+interface gi0/0/0/0
+ cdp ena
+ ip address 33.254.16.38 255.255.255.252
+ no shut
+ ip router isis
+ isis circuit-type level-2-only
+!
+interface gi0/0/0/1
+ cdp ena
+ ip address 33.254.16.42 255.255.255.252
+ no shut
+ ip router isis
+ isis circuit-type level-2-only
+!
+router isis
+ net 49.bba1.0332.5400.0012.00
+ is-type level-2-only
+</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/0/0/0"/>
+        <interface id="1" name="GigabitEthernet0/0/0/1"/>
+        <interface id="2" name="GigabitEthernet0/0/0/2"/>
+    </node>
+    <node name="PE03" type="SIMPLE" subtype="IOS XRv" location="546,379" ipv4="33.254.0.13">
+        <extensions>
+            <entry key="config" type="String">interface Loopback10&#xD; description ## MPLS &amp; Management (LOOP) ##&#xD; ip address 33.254.0.13
+!
+interface gi0/0/0/0
+ cdp ena
+ ip address 33.254.16.46 255.255.255.252
+ no shut
+ ip router isis
+ isis circuit-type level-2-only
+!
+interface gi0/0/0/1
+ cdp ena
+ ip address 33.254.16.50 255.255.255.252
+ no shut
+ ip router isis
+ isis circuit-type level-2-only
+!
+router isis
+ net 49.bba1.0332.5400.0013.00
+ is-type level-2-only
+</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/0/0/0"/>
+        <interface id="1" name="GigabitEthernet0/0/0/1"/>
+        <interface id="2" name="GigabitEthernet0/0/0/2"/>
+    </node>
+    <node name="PE04" type="SIMPLE" subtype="IOS XRv" location="645,260" ipv4="33.254.0.14">
+        <extensions>
+            <entry key="config" type="String">interface Loopback10&#xD; description ## MPLS &amp; Management (LOOP) ##&#xD; ip address 33.254.0.14
+!
+interface gi0/0/0/0
+ cdp ena
+ ip address 33.254.16.54 255.255.255.252
+ no shut
+ ip router isis
+ isis circuit-type level-2-only
+!
+interface gi0/0/0/1
+ cdp ena
+ ip address 33.254.16.58 255.255.255.252
+ no shut
+ ip router isis
+ isis circuit-type level-2-only
+!
+router isis
+ net 49.bba1.0332.5400.0014.00
+ is-type level-2-only
+</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/0/0/0"/>
+        <interface id="1" name="GigabitEthernet0/0/0/1"/>
+        <interface id="2" name="GigabitEthernet0/0/0/2"/>
+    </node>
+    <node name="CE01" type="SIMPLE" subtype="IOSv" location="55,287" ipv4="33.254.64.1">
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="CE02" type="SIMPLE" subtype="IOSv" location="144,434" ipv4="33.254.64.2">
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="CE03" type="SIMPLE" subtype="IOSv" location="412,389" ipv4="33.254.64.3">
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="CE04" type="SIMPLE" subtype="IOSv" location="730,372" ipv4="33.254.64.4">
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="PE00" type="SIMPLE" subtype="IOSv" location="399,46" ipv4="33.254.0.10">
+        <extensions>
+            <entry key="config" type="String">interface Loopback10&#xD; description ## MPLS &amp; Management (LOOP) ##&#xD; ip address 33.254.0.10
+!
+interface gi0/1
+ cdp ena
+ ip address 33.254.16.22 255.255.255.252
+ no shut
+ ip router isis
+ isis circuit-type level-2-only
+!
+interface gi0/2
+ cdp ena
+ ip address 33.254.16.26 255.255.255.252
+ no shut
+ ip router isis
+ isis circuit-type level-2-only
+!
+router isis
+ net 49.bba1.0332.5400.0010.00
+ is-type level-2-only
+</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+        <interface id="2" name="GigabitEthernet0/3"/>
+    </node>
+    <node name="RR1" type="SIMPLE" subtype="IOS XRv" location="148,98" ipv4="33.254.0.254">
+        <extensions>
+            <entry key="config" type="String">interface Loopback10&#xD; description ## MPLS &amp; Management (LOOP) ##&#xD; ip address 33.254.0.254
+!
+interface gi0/0/0/0
+ cdp ena
+ ip address 33.254.16.14 255.255.255.252
+ no shut
+!
+router isis
+ net 49.bba1.0332.5400.0254.00
+ is-type level-2-only
+</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/0/0/0"/>
+        <interface id="1" name="GigabitEthernet0/0/0/1"/>
+    </node>
+    <node name="RR2" type="SIMPLE" subtype="IOS XRv" location="632,70" ipv4="33.254.0.253">
+        <extensions>
+            <entry key="config" type="String">interface Loopback10&#xD; description ## MPLS &amp; Management (LOOP) ##&#xD; ip address 33.254.0.253
+!
+interface gi0/0/0/0
+ cdp ena
+ ip address 33.254.16.18 255.255.255.252
+ no shut
+!
+router isis
+ net 49.bba1.0332.5400.0253.00
+ is-type level-2-only
+</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/0/0/0"/>
+        <interface id="1" name="GigabitEthernet0/0/0/1"/>
+    </node>
+    <node name="iosvl2-1" type="SIMPLE" subtype="IOSvL2" location="219,53" ipv4="33.254.9.1">
+        <interface id="0" name="GigabitEthernet0/1"/>
+    </node>
+    <node name="unmanagedswitch-1" type="SIMPLE" subtype="Unmanaged Switch" location="26,375">
+        <interface id="0" name="link1"/>
+        <interface id="1" name="link2"/>
+    </node>
+    <node name="unmanagedswitch-2" type="SIMPLE" subtype="Unmanaged Switch" location="710,455">
+        <interface id="0" name="link1"/>
+    </node>
+    <node name="unmanagedswitch-3" type="SIMPLE" subtype="Unmanaged Switch" location="368,488">
+        <interface id="0" name="link1"/>
+    </node>
+    <connection dst="/virl:topology/virl:node[3]/virl:interface[1]" src="/virl:topology/virl:node[2]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[1]/virl:interface[1]" src="/virl:topology/virl:node[2]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[1]/virl:interface[2]" src="/virl:topology/virl:node[3]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[13]/virl:interface[1]" src="/virl:topology/virl:node[2]/virl:interface[3]"/>
+    <connection dst="/virl:topology/virl:node[14]/virl:interface[1]" src="/virl:topology/virl:node[3]/virl:interface[3]"/>
+    <connection dst="/virl:topology/virl:node[12]/virl:interface[1]" src="/virl:topology/virl:node[2]/virl:interface[4]"/>
+    <connection dst="/virl:topology/virl:node[12]/virl:interface[2]" src="/virl:topology/virl:node[3]/virl:interface[4]"/>
+    <connection dst="/virl:topology/virl:node[15]/virl:interface[1]" src="/virl:topology/virl:node[12]/virl:interface[3]"/>
+    <connection dst="/virl:topology/virl:node[4]/virl:interface[1]" src="/virl:topology/virl:node[2]/virl:interface[5]"/>
+    <connection dst="/virl:topology/virl:node[1]/virl:interface[3]" src="/virl:topology/virl:node[4]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[2]/virl:interface[6]" src="/virl:topology/virl:node[5]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[1]/virl:interface[4]" src="/virl:topology/virl:node[5]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[6]/virl:interface[1]" src="/virl:topology/virl:node[1]/virl:interface[5]"/>
+    <connection dst="/virl:topology/virl:node[3]/virl:interface[5]" src="/virl:topology/virl:node[6]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[7]/virl:interface[1]" src="/virl:topology/virl:node[1]/virl:interface[6]"/>
+    <connection dst="/virl:topology/virl:node[7]/virl:interface[2]" src="/virl:topology/virl:node[3]/virl:interface[6]"/>
+</topology>

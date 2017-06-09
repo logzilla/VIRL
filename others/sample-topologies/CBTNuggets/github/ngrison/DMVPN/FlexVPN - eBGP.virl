@@ -1,0 +1,3175 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<topology xmlns="http://www.cisco.com/VIRL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="0.9" xsi:schemaLocation="http://www.cisco.com/VIRL https://raw.github.com/CiscoVIRL/schema/v0.9/virl.xsd">
+    <extensions>
+        <entry key="management_network" type="String">exclusive</entry>
+        <entry key="AutoNetkit.enable_routing" type="Boolean">false</entry>
+        <entry key="AutoNetkit.enable_cdp" type="Boolean">true</entry>
+        <entry key="AutoNetkit.IGP" type="String">ospf</entry>
+    </extensions>
+    <node name="wan" type="SIMPLE" subtype="IOSv" location="499,175">
+        <extensions>
+            <entry key="AutoNetkit.mgmt_ip" type="string"></entry>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 19:21:39 UTC Sun Sep 27 2015
+!
+version 15.5
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname wan
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+cts logging verbose
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ ip address 10.255.0.5 255.255.0.0
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ ip address 172.16.0.1 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ ip address 172.16.0.5 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ ip address 172.16.0.9 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/4
+ ip address 172.16.0.13 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/5
+ ip address 172.16.0.17 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/6
+ ip address 172.16.0.21 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/7
+ ip address 172.16.0.25 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/8
+ ip address 172.16.0.29 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+router bgp 65534
+ bgp log-neighbor-changes
+ bgp listen range 172.16.0.0/24 peer-group WAN
+ redistribute connected
+ neighbor WAN peer-group
+ neighbor WAN remote-as 65534
+ neighbor WAN route-reflector-client
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+        <interface id="2" name="GigabitEthernet0/3"/>
+        <interface id="3" name="GigabitEthernet0/4"/>
+        <interface id="4" name="GigabitEthernet0/5"/>
+        <interface id="5" name="GigabitEthernet0/6"/>
+        <interface id="6" name="GigabitEthernet0/7"/>
+        <interface id="7" name="GigabitEthernet0/8"/>
+    </node>
+    <node name="site-1" type="SIMPLE" subtype="IOSv" location="158,455">
+        <extensions>
+            <entry key="AutoNetkit.mgmt_ip" type="string"></entry>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 21:57:02 UTC Sun Sep 27 2015
+!
+version 15.5
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname site-1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+cts logging verbose
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.1.255.1 255.255.255.255
+!
+interface Loopback50
+ ip address 10.1.0.1 255.255.255.0
+!
+interface Loopback51
+ ip address 10.1.1.1 255.255.255.0
+!
+interface Loopback52
+ ip address 10.1.2.1 255.255.255.0
+!
+interface Loopback53
+ ip address 10.1.128.1 255.255.255.0
+!
+interface Loopback54
+ ip address 10.1.129.1 255.255.255.0
+!
+interface Loopback55
+ ip address 10.1.130.1 255.255.255.0
+!
+interface GigabitEthernet0/0
+ ip address 10.255.0.3 255.255.0.0
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ ip address 10.1.254.2 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ ip address 10.1.254.6 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+!
+router eigrp 10
+ network 10.1.0.0 0.0.255.255
+ redistribute connected
+ passive-interface default
+ no passive-interface GigabitEthernet0/1
+ no passive-interface GigabitEthernet0/2
+ eigrp router-id 10.1.255.1
+ eigrp stub connected
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="site-2" type="SIMPLE" subtype="IOSv" location="490,452">
+        <extensions>
+            <entry key="AutoNetkit.mgmt_ip" type="string"></entry>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 21:47:39 UTC Sun Sep 27 2015
+!
+version 15.5
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname site-2
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+cts logging verbose
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.2.255.1 255.255.255.255
+!
+interface Loopback50
+ ip address 10.2.0.1 255.255.255.0
+!
+interface Loopback51
+ ip address 10.2.1.1 255.255.255.0
+!
+interface Loopback52
+ ip address 10.2.2.1 255.255.255.0
+!
+interface Loopback53
+ ip address 10.2.128.1 255.255.255.0
+!
+interface Loopback54
+ ip address 10.2.129.1 255.255.255.0
+!
+interface Loopback55
+ ip address 10.2.130.1 255.255.255.0
+!
+interface GigabitEthernet0/0
+ ip address 10.255.0.2 255.255.0.0
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ ip address 10.2.254.2 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ ip address 10.2.254.6 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+!
+router eigrp 10
+ network 10.2.0.0 0.0.255.255
+ redistribute connected
+ passive-interface default
+ no passive-interface GigabitEthernet0/1
+ no passive-interface GigabitEthernet0/2
+ eigrp router-id 10.2.255.1
+ eigrp stub connected
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="site-3" type="SIMPLE" subtype="IOSv" location="801,454">
+        <extensions>
+            <entry key="AutoNetkit.mgmt_ip" type="string"></entry>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 22:01:35 UTC Sun Sep 27 2015
+!
+version 15.5
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname site-3
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+cts logging verbose
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.3.255.1 255.255.255.255
+!
+interface Loopback50
+ ip address 10.3.0.1 255.255.255.0
+!
+interface Loopback51
+ ip address 10.3.1.1 255.255.255.0
+!
+interface Loopback52
+ ip address 10.3.2.1 255.255.255.0
+!
+interface Loopback53
+ ip address 10.3.128.1 255.255.255.0
+!
+interface Loopback54
+ ip address 10.3.129.1 255.255.255.0
+!
+interface Loopback55
+ ip address 10.3.130.1 255.255.255.0
+!
+interface GigabitEthernet0/0
+ ip address 10.255.0.1 255.255.0.0
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ ip address 10.3.254.2 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ ip address 10.3.254.6 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+!
+router eigrp 10
+ network 10.3.0.0 0.0.255.255
+ redistribute connected
+ passive-interface default
+ no passive-interface GigabitEthernet0/1
+ no passive-interface GigabitEthernet0/2
+ eigrp router-id 10.3.255.1
+ eigrp stub connected
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="hub-site" type="SIMPLE" subtype="IOSv" location="481,-53">
+        <extensions>
+            <entry key="AutoNetkit.mgmt_ip" type="string"></entry>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 21:32:34 UTC Sun Sep 27 2015
+!
+version 15.5
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname hub-site
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+cts logging verbose
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.255.1 255.255.255.255
+!
+interface Loopback50
+ ip address 10.0.0.1 255.255.255.0
+!
+interface Loopback51
+ ip address 10.0.1.1 255.255.255.0
+!
+interface Loopback52
+ ip address 10.0.2.1 255.255.255.0
+!
+interface Loopback53
+ ip address 10.0.128.1 255.255.255.0
+!
+interface Loopback54
+ ip address 10.0.129.1 255.255.255.0
+!
+interface Loopback55
+ ip address 10.0.130.1 255.255.255.0
+!
+interface GigabitEthernet0/0
+ ip address 10.255.0.8 255.255.0.0
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ ip address 10.0.254.2 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ ip address 10.0.254.6 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+!
+router eigrp 10
+ network 10.0.0.0 0.0.255.255
+ redistribute connected
+ passive-interface default
+ no passive-interface GigabitEthernet0/1
+ no passive-interface GigabitEthernet0/2
+ eigrp router-id 10.0.255.1
+ eigrp stub connected
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="hub-1" type="SIMPLE" subtype="IOSv" location="383,40">
+        <extensions>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 21:35:07 UTC Sun Sep 27 2015
+!
+version 15.5
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname hub-1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+ip vrf f-vrf
+ rd 65534:0
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+cts logging verbose
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+crypto ikev2 keyring DMVPN
+ peer DMVPN_PEERS
+  address 0.0.0.0 0.0.0.0
+  pre-shared-key CRYPTOKEY
+ !
+!
+!
+crypto ikev2 profile DMVPN_IKE_PROF
+ match fvrf f-vrf
+ match identity remote address 0.0.0.0 
+ authentication remote pre-share
+ authentication local pre-share
+ keyring local DMVPN
+ dpd 30 5 on-demand
+!
+crypto isakmp invalid-spi-recovery
+crypto isakmp keepalive 10 periodic
+crypto isakmp aggressive-mode disable
+!
+crypto ipsec security-association replay window-size 1024
+!
+crypto ipsec transform-set DMVPN_TRANS_SET esp-gcm 256 
+ mode transport
+!
+crypto ipsec profile DMVPN_IPSEC_PROF
+ set security-association lifetime seconds 120
+ set transform-set DMVPN_TRANS_SET 
+ set ikev2-profile DMVPN_IKE_PROF
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.152.255.1 255.255.255.255
+!
+interface Loopback20
+ description DMVPN TUNNEL SOURCE
+ ip vrf forwarding f-vrf
+ ip address 172.16.255.1 255.255.255.255
+!
+interface Tunnel100
+ description ## DMVPN HUB 1 ##
+ ip address 10.152.0.1 255.255.255.0
+ no ip redirects
+ ip mtu 1400
+ ip nhrp authentication NHRPKEY
+ ip nhrp map multicast dynamic
+ ip nhrp map 10.152.0.2 172.16.255.2
+ ip nhrp map multicast 172.16.255.2
+ ip nhrp network-id 100
+ ip nhrp registration timeout 120
+ ip nhrp redirect
+ ip tcp adjust-mss 1360
+ load-interval 30
+ if-state nhrp
+ qos pre-classify
+ tunnel source Loopback20
+ tunnel mode gre multipoint
+ tunnel key 0
+ tunnel path-mtu-discovery
+ tunnel vrf f-vrf
+ tunnel protection ipsec profile DMVPN_IPSEC_PROF
+!
+interface GigabitEthernet0/0
+ ip address 10.255.0.14 255.255.0.0
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ ip vrf forwarding f-vrf
+ ip address 172.16.0.2 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ ip address 10.0.254.1 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+!
+router eigrp 10
+ network 10.0.0.0 0.0.255.255
+ redistribute connected
+ redistribute bgp 65000 metric 10000 1000 255 1 1500 route-map bgp-to-eigrp
+ distance eigrp 19 170
+ passive-interface default
+ no passive-interface GigabitEthernet0/2
+ eigrp router-id 10.152.255.1
+!
+router bgp 65000
+ template peer-policy DMVPN-PRI
+  route-map DMVPN-PRI-IN in
+  inherit peer-policy DMVPN 1
+ exit-peer-policy
+ !
+ template peer-policy DMVPN
+  route-map DMVPN-PRI-OUT out
+  next-hop-self
+  soft-reconfiguration inbound
+ exit-peer-policy
+ !
+ template peer-policy DMVPN-TER
+  route-map DMVPN-TER-IN in
+  inherit peer-policy DMVPN 1
+ exit-peer-policy
+ !
+ bgp router-id 10.152.255.1
+ bgp log-neighbor-changes
+ aggregate-address 10.3.0.0 255.255.0.0
+ aggregate-address 10.2.0.0 255.255.0.0
+ aggregate-address 10.1.0.0 255.255.0.0
+ aggregate-address 10.0.0.0 255.255.0.0
+ timers bgp 5 15
+ redistribute connected
+ redistribute eigrp 10 route-map eigrp-to-bgp
+ neighbor 10.152.0.11 remote-as 65001
+ neighbor 10.152.0.11 inherit peer-policy DMVPN-PRI
+ neighbor 10.152.0.12 remote-as 65001
+ neighbor 10.152.0.12 inherit peer-policy DMVPN-TER
+ neighbor 10.152.0.21 remote-as 65002
+ neighbor 10.152.0.21 inherit peer-policy DMVPN-PRI
+ neighbor 10.152.0.22 remote-as 65002
+ neighbor 10.152.0.22 inherit peer-policy DMVPN-TER
+ neighbor 10.152.0.31 remote-as 65003
+ neighbor 10.152.0.31 inherit peer-policy DMVPN-PRI
+ neighbor 10.152.0.32 remote-as 65003
+ neighbor 10.152.0.32 inherit peer-policy DMVPN-TER
+ !
+ address-family ipv4 vrf f-vrf
+  redistribute connected
+  neighbor 172.16.0.1 remote-as 65534
+  neighbor 172.16.0.1 local-as 65534
+  neighbor 172.16.0.1 update-source GigabitEthernet0/1
+  neighbor 172.16.0.1 activate
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+ip prefix-list HUB seq 10 permit 10.152.255.1/32
+ip prefix-list HUB seq 15 permit 10.152.255.2/32
+ip prefix-list HUB seq 20 permit 10.0.0.0/16 le 32
+ip prefix-list HUB seq 100 deny 0.0.0.0/0 le 32
+!
+ip prefix-list SITE-1-DR seq 10 permit 10.152.255.12/32
+ip prefix-list SITE-1-DR seq 20 permit 10.1.128.0/17 le 32
+ip prefix-list SITE-1-DR seq 100 deny 0.0.0.0/0 le 32
+!
+ip prefix-list SITE-1-MAIN seq 10 permit 10.152.255.11/32
+ip prefix-list SITE-1-MAIN seq 20 permit 10.1.0.0/17 le 32
+ip prefix-list SITE-1-MAIN seq 100 deny 0.0.0.0/0 le 32
+!
+ip prefix-list SITE-2-DR seq 10 permit 10.152.255.22/32
+ip prefix-list SITE-2-DR seq 20 permit 10.2.128.0/17 le 32
+ip prefix-list SITE-2-DR seq 100 deny 0.0.0.0/0 le 32
+!
+ip prefix-list SITE-2-MAIN seq 10 permit 10.152.255.21/32
+ip prefix-list SITE-2-MAIN seq 20 permit 10.2.0.0/17 le 32
+ip prefix-list SITE-2-MAIN seq 100 deny 0.0.0.0/0 le 32
+!
+ip prefix-list SITE-3-DR seq 10 permit 10.152.255.32/32
+ip prefix-list SITE-3-DR seq 20 permit 10.3.128.0/17 le 32
+ip prefix-list SITE-3-DR seq 100 deny 0.0.0.0/0 le 32
+!
+ip prefix-list SITE-3-MAIN seq 10 permit 10.152.255.31/32
+ip prefix-list SITE-3-MAIN seq 20 permit 10.3.0.0/17 le 32
+ip prefix-list SITE-3-MAIN seq 100 deny 0.0.0.0/0 le 32
+!
+ip prefix-list SUMMARIES seq 10 permit 10.0.0.0/16
+ip prefix-list SUMMARIES seq 15 deny 10.0.0.0/16 le 32
+ip prefix-list SUMMARIES seq 20 permit 10.1.0.0/16
+ip prefix-list SUMMARIES seq 25 deny 10.1.0.0/16 le 32
+ip prefix-list SUMMARIES seq 30 permit 10.2.0.0/16
+ip prefix-list SUMMARIES seq 35 deny 10.2.0.0/16 le 32
+ip prefix-list SUMMARIES seq 40 permit 10.3.0.0/16
+ip prefix-list SUMMARIES seq 45 deny 10.3.0.0/16 le 32
+ip prefix-list SUMMARIES seq 100 permit 0.0.0.0/0 le 32
+!
+route-map DMVPN-TER-IN deny 10
+ match ip address prefix-list HUB
+!
+route-map DMVPN-TER-IN permit 20
+ match ip address prefix-list SITE-1-MAIN SITE-2-MAIN SITE-3-MAIN
+ set local-preference 7500
+ set weight 0
+ set as-path prepend 65010 65010 65010
+!
+route-map DMVPN-TER-IN permit 30
+ match ip address prefix-list SITE-1-DR SITE-2-DR SITE-3-DR
+ set local-preference 20000
+ set weight 0
+ set as-path prepend 65010
+!
+route-map DMVPN-TER-IN deny 100
+!
+route-map bgp-to-eigrp permit 10
+ match ip address prefix-list SUMMARIES
+ set tag 100
+!
+route-map bgp-to-eigrp deny 100
+!
+route-map eigrp-to-bgp deny 10
+ match tag 100
+!
+route-map eigrp-to-bgp permit 100
+!
+route-map DMVPN-PRI-IN deny 10
+ match ip address prefix-list HUB
+!
+route-map DMVPN-PRI-IN permit 20
+ match ip address prefix-list SITE-1-MAIN SITE-2-MAIN SITE-3-MAIN
+ set local-preference 20000
+ set weight 0
+ set as-path prepend 65010
+!
+route-map DMVPN-PRI-IN permit 30
+ match ip address prefix-list SITE-1-DR SITE-2-DR SITE-3-DR
+ set local-preference 7500
+ set weight 0
+ set as-path prepend 65010 65010 65010
+!
+route-map DMVPN-PRI-IN deny 100
+!
+route-map DMVPN-PRI-OUT permit 10
+ match ip address prefix-list SUMMARIES
+ set local-preference 20000
+ set as-path prepend 65010
+!
+route-map DMVPN-PRI-OUT deny 100
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="hub-2" type="SIMPLE" subtype="IOSv" location="597,45">
+        <extensions>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 21:39:16 UTC Sun Sep 27 2015
+!
+version 15.5
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname hub-2
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+ip vrf f-vrf
+ rd 65534:0
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+cts logging verbose
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+crypto ikev2 keyring DMVPN
+ peer DMVPN_PEERS
+  address 0.0.0.0 0.0.0.0
+  pre-shared-key CRYPTOKEY
+ !
+!
+!
+crypto ikev2 profile DMVPN_IKE_PROF
+ match fvrf f-vrf
+ match identity remote address 0.0.0.0 
+ authentication remote pre-share
+ authentication local pre-share
+ keyring local DMVPN
+ dpd 30 5 on-demand
+!
+crypto isakmp invalid-spi-recovery
+crypto isakmp keepalive 10 periodic
+crypto isakmp aggressive-mode disable
+!
+crypto ipsec security-association replay window-size 1024
+!
+crypto ipsec transform-set DMVPN_TRANS_SET esp-gcm 256 
+ mode transport
+!
+crypto ipsec profile DMVPN_IPSEC_PROF
+ set security-association lifetime seconds 120
+ set transform-set DMVPN_TRANS_SET 
+ set ikev2-profile DMVPN_IKE_PROF
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.152.255.2 255.255.255.255
+!
+interface Loopback20
+ description DMVPN TUNNEL SOURCE
+ ip vrf forwarding f-vrf
+ ip address 172.16.255.2 255.255.255.255
+!
+interface Tunnel100
+ description ## DMVPN HUB 1 ##
+ ip address 10.152.0.2 255.255.255.0
+ no ip redirects
+ ip mtu 1400
+ ip nhrp authentication NHRPKEY
+ ip nhrp map multicast dynamic
+ ip nhrp map 10.152.0.1 172.16.255.1
+ ip nhrp map multicast 172.16.255.1
+ ip nhrp network-id 100
+ ip nhrp registration timeout 120
+ ip nhrp redirect
+ ip tcp adjust-mss 1360
+ load-interval 30
+ if-state nhrp
+ qos pre-classify
+ tunnel source Loopback20
+ tunnel mode gre multipoint
+ tunnel key 0
+ tunnel path-mtu-discovery
+ tunnel vrf f-vrf
+ tunnel protection ipsec profile DMVPN_IPSEC_PROF
+!
+interface GigabitEthernet0/0
+ ip address 10.255.0.13 255.255.0.0
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ ip vrf forwarding f-vrf
+ ip address 172.16.0.6 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ ip address 10.0.254.5 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+!
+router eigrp 10
+ network 10.0.0.0 0.0.255.255
+ redistribute connected
+ redistribute bgp 65000 metric 10000 50000 255 1 1500 route-map bgp-to-eigrp
+ distance eigrp 19 170
+ passive-interface default
+ no passive-interface GigabitEthernet0/2
+ eigrp router-id 10.152.255.2
+!
+router bgp 65000
+ template peer-policy DMVPN-SEC
+  route-map DMVPN-SEC-IN in
+  inherit peer-policy DMVPN 1
+ exit-peer-policy
+ !
+ template peer-policy DMVPN
+  route-map DMVPN-SEC-OUT out
+  next-hop-self
+  soft-reconfiguration inbound
+ exit-peer-policy
+ !
+ template peer-policy DMVPN-QUA
+  route-map DMVPN-QUA-IN in
+  inherit peer-policy DMVPN 1
+ exit-peer-policy
+ !
+ bgp router-id 10.152.255.2
+ bgp log-neighbor-changes
+ aggregate-address 10.3.0.0 255.255.0.0
+ aggregate-address 10.2.0.0 255.255.0.0
+ aggregate-address 10.1.0.0 255.255.0.0
+ aggregate-address 10.0.0.0 255.255.0.0
+ timers bgp 5 15
+ redistribute connected
+ redistribute eigrp 10 route-map eigrp-to-bgp
+ neighbor 10.152.0.11 remote-as 65001
+ neighbor 10.152.0.11 inherit peer-policy DMVPN-SEC
+ neighbor 10.152.0.12 remote-as 65001
+ neighbor 10.152.0.12 inherit peer-policy DMVPN-QUA
+ neighbor 10.152.0.21 remote-as 65002
+ neighbor 10.152.0.21 inherit peer-policy DMVPN-SEC
+ neighbor 10.152.0.22 remote-as 65002
+ neighbor 10.152.0.22 inherit peer-policy DMVPN-QUA
+ neighbor 10.152.0.31 remote-as 65003
+ neighbor 10.152.0.31 inherit peer-policy DMVPN-SEC
+ neighbor 10.152.0.32 remote-as 65003
+ neighbor 10.152.0.32 inherit peer-policy DMVPN-QUA
+ !
+ address-family ipv4 vrf f-vrf
+  redistribute connected
+  neighbor 172.16.0.5 remote-as 65534
+  neighbor 172.16.0.5 local-as 65534
+  neighbor 172.16.0.5 update-source GigabitEthernet0/1
+  neighbor 172.16.0.5 activate
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+ip prefix-list HUB seq 10 permit 10.152.255.1/32
+ip prefix-list HUB seq 15 permit 10.152.255.2/32
+ip prefix-list HUB seq 20 permit 10.0.0.0/16 le 32
+ip prefix-list HUB seq 100 deny 0.0.0.0/0 le 32
+!
+ip prefix-list SITE-1-DR seq 10 permit 10.152.255.12/32
+ip prefix-list SITE-1-DR seq 20 permit 10.1.128.0/17 le 32
+ip prefix-list SITE-1-DR seq 100 deny 0.0.0.0/0 le 32
+!
+ip prefix-list SITE-1-MAIN seq 10 permit 10.152.255.11/32
+ip prefix-list SITE-1-MAIN seq 20 permit 10.1.0.0/17 le 32
+ip prefix-list SITE-1-MAIN seq 100 deny 0.0.0.0/0 le 32
+!
+ip prefix-list SITE-2-DR seq 10 permit 10.152.255.22/32
+ip prefix-list SITE-2-DR seq 20 permit 10.2.128.0/17 le 32
+ip prefix-list SITE-2-DR seq 100 deny 0.0.0.0/0 le 32
+!
+ip prefix-list SITE-2-MAIN seq 10 permit 10.152.255.21/32
+ip prefix-list SITE-2-MAIN seq 20 permit 10.2.0.0/17 le 32
+ip prefix-list SITE-2-MAIN seq 100 deny 0.0.0.0/0 le 32
+!
+ip prefix-list SITE-3-DR seq 10 permit 10.152.255.32/32
+ip prefix-list SITE-3-DR seq 20 permit 10.3.128.0/17 le 32
+ip prefix-list SITE-3-DR seq 100 deny 0.0.0.0/0 le 32
+!
+ip prefix-list SITE-3-MAIN seq 10 permit 10.152.255.31/32
+ip prefix-list SITE-3-MAIN seq 20 permit 10.3.0.0/17 le 32
+ip prefix-list SITE-3-MAIN seq 100 deny 0.0.0.0/0 le 32
+!
+ip prefix-list SUMMARIES seq 10 permit 10.0.0.0/16
+ip prefix-list SUMMARIES seq 15 deny 10.0.0.0/16 le 32
+ip prefix-list SUMMARIES seq 20 permit 10.1.0.0/16
+ip prefix-list SUMMARIES seq 25 deny 10.1.0.0/16 le 32
+ip prefix-list SUMMARIES seq 30 permit 10.2.0.0/16
+ip prefix-list SUMMARIES seq 35 deny 10.2.0.0/16 le 32
+ip prefix-list SUMMARIES seq 40 permit 10.3.0.0/16
+ip prefix-list SUMMARIES seq 45 deny 10.3.0.0/16 le 32
+ip prefix-list SUMMARIES seq 100 permit 0.0.0.0/0 le 32
+!
+route-map DMVPN-QUA-IN permit 10
+ match ip address prefix-list HUB
+!
+route-map DMVPN-QUA-IN permit 20
+ match ip address prefix-list HUB SITE-1-MAIN SITE-2-MAIN SITE-3-MAIN
+ set local-preference 500
+ set weight 0
+ set as-path prepend 65010 65010 65010 65010
+!
+route-map DMVPN-QUA-IN permit 30
+ match ip address prefix-list SITE-1-DR SITE-2-DR SITE-3-DR
+ set local-preference 10000
+ set weight 0
+ set as-path prepend 65010 65010
+!
+route-map DMVPN-QUA-IN deny 100
+!
+route-map bgp-to-eigrp permit 10
+ match ip address prefix-list SUMMARIES
+ set tag 100
+!
+route-map bgp-to-eigrp deny 100
+!
+route-map eigrp-to-bgp deny 10
+ match tag 100
+!
+route-map eigrp-to-bgp permit 100
+!
+route-map DMVPN-SEC-IN deny 10
+ match ip address prefix-list HUB
+!
+route-map DMVPN-SEC-IN permit 20
+ match ip address prefix-list SITE-1-MAIN SITE-2-MAIN SITE-3-MAIN
+ set local-preference 10000
+ set weight 0
+ set as-path prepend 65010 65010
+!
+route-map DMVPN-SEC-IN permit 30
+ match ip address prefix-list SITE-1-DR SITE-2-DR SITE-3-DR
+ set local-preference 5000
+ set weight 0
+ set as-path prepend 65010 65010 65010 65010
+!
+route-map DMVPN-SEC-IN deny 100
+!
+route-map DMVPN-SEC-OUT permit 10
+ match ip address prefix-list SUMMARIES
+ set local-preference 10000
+ set as-path prepend 65010 65010
+!
+route-map DMVPN-SEC-OUT deny 100
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="spoke-1" type="SIMPLE" subtype="IOSv" location="133,289">
+        <extensions>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 21:28:11 UTC Sun Sep 27 2015
+!
+version 15.5
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname spoke-1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+ip vrf f-vrf
+ rd 65534:0
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+cts logging verbose
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+crypto ikev2 keyring DMVPN
+ peer DMVPN_PEERS
+  address 0.0.0.0 0.0.0.0
+  pre-shared-key CRYPTOKEY
+ !
+!
+!
+crypto ikev2 profile DMVPN_IKE_PROF
+ match fvrf f-vrf
+ match identity remote address 0.0.0.0 
+ authentication remote pre-share
+ authentication local pre-share
+ keyring local DMVPN
+ dpd 30 5 on-demand
+!
+crypto isakmp invalid-spi-recovery
+crypto isakmp keepalive 10 periodic
+crypto isakmp aggressive-mode disable
+!
+crypto ipsec security-association replay window-size 1024
+!
+crypto ipsec transform-set DMVPN_TRANS_SET esp-gcm 256 
+ mode transport
+!
+crypto ipsec profile DMVPN_IPSEC_PROF
+ set security-association lifetime seconds 120
+ set transform-set DMVPN_TRANS_SET 
+ set ikev2-profile DMVPN_IKE_PROF
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.152.255.11 255.255.255.255
+!
+interface Loopback20
+ ip vrf forwarding f-vrf
+ ip address 172.16.255.11 255.255.255.255
+!
+interface Tunnel100
+ description ## DMVPN SPOKE ##
+ ip address 10.152.0.11 255.255.255.0
+ no ip redirects
+ ip mtu 1400
+ ip nhrp authentication NHRPKEY
+ ip nhrp map multicast dynamic
+ ip nhrp map 10.152.0.1 172.16.255.1
+ ip nhrp map multicast 172.16.255.1
+ ip nhrp map 10.152.0.2 172.16.255.2
+ ip nhrp map multicast 172.16.255.2
+ ip nhrp network-id 100
+ ip nhrp nhs 10.152.0.1
+ ip nhrp nhs 10.152.0.2
+ ip nhrp registration no-unique
+ ip nhrp registration timeout 120
+ ip nhrp shortcut
+ ip nhrp redirect
+ no ip split-horizon
+ ip tcp adjust-mss 1360
+ load-interval 30
+ if-state nhrp
+ qos pre-classify
+ tunnel source Loopback20
+ tunnel mode gre multipoint
+ tunnel key 0
+ tunnel path-mtu-discovery
+ tunnel vrf f-vrf
+ tunnel protection ipsec profile DMVPN_IPSEC_PROF
+!
+interface GigabitEthernet0/0
+ ip address 10.255.0.10 255.255.0.0
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ ip vrf forwarding f-vrf
+ ip address 172.16.0.10 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ ip address 10.1.254.1 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+!
+router eigrp 10
+ network 10.1.0.0 0.0.255.255
+ redistribute connected
+ redistribute bgp 65001 metric 10000 1000 255 1 1500 route-map bgp-to-eigrp
+ distance eigrp 19 170
+ passive-interface default
+ no passive-interface GigabitEthernet0/2
+ eigrp router-id 10.152.255.11
+!
+router bgp 65001
+ bgp router-id 10.152.255.11
+ bgp log-neighbor-changes
+ timers bgp 5 15
+ redistribute connected
+ redistribute eigrp 10 route-map eigrp-to-bgp
+ neighbor DMVPN-HUB peer-group
+ neighbor DMVPN-HUB remote-as 65000
+ neighbor DMVPN-HUB next-hop-self
+ neighbor DMVPN-HUB soft-reconfiguration inbound
+ neighbor DMVPN-HUB route-map DMVPN-IN in
+ neighbor DMVPN-HUB route-map DMVPN-OUT out
+ neighbor 10.152.0.1 peer-group DMVPN-HUB
+ neighbor 10.152.0.2 peer-group DMVPN-HUB
+ !
+ address-family ipv4 vrf f-vrf
+  redistribute connected
+  neighbor 172.16.0.9 remote-as 65534
+  neighbor 172.16.0.9 local-as 65534
+  neighbor 172.16.0.9 update-source GigabitEthernet0/1
+  neighbor 172.16.0.9 activate
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+ip prefix-list SITE-1-DR seq 10 permit 10.152.255.12/32
+ip prefix-list SITE-1-DR seq 20 permit 10.1.128.0/17 le 32
+ip prefix-list SITE-1-DR seq 100 deny 0.0.0.0/0 le 32
+!
+ip prefix-list SITE-1-MAIN seq 10 permit 10.152.255.11/32
+ip prefix-list SITE-1-MAIN seq 20 permit 10.1.0.0/17 le 32
+ip prefix-list SITE-1-MAIN seq 100 deny 0.0.0.0/0 le 32
+!
+route-map bgp-to-eigrp permit 10
+ set tag 100
+!
+route-map bgp-to-eigrp deny 100
+!
+route-map eigrp-to-bgp deny 10
+ match tag 100
+!
+route-map eigrp-to-bgp permit 20
+ match ip address prefix-list SITE-1-MAIN SITE-1-DR
+ set local-preference 40000
+ set weight 0
+!
+route-map eigrp-to-bgp deny 100
+!
+route-map DMVPN-OUT permit 10
+ match ip address prefix-list SITE-1-MAIN SITE-1-DR
+!
+route-map DMVPN-OUT deny 100
+!
+route-map DMVPN-IN deny 10
+ match ip address prefix-list SITE-1-MAIN SITE-1-DR
+!
+route-map DMVPN-IN permit 100
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="spoke-2" type="SIMPLE" subtype="IOSv" location="231,340">
+        <extensions>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 21:39:10 UTC Sun Sep 27 2015
+!
+version 15.5
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname spoke-2
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+ip vrf f-vrf
+ rd 65534:0
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+cts logging verbose
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+crypto ikev2 keyring DMVPN
+ peer DMVPN_PEERS
+  address 0.0.0.0 0.0.0.0
+  pre-shared-key CRYPTOKEY
+ !
+!
+!
+crypto ikev2 profile DMVPN_IKE_PROF
+ match fvrf f-vrf
+ match identity remote address 0.0.0.0 
+ authentication remote pre-share
+ authentication local pre-share
+ keyring local DMVPN
+ dpd 30 5 on-demand
+!
+crypto isakmp invalid-spi-recovery
+crypto isakmp keepalive 10 periodic
+crypto isakmp aggressive-mode disable
+!
+crypto ipsec security-association replay window-size 1024
+!
+crypto ipsec transform-set DMVPN_TRANS_SET esp-gcm 256 
+ mode transport
+!
+crypto ipsec profile DMVPN_IPSEC_PROF
+ set security-association lifetime seconds 120
+ set transform-set DMVPN_TRANS_SET 
+ set ikev2-profile DMVPN_IKE_PROF
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.152.255.12 255.255.255.255
+!
+interface Loopback20
+ ip vrf forwarding f-vrf
+ ip address 172.16.255.12 255.255.255.255
+!
+interface Tunnel100
+ description ## DMVPN SPOKE ##
+ ip address 10.152.0.12 255.255.255.0
+ no ip redirects
+ ip mtu 1400
+ ip nhrp authentication NHRPKEY
+ ip nhrp map multicast dynamic
+ ip nhrp map 10.152.0.1 172.16.255.1
+ ip nhrp map multicast 172.16.255.1
+ ip nhrp map 10.152.0.2 172.16.255.2
+ ip nhrp map multicast 172.16.255.2
+ ip nhrp network-id 100
+ ip nhrp nhs 10.152.0.1
+ ip nhrp nhs 10.152.0.2
+ ip nhrp registration no-unique
+ ip nhrp registration timeout 120
+ ip nhrp shortcut
+ ip nhrp redirect
+ no ip split-horizon
+ ip tcp adjust-mss 1360
+ load-interval 30
+ if-state nhrp
+ qos pre-classify
+ tunnel source Loopback20
+ tunnel mode gre multipoint
+ tunnel key 0
+ tunnel path-mtu-discovery
+ tunnel vrf f-vrf
+ tunnel protection ipsec profile DMVPN_IPSEC_PROF
+!
+interface GigabitEthernet0/0
+ ip address 10.255.0.12 255.255.0.0
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ ip vrf forwarding f-vrf
+ ip address 172.16.0.14 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ ip address 10.1.254.5 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+!
+router eigrp 10
+ network 10.1.0.0 0.0.255.255
+ redistribute connected
+ redistribute bgp 65001 metric 10000 50000 255 1 1500 route-map bgp-to-eigrp
+ distance eigrp 19 170
+ passive-interface default
+ no passive-interface GigabitEthernet0/2
+ eigrp router-id 10.152.255.12
+!
+router bgp 65001
+ bgp router-id 10.152.255.12
+ bgp log-neighbor-changes
+ timers bgp 5 15
+ redistribute connected
+ redistribute eigrp 10 route-map eigrp-to-bgp
+ neighbor DMVPN-HUB peer-group
+ neighbor DMVPN-HUB remote-as 65000
+ neighbor DMVPN-HUB next-hop-self
+ neighbor DMVPN-HUB soft-reconfiguration inbound
+ neighbor DMVPN-HUB route-map DMVPN-IN in
+ neighbor DMVPN-HUB route-map DMVPN-OUT out
+ neighbor 10.152.0.1 peer-group DMVPN-HUB
+ neighbor 10.152.0.2 peer-group DMVPN-HUB
+ !
+ address-family ipv4 vrf f-vrf
+  redistribute connected
+  neighbor 172.16.0.13 remote-as 65534
+  neighbor 172.16.0.13 local-as 65534
+  neighbor 172.16.0.13 update-source GigabitEthernet0/1
+  neighbor 172.16.0.13 activate
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+ip prefix-list SITE-1-DR seq 10 permit 10.152.255.12/32
+ip prefix-list SITE-1-DR seq 20 permit 10.1.128.0/17 le 32
+ip prefix-list SITE-1-DR seq 100 deny 0.0.0.0/0 le 32
+!
+ip prefix-list SITE-1-MAIN seq 10 permit 10.152.255.11/32
+ip prefix-list SITE-1-MAIN seq 20 permit 10.1.0.0/17 le 32
+ip prefix-list SITE-1-MAIN seq 100 deny 0.0.0.0/0 le 32
+!
+route-map bgp-to-eigrp permit 10
+ set tag 100
+!
+route-map bgp-to-eigrp deny 100
+!
+route-map eigrp-to-bgp deny 10
+ match tag 100
+!
+route-map eigrp-to-bgp permit 20
+ match ip address prefix-list SITE-1-MAIN SITE-1-DR
+ set local-preference 40000
+ set weight 0
+!
+route-map eigrp-to-bgp deny 100
+!
+route-map DMVPN-OUT permit 10
+ match ip address prefix-list SITE-1-MAIN SITE-1-DR
+!
+route-map DMVPN-OUT deny 100
+!
+route-map DMVPN-IN deny 10
+ match ip address prefix-list SITE-1-MAIN SITE-1-DR
+!
+route-map DMVPN-IN permit 100
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="spoke-3" type="SIMPLE" subtype="IOSv" location="426,336">
+        <extensions>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 21:41:27 UTC Sun Sep 27 2015
+!
+version 15.5
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname spoke-3
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+ip vrf f-vrf
+ rd 65534:0
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+cts logging verbose
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+crypto ikev2 keyring DMVPN
+ peer DMVPN_PEERS
+  address 0.0.0.0 0.0.0.0
+  pre-shared-key CRYPTOKEY
+ !
+!
+!
+crypto ikev2 profile DMVPN_IKE_PROF
+ match fvrf f-vrf
+ match identity remote address 0.0.0.0 
+ authentication remote pre-share
+ authentication local pre-share
+ keyring local DMVPN
+ dpd 30 5 on-demand
+!
+crypto isakmp invalid-spi-recovery
+crypto isakmp keepalive 10 periodic
+crypto isakmp aggressive-mode disable
+!
+crypto ipsec security-association replay window-size 1024
+!
+crypto ipsec transform-set DMVPN_TRANS_SET esp-gcm 256 
+ mode transport
+!
+crypto ipsec profile DMVPN_IPSEC_PROF
+ set security-association lifetime seconds 120
+ set transform-set DMVPN_TRANS_SET 
+ set ikev2-profile DMVPN_IKE_PROF
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.152.255.21 255.255.255.255
+!
+interface Loopback20
+ ip vrf forwarding f-vrf
+ ip address 172.16.255.21 255.255.255.255
+!
+interface Tunnel100
+ description ## DMVPN SPOKE ##
+ ip address 10.152.0.21 255.255.255.0
+ no ip redirects
+ ip mtu 1400
+ ip nhrp authentication NHRPKEY
+ ip nhrp map multicast dynamic
+ ip nhrp map 10.152.0.1 172.16.255.1
+ ip nhrp map multicast 172.16.255.1
+ ip nhrp map 10.152.0.2 172.16.255.2
+ ip nhrp map multicast 172.16.255.2
+ ip nhrp network-id 100
+ ip nhrp nhs 10.152.0.1
+ ip nhrp nhs 10.152.0.2
+ ip nhrp registration no-unique
+ ip nhrp registration timeout 120
+ ip nhrp shortcut
+ ip nhrp redirect
+ no ip split-horizon
+ ip tcp adjust-mss 1360
+ load-interval 30
+ if-state nhrp
+ qos pre-classify
+ tunnel source Loopback20
+ tunnel mode gre multipoint
+ tunnel key 0
+ tunnel path-mtu-discovery
+ tunnel vrf f-vrf
+ tunnel protection ipsec profile DMVPN_IPSEC_PROF
+!
+interface GigabitEthernet0/0
+ ip address 10.255.0.11 255.255.0.0
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ ip vrf forwarding f-vrf
+ ip address 172.16.0.18 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ ip address 10.2.254.1 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+!
+router eigrp 10
+ network 10.2.0.0 0.0.255.255
+ redistribute connected
+ redistribute bgp 65002 metric 10000 1000 255 1 1500 route-map bgp-to-eigrp
+ distance eigrp 19 170
+ passive-interface default
+ no passive-interface GigabitEthernet0/2
+ eigrp router-id 10.152.255.21
+!
+router bgp 65002
+ bgp router-id 10.152.255.21
+ bgp log-neighbor-changes
+ timers bgp 5 15
+ redistribute connected
+ redistribute eigrp 10 route-map eigrp-to-bgp
+ neighbor DMVPN-HUB peer-group
+ neighbor DMVPN-HUB remote-as 65000
+ neighbor DMVPN-HUB next-hop-self
+ neighbor DMVPN-HUB soft-reconfiguration inbound
+ neighbor DMVPN-HUB route-map DMVPN-IN in
+ neighbor DMVPN-HUB route-map DMVPN-OUT out
+ neighbor 10.152.0.1 peer-group DMVPN-HUB
+ neighbor 10.152.0.2 peer-group DMVPN-HUB
+ !
+ address-family ipv4 vrf f-vrf
+  redistribute connected
+  neighbor 172.16.0.17 remote-as 65534
+  neighbor 172.16.0.17 local-as 65534
+  neighbor 172.16.0.17 update-source GigabitEthernet0/1
+  neighbor 172.16.0.17 activate
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+ip prefix-list SITE-2-DR seq 10 permit 10.152.255.22/32
+ip prefix-list SITE-2-DR seq 20 permit 10.2.128.0/17 le 32
+ip prefix-list SITE-2-DR seq 100 deny 0.0.0.0/0 le 32
+!
+ip prefix-list SITE-2-MAIN seq 10 permit 10.152.255.21/32
+ip prefix-list SITE-2-MAIN seq 20 permit 10.2.0.0/17 le 32
+ip prefix-list SITE-2-MAIN seq 100 deny 0.0.0.0/0 le 32
+!
+route-map bgp-to-eigrp permit 10
+ set tag 100
+!
+route-map bgp-to-eigrp deny 100
+!
+route-map eigrp-to-bgp deny 10
+ match tag 100
+!
+route-map eigrp-to-bgp permit 20
+ match ip address prefix-list SITE-2-MAIN SITE-2-DR
+ set local-preference 40000
+ set weight 0
+!
+route-map eigrp-to-bgp deny 100
+!
+route-map DMVPN-OUT permit 10
+ match ip address prefix-list SITE-2-MAIN SITE-2-DR
+!
+route-map DMVPN-OUT deny 100
+!
+route-map DMVPN-IN deny 10
+ match ip address prefix-list SITE-2-MAIN SITE-2-DR
+!
+route-map DMVPN-IN permit 100
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="spoke-4" type="SIMPLE" subtype="IOSv" location="556,336">
+        <extensions>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 21:30:35 UTC Sun Sep 27 2015
+!
+version 15.5
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname spoke-4
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+ip vrf f-vrf
+ rd 65534:0
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+cts logging verbose
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+crypto ikev2 keyring DMVPN
+ peer DMVPN_PEERS
+  address 0.0.0.0 0.0.0.0
+  pre-shared-key CRYPTOKEY
+ !
+!
+!
+crypto ikev2 profile DMVPN_IKE_PROF
+ match fvrf f-vrf
+ match identity remote address 0.0.0.0 
+ authentication remote pre-share
+ authentication local pre-share
+ keyring local DMVPN
+ dpd 30 5 on-demand
+!
+crypto isakmp invalid-spi-recovery
+crypto isakmp keepalive 10 periodic
+crypto isakmp aggressive-mode disable
+!
+crypto ipsec security-association replay window-size 1024
+!
+crypto ipsec transform-set DMVPN_TRANS_SET esp-gcm 256 
+ mode transport
+!
+crypto ipsec profile DMVPN_IPSEC_PROF
+ set security-association lifetime seconds 120
+ set transform-set DMVPN_TRANS_SET 
+ set ikev2-profile DMVPN_IKE_PROF
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.152.255.22 255.255.255.255
+!
+interface Loopback20
+ ip vrf forwarding f-vrf
+ ip address 172.16.255.22 255.255.255.255
+!
+interface Tunnel100
+ description ## DMVPN SPOKE ##
+ ip address 10.152.0.22 255.255.255.0
+ no ip redirects
+ ip mtu 1400
+ ip nhrp authentication NHRPKEY
+ ip nhrp map multicast dynamic
+ ip nhrp map 10.152.0.1 172.16.255.1
+ ip nhrp map multicast 172.16.255.1
+ ip nhrp map 10.152.0.2 172.16.255.2
+ ip nhrp map multicast 172.16.255.2
+ ip nhrp network-id 100
+ ip nhrp nhs 10.152.0.1
+ ip nhrp nhs 10.152.0.2
+ ip nhrp registration no-unique
+ ip nhrp registration timeout 120
+ ip nhrp shortcut
+ ip nhrp redirect
+ no ip split-horizon
+ ip tcp adjust-mss 1360
+ load-interval 30
+ if-state nhrp
+ qos pre-classify
+ tunnel source Loopback20
+ tunnel mode gre multipoint
+ tunnel key 0
+ tunnel path-mtu-discovery
+ tunnel vrf f-vrf
+ tunnel protection ipsec profile DMVPN_IPSEC_PROF
+!
+interface GigabitEthernet0/0
+ ip address 10.255.0.4 255.255.0.0
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ ip vrf forwarding f-vrf
+ ip address 172.16.0.22 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ ip address 10.2.254.5 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+!
+router eigrp 10
+ network 10.2.0.0 0.0.255.255
+ redistribute connected
+ redistribute bgp 65002 metric 10000 50000 255 1 1500 route-map bgp-to-eigrp
+ distance eigrp 19 170
+ passive-interface default
+ no passive-interface GigabitEthernet0/2
+ eigrp router-id 10.152.255.22
+!
+router bgp 65002
+ bgp router-id 10.152.255.22
+ bgp log-neighbor-changes
+ timers bgp 5 15
+ redistribute connected
+ redistribute eigrp 10 route-map eigrp-to-bgp
+ neighbor DMVPN-HUB peer-group
+ neighbor DMVPN-HUB remote-as 65000
+ neighbor DMVPN-HUB next-hop-self
+ neighbor DMVPN-HUB soft-reconfiguration inbound
+ neighbor DMVPN-HUB route-map DMVPN-IN in
+ neighbor DMVPN-HUB route-map DMVPN-OUT out
+ neighbor 10.152.0.1 peer-group DMVPN-HUB
+ neighbor 10.152.0.2 peer-group DMVPN-HUB
+ !
+ address-family ipv4 vrf f-vrf
+  redistribute connected
+  neighbor 172.16.0.21 remote-as 65534
+  neighbor 172.16.0.21 local-as 65534
+  neighbor 172.16.0.21 update-source GigabitEthernet0/1
+  neighbor 172.16.0.21 activate
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+ip prefix-list SITE-2-DR seq 10 permit 10.152.255.22/32
+ip prefix-list SITE-2-DR seq 20 permit 10.2.128.0/17 le 32
+ip prefix-list SITE-2-DR seq 100 deny 0.0.0.0/0 le 32
+!
+ip prefix-list SITE-2-MAIN seq 10 permit 10.152.255.21/32
+ip prefix-list SITE-2-MAIN seq 20 permit 10.2.0.0/17 le 32
+ip prefix-list SITE-2-MAIN seq 100 deny 0.0.0.0/0 le 32
+!
+route-map bgp-to-eigrp permit 10
+ set tag 100
+!
+route-map bgp-to-eigrp deny 100
+!
+route-map eigrp-to-bgp deny 10
+ match tag 100
+!
+route-map eigrp-to-bgp permit 20
+ match ip address prefix-list SITE-2-MAIN SITE-2-DR
+ set local-preference 40000
+ set weight 0
+!
+route-map eigrp-to-bgp deny 100
+!
+route-map DMVPN-OUT permit 10
+ match ip address prefix-list SITE-2-MAIN SITE-2-DR
+!
+route-map DMVPN-OUT deny 100
+!
+route-map DMVPN-IN deny 10
+ match ip address prefix-list SITE-2-MAIN SITE-2-DR
+!
+route-map DMVPN-IN permit 100
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="spoke-5" type="SIMPLE" subtype="IOSv" location="725,331">
+        <extensions>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 21:41:01 UTC Sun Sep 27 2015
+!
+version 15.5
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname spoke-5
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+ip vrf f-vrf
+ rd 65534:0
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+cts logging verbose
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+crypto ikev2 keyring DMVPN
+ peer DMVPN_PEERS
+  address 0.0.0.0 0.0.0.0
+  pre-shared-key CRYPTOKEY
+ !
+!
+!
+crypto ikev2 profile DMVPN_IKE_PROF
+ match fvrf f-vrf
+ match identity remote address 0.0.0.0 
+ authentication remote pre-share
+ authentication local pre-share
+ keyring local DMVPN
+ dpd 30 5 on-demand
+!
+crypto isakmp invalid-spi-recovery
+crypto isakmp keepalive 10 periodic
+crypto isakmp aggressive-mode disable
+!
+crypto ipsec security-association replay window-size 1024
+!
+crypto ipsec transform-set DMVPN_TRANS_SET esp-gcm 256 
+ mode transport
+!
+crypto ipsec profile DMVPN_IPSEC_PROF
+ set security-association lifetime seconds 120
+ set transform-set DMVPN_TRANS_SET 
+ set ikev2-profile DMVPN_IKE_PROF
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.152.255.31 255.255.255.255
+!
+interface Loopback20
+ ip vrf forwarding f-vrf
+ ip address 172.16.255.31 255.255.255.255
+!
+interface Tunnel100
+ description ## DMVPN SPOKE ##
+ ip address 10.152.0.31 255.255.255.0
+ no ip redirects
+ ip mtu 1400
+ ip nhrp authentication NHRPKEY
+ ip nhrp map multicast dynamic
+ ip nhrp map 10.152.0.1 172.16.255.1
+ ip nhrp map multicast 172.16.255.1
+ ip nhrp map 10.152.0.2 172.16.255.2
+ ip nhrp map multicast 172.16.255.2
+ ip nhrp network-id 100
+ ip nhrp nhs 10.152.0.1
+ ip nhrp nhs 10.152.0.2
+ ip nhrp registration no-unique
+ ip nhrp registration timeout 120
+ ip nhrp shortcut
+ ip nhrp redirect
+ no ip split-horizon
+ ip tcp adjust-mss 1360
+ load-interval 30
+ if-state nhrp
+ qos pre-classify
+ tunnel source Loopback20
+ tunnel mode gre multipoint
+ tunnel key 0
+ tunnel path-mtu-discovery
+ tunnel vrf f-vrf
+ tunnel protection ipsec profile DMVPN_IPSEC_PROF
+!
+interface GigabitEthernet0/0
+ ip address 10.255.0.7 255.255.0.0
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ ip vrf forwarding f-vrf
+ ip address 172.16.0.26 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ ip address 10.3.254.1 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+!
+router eigrp 10
+ network 10.3.0.0 0.0.255.255
+ redistribute connected
+ redistribute bgp 65003 metric 10000 1000 255 1 1500 route-map bgp-to-eigrp
+ distance eigrp 19 170
+ passive-interface default
+ no passive-interface GigabitEthernet0/2
+ eigrp router-id 10.152.255.31
+!
+router bgp 65003
+ bgp router-id 10.152.255.31
+ bgp log-neighbor-changes
+ timers bgp 5 15
+ redistribute connected
+ redistribute eigrp 10 route-map eigrp-to-bgp
+ neighbor DMVPN-HUB peer-group
+ neighbor DMVPN-HUB remote-as 65000
+ neighbor DMVPN-HUB next-hop-self
+ neighbor DMVPN-HUB soft-reconfiguration inbound
+ neighbor DMVPN-HUB route-map DMVPN-IN in
+ neighbor DMVPN-HUB route-map DMVPN-OUT out
+ neighbor 10.152.0.1 peer-group DMVPN-HUB
+ neighbor 10.152.0.2 peer-group DMVPN-HUB
+ !
+ address-family ipv4 vrf f-vrf
+  redistribute connected
+  neighbor 172.16.0.25 remote-as 65534
+  neighbor 172.16.0.25 local-as 65534
+  neighbor 172.16.0.25 update-source GigabitEthernet0/1
+  neighbor 172.16.0.25 activate
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+ip prefix-list SITE-3-DR seq 10 permit 10.152.255.32/32
+ip prefix-list SITE-3-DR seq 20 permit 10.3.128.0/17 le 32
+ip prefix-list SITE-3-DR seq 100 deny 0.0.0.0/0 le 32
+!
+ip prefix-list SITE-3-MAIN seq 10 permit 10.152.255.31/32
+ip prefix-list SITE-3-MAIN seq 20 permit 10.3.0.0/17 le 32
+ip prefix-list SITE-3-MAIN seq 100 deny 0.0.0.0/0 le 32
+!
+route-map bgp-to-eigrp permit 10
+ set tag 100
+!
+route-map bgp-to-eigrp deny 100
+!
+route-map eigrp-to-bgp deny 10
+ match tag 100
+!
+route-map eigrp-to-bgp permit 20
+ match ip address prefix-list SITE-3-MAIN SITE-3-DR
+ set local-preference 40000
+ set weight 0
+!
+route-map eigrp-to-bgp deny 100
+!
+route-map DMVPN-OUT permit 10
+ match ip address prefix-list SITE-3-MAIN SITE-3-DR
+!
+route-map DMVPN-OUT deny 100
+!
+route-map DMVPN-IN deny 10
+ match ip address prefix-list SITE-3-MAIN SITE-3-DR
+!
+route-map DMVPN-IN permit 100
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="spoke-6" type="SIMPLE" subtype="IOSv" location="833,271">
+        <extensions>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 21:34:41 UTC Sun Sep 27 2015
+!
+version 15.5
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname spoke-6
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+ip vrf f-vrf
+ rd 65534:0
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+cts logging verbose
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+crypto ikev2 keyring DMVPN
+ peer DMVPN_PEERS
+  address 0.0.0.0 0.0.0.0
+  pre-shared-key CRYPTOKEY
+ !
+!
+!
+crypto ikev2 profile DMVPN_IKE_PROF
+ match fvrf f-vrf
+ match identity remote address 0.0.0.0 
+ authentication remote pre-share
+ authentication local pre-share
+ keyring local DMVPN
+ dpd 30 5 on-demand
+!
+crypto isakmp invalid-spi-recovery
+crypto isakmp keepalive 10 periodic
+crypto isakmp aggressive-mode disable
+!
+crypto ipsec security-association replay window-size 1024
+!
+crypto ipsec transform-set DMVPN_TRANS_SET esp-gcm 256 
+ mode transport
+!
+crypto ipsec profile DMVPN_IPSEC_PROF
+ set security-association lifetime seconds 120
+ set transform-set DMVPN_TRANS_SET 
+ set ikev2-profile DMVPN_IKE_PROF
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.152.255.32 255.255.255.255
+!
+interface Loopback20
+ ip vrf forwarding f-vrf
+ ip address 172.16.255.32 255.255.255.255
+!
+interface Tunnel100
+ description ## DMVPN SPOKE ##
+ ip address 10.152.0.32 255.255.255.0
+ no ip redirects
+ ip mtu 1400
+ ip nhrp authentication NHRPKEY
+ ip nhrp map multicast dynamic
+ ip nhrp map 10.152.0.1 172.16.255.1
+ ip nhrp map multicast 172.16.255.1
+ ip nhrp map 10.152.0.2 172.16.255.2
+ ip nhrp map multicast 172.16.255.2
+ ip nhrp network-id 100
+ ip nhrp nhs 10.152.0.1
+ ip nhrp nhs 10.152.0.2
+ ip nhrp registration no-unique
+ ip nhrp registration timeout 120
+ ip nhrp shortcut
+ ip nhrp redirect
+ no ip split-horizon
+ ip tcp adjust-mss 1360
+ load-interval 30
+ if-state nhrp
+ qos pre-classify
+ tunnel source Loopback20
+ tunnel mode gre multipoint
+ tunnel key 0
+ tunnel path-mtu-discovery
+ tunnel vrf f-vrf
+ tunnel protection ipsec profile DMVPN_IPSEC_PROF
+!
+interface GigabitEthernet0/0
+ ip address 10.255.0.9 255.255.0.0
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ ip vrf forwarding f-vrf
+ ip address 172.16.0.30 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ ip address 10.3.254.5 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+!
+router eigrp 10
+ network 10.3.0.0 0.0.255.255
+ redistribute connected
+ redistribute bgp 65003 metric 10000 50000 255 1 1500 route-map bgp-to-eigrp
+ distance eigrp 19 170
+ passive-interface default
+ no passive-interface GigabitEthernet0/2
+ eigrp router-id 10.152.255.32
+!
+router bgp 65003
+ bgp router-id 10.152.255.32
+ bgp log-neighbor-changes
+ timers bgp 5 15
+ redistribute connected
+ redistribute eigrp 10 route-map eigrp-to-bgp
+ neighbor DMVPN-HUB peer-group
+ neighbor DMVPN-HUB remote-as 65000
+ neighbor DMVPN-HUB next-hop-self
+ neighbor DMVPN-HUB soft-reconfiguration inbound
+ neighbor DMVPN-HUB route-map DMVPN-IN in
+ neighbor DMVPN-HUB route-map DMVPN-OUT out
+ neighbor 10.152.0.1 peer-group DMVPN-HUB
+ neighbor 10.152.0.2 peer-group DMVPN-HUB
+ !
+ address-family ipv4 vrf f-vrf
+  redistribute connected
+  neighbor 172.16.0.29 remote-as 65534
+  neighbor 172.16.0.29 local-as 65534
+  neighbor 172.16.0.29 update-source GigabitEthernet0/1
+  neighbor 172.16.0.29 activate
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+ip prefix-list SITE-3-DR seq 10 permit 10.152.255.32/32
+ip prefix-list SITE-3-DR seq 20 permit 10.3.128.0/17 le 32
+ip prefix-list SITE-3-DR seq 100 deny 0.0.0.0/0 le 32
+!
+ip prefix-list SITE-3-MAIN seq 10 permit 10.152.255.31/32
+ip prefix-list SITE-3-MAIN seq 20 permit 10.3.0.0/17 le 32
+ip prefix-list SITE-3-MAIN seq 100 deny 0.0.0.0/0 le 32
+!
+route-map bgp-to-eigrp permit 10
+ set tag 100
+!
+route-map bgp-to-eigrp deny 100
+!
+route-map eigrp-to-bgp deny 10
+ match tag 100
+!
+route-map eigrp-to-bgp permit 20
+ match ip address prefix-list SITE-3-MAIN SITE-3-DR
+ set local-preference 40000
+ set weight 0
+!
+route-map eigrp-to-bgp deny 100
+!
+route-map DMVPN-OUT permit 10
+ match ip address prefix-list SITE-3-MAIN SITE-3-DR
+!
+route-map DMVPN-OUT deny 100
+!
+route-map DMVPN-IN deny 10
+ match ip address prefix-list SITE-3-MAIN SITE-3-DR
+!
+route-map DMVPN-IN permit 100
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <connection dst="/virl:topology/virl:node[6]/virl:interface[1]" src="/virl:topology/virl:node[1]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[7]/virl:interface[1]" src="/virl:topology/virl:node[1]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[8]/virl:interface[1]" src="/virl:topology/virl:node[1]/virl:interface[3]"/>
+    <connection dst="/virl:topology/virl:node[9]/virl:interface[1]" src="/virl:topology/virl:node[1]/virl:interface[4]"/>
+    <connection dst="/virl:topology/virl:node[10]/virl:interface[1]" src="/virl:topology/virl:node[1]/virl:interface[5]"/>
+    <connection dst="/virl:topology/virl:node[11]/virl:interface[1]" src="/virl:topology/virl:node[1]/virl:interface[6]"/>
+    <connection dst="/virl:topology/virl:node[12]/virl:interface[1]" src="/virl:topology/virl:node[1]/virl:interface[7]"/>
+    <connection dst="/virl:topology/virl:node[13]/virl:interface[1]" src="/virl:topology/virl:node[1]/virl:interface[8]"/>
+    <connection dst="/virl:topology/virl:node[5]/virl:interface[1]" src="/virl:topology/virl:node[6]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[5]/virl:interface[2]" src="/virl:topology/virl:node[7]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[2]/virl:interface[1]" src="/virl:topology/virl:node[8]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[2]/virl:interface[2]" src="/virl:topology/virl:node[9]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[3]/virl:interface[1]" src="/virl:topology/virl:node[10]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[3]/virl:interface[2]" src="/virl:topology/virl:node[11]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[4]/virl:interface[1]" src="/virl:topology/virl:node[12]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[4]/virl:interface[2]" src="/virl:topology/virl:node[13]/virl:interface[2]"/>
+</topology>

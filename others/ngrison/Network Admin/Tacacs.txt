@@ -1,0 +1,80 @@
+
+
+aaa new-model
+aaa authentication login use-tacacs group tacacs+ local-case
+aaa authentication login console group tacacs+ local
+aaa authentication enable default group tacacs+ enable
+aaa authorization console
+aaa authorization exec use-tacacs group tacacs+ if-authenticated
+aaa authorization exec console group tacacs+ none
+aaa authorization commands 15 default group tacacs+ if-authenticated
+aaa accounting exec use-tacacs start-stop group tacacs+
+aaa accounting commands 5 use-tacacs start-stop group tacacs+
+aaa accounting commands 7 use-tacacs start-stop group tacacs+
+aaa accounting commands 15 use-tacacs start-stop group tacacs+
+aaa session-id common
+
+
+
+
+aaa new-model
+aaa authentication login use-tacacs group tacacs+ local-case
+aaa authentication login console group tacacs+ local
+aaa authentication enable default group tacacs+ enable
+aaa authorization console
+aaa authorization exec use-tacacs group tacacs+ local
+aaa authorization exec console group tacacs+ none
+aaa authorization commands 15 default group tacacs+
+aaa accounting exec use-tacacs start-stop group tacacs+
+aaa accounting commands 15 use-tacacs start-stop group tacacs+
+aaa session-id common
+!
+username console privilege 15 password XXXXX
+!
+tacacs-server directed-request
+!
+tacacs server WIN-TACACS-1
+ address ipv4 159.95.39.224
+ key tacacs_key
+!
+tacacs server WIN-TACACS-2
+ address ipv4 159.95.39.225
+ key tacacs_key
+!
+ip tacacs source-interface XXXXXX
+!
+privilege interface level 15 shutdown
+privilege configure level 15 interface
+privilege exec level 15 traceroute
+privilege exec level 15 ping
+privilege exec level 15 configure terminal
+privilege exec level 15 configure
+privilege exec level 15 show logging
+privilege exec level 15 show configuration
+privilege exec level 15 show
+privilege exec level 15 clear ip
+privilege exec level 15 clear counters
+privilege exec level 15 clear
+privilege exec level 15 debug
+!
+radius-server source-ports 1645-1646
+!
+line con 0
+ session-timeout 5
+ exec-timeout 30 0
+ authorization exec console
+ accounting commands 15 use-tacacs
+ accounting exec use-tacacs
+ login authentication console
+ line vty 0 4
+ exec-timeout 30 0
+ authorization exec use-tacacs
+accounting commands 15 use-tacacs
+ accounting exec use-tacacs
+ login authentication use-tacacs
+line vty 5 15
+ exec-timeout 30 0
+ authorization exec use-tacacs
+accounting commands 15 use-tacacs
+ accounting exec use-tacacs
+ login authentication use-tacacs

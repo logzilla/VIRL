@@ -1,0 +1,89 @@
+DHCP Relay:
+
+The topology shows "DHCP Relay MPLS VPN Support"
+
+=== DHCP Relay Server ID Override and Link Selection Option 82 Suboptions ===
+
+Standard IOS Only
+
+Normally, DHCP relay sends traffic to the DHCP server using its own IP address in the subnet 
+as the source. It also includes it in the "giaddr" of the DHCP REQUEST frame.
+This means that the DHCP server must be able to send the frame back to the source subnet.
+
+This is not always possible or desirable. Cisco works around this limitation by using sub option of DHCP option 82. These sub options 
+are a Cisco standard and may not be understood by a non Cisco DHCP server.
+
+The DHCP relay will use an address that is reachable by the DHCP server as source of the packet 
+and as "giaddr". It will insert in Option 82 a server-id-override suboption (152) which includes 
+the ip address in the target subnet. When the request is received by the server, it uses the
+server-id-override field to allocate an address and sends the reply to the giaddr address.
+
+DHCP Client
+
+ interface GigabitEthernet0/0/0
+  ip address dhcp
+
+DHCP Relay Agent
+
+ ip dhcp-relay information option server-override
+ ip dhcp-relay source-interface loopback0
+ !
+ interface Loopback0
+  ip address 10.2.1.1 255.255.255.0
+ !
+ interface GigabitEthernet0/0/0
+  ip address 10.1.1.1 255.255.255.0
+  ip helper-address 10.3.1.1
+ !
+ interface GigabitEthernet1/0/0
+  ip address 10.3.1.2 255.255.255.0
+
+DHCP Server
+
+ ip dhcp excluded-address 10.3.0.1
+ ip dhcp pool pool1
+  network 10.1.1.0 255.255.255.0
+  lease 0 0 1
+ !
+ interface GigabitEthernet0/0/0
+  ip address 10.3.1.1 255.255.255.0
+
+
+
+=== DHCP Relay MPLS VPN Support ===
+
+In MPLS, where the client and server reside in different VRFs/VPNs, the relay must also be 
+configured to send to the server the VRF name or VPN id using the "ip dhcp relay information 
+option vpn" command. The server DHCP pools must be configured with the target VRF/VPN id.
+
+DHCP Client
+
+ interface GigabitEthernet0/0/0
+  ip address dhcp
+
+DHCP Relay Agent
+
+ip dhcp relay information option vpn
+ip dhcp relay information option
+ !
+ interface Loopback0
+  ip address 10.2.1.1 255.255.255.0
+ !
+ interface GigabitEthernet0/0/0
+  ip vrf forwarding VRF1
+  ip address 10.1.1.1 255.255.255.0
+  ip helper-address global 10.3.1.1
+ !
+ interface GigabitEthernet1/0/0
+  ip address 10.3.1.2 255.255.255.0
+
+DHCP Server
+
+ ip dhcp excluded-address vrf VRF1 10.3.0.1
+ ip dhcp pool pool1
+  vrf VRF1
+  network 10.1.1.0 255.255.255.0
+  lease 0 0 1
+ !
+ interface GigabitEthernet0/0/0
+  ip address 10.3.1.1 255.255.255.0
