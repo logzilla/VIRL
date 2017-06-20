@@ -1,0 +1,3338 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<topology xmlns="http://www.cisco.com/VIRL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="0.9" simulationEngine="OPENSTACK" xsi:schemaLocation="http://www.cisco.com/VIRL https://raw.github.com/CiscoVIRL/schema/v0.9/virl.xsd">
+    <extensions>
+        <entry key="management_network" type="String">flat</entry>
+        <entry key="management_lxc" type="Boolean">true</entry>
+        <entry key="lxc.host.static_ip" type="String">172.16.3.2</entry>
+        <entry key="AutoNetkit.enable_cdp" type="Boolean">true</entry>
+        <entry key="AutoNetkit.enable_OnePK" type="Boolean">true</entry>
+    </extensions>
+    <node name="nyc-sw-001" type="SIMPLE" subtype="IOSvL2" location="239,192">
+        <extensions>
+            <entry key="AutoNetkit.mgmt_ip" type="string"/>
+            <entry key="config" type="String">!
+! Last configuration change at 04:55:22 UTC Tue Jun 20 2017
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec localtime show-timezone
+no service password-encryption
+service compress-config
+!
+hostname nyc-sw-001
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+no logging console
+enable password cisco
+!
+no aaa new-model
+!
+!
+!
+!
+!
+vtp domain virl.lab
+vtp mode transparent
+!
+!
+!
+no ip domain-lookup
+ip cef
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+vlan 2
+ name ank_vlan2
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description Loopback
+ no ip address
+!
+interface GigabitEthernet0/1
+ description to nyc-srv-001
+ switchport access vlan 2
+ switchport mode access
+ media-type rj45
+ no negotiation auto
+speed 1000
+duplex full
+!
+interface GigabitEthernet0/2
+ description to nyc-sw-002
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ no negotiation auto
+speed 1000
+duplex full
+!
+interface GigabitEthernet0/3
+ description to nyc-rtr-001
+ switchport access vlan 2
+ switchport mode access
+ media-type rj45
+ no negotiation auto
+speed 1000
+duplex full
+!
+interface GigabitEthernet0/0
+ description OOB management
+ no switchport
+ vrf forwarding Mgmt-intf
+ ip address 172.16.3.216 255.255.255.0
+ speed 1000
+ duplex full
+ no no negotiation auto
+speed 1000
+duplex full
+!
+interface GigabitEthernet1/0
+ description GigabitEthernet1/0
+ media-type rj45
+ no negotiation auto
+speed 1000
+duplex full
+!
+interface GigabitEthernet1/1
+ description GigabitEthernet1/1
+ media-type rj45
+ no negotiation auto
+speed 1000
+duplex full
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+logging trap debugging
+logging facility local3
+logging host 172.16.3.221
+!
+!
+!
+control-plane
+!
+banner exec `
+IOSv - Cisco Systems Confidential -
+
+Supplemental End User License Restrictions
+
+This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+
+By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
+`
+banner incoming `
+IOSv - Cisco Systems Confidential -
+
+Supplemental End User License Restrictions
+
+This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+
+By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
+`
+banner login `
+IOSv - Cisco Systems Confidential -
+
+Supplemental End User License Restrictions
+
+This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+
+By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
+`
+!
+line con 0
+ password cisco
+line aux 0
+line vty 0 4
+ exec-timeout 720 0
+ password cisco
+ login
+ transport input telnet ssh
+!
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+        <interface id="2" name="GigabitEthernet0/3"/>
+        <interface id="3" name="GigabitEthernet1/0"/>
+        <interface id="4" name="GigabitEthernet1/1"/>
+    </node>
+    <node name="lon-sw-001" type="SIMPLE" subtype="IOSvL2" location="783,192">
+        <extensions>
+            <entry key="AutoNetkit.mgmt_ip" type="string"/>
+            <entry key="config" type="String">!
+! Last configuration change at 04:52:43 UTC Tue Jun 20 2017
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec localtime show-timezone
+no service password-encryption
+service compress-config
+!
+hostname lon-sw-001
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+no logging console
+enable password cisco
+!
+no aaa new-model
+!
+!
+!
+!
+!
+vtp domain virl.lab
+vtp mode transparent
+!
+!
+!
+no ip domain-lookup
+ip cef
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+vlan 2
+ name ank_vlan2
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description Loopback
+ no ip address
+!
+interface GigabitEthernet0/1
+ description to lon-rtr-001
+ switchport access vlan 2
+ switchport mode access
+ media-type rj45
+ no negotiation auto
+speed 1000
+duplex full
+!
+interface GigabitEthernet0/2
+ description to lon-srv-001
+ switchport access vlan 2
+ switchport mode access
+ media-type rj45
+ no negotiation auto
+speed 1000
+duplex full
+!
+interface GigabitEthernet0/3
+ description GigabitEthernet0/3
+ media-type rj45
+ no negotiation auto
+speed 1000
+duplex full
+!
+interface GigabitEthernet0/0
+ description OOB management
+ no switchport
+ vrf forwarding Mgmt-intf
+ ip address 172.16.3.217 255.255.255.0
+ speed 1000
+ duplex full
+ no no negotiation auto
+speed 1000
+duplex full
+!
+interface GigabitEthernet1/0
+ description to lon-sw-002
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ no negotiation auto
+speed 1000
+duplex full
+!
+interface GigabitEthernet1/1
+ description GigabitEthernet1/1
+ media-type rj45
+ no negotiation auto
+speed 1000
+duplex full
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+logging trap debugging
+logging facility local3
+logging host 172.16.3.221
+!
+!
+!
+control-plane
+!
+banner exec `
+IOSv - Cisco Systems Confidential -
+
+Supplemental End User License Restrictions
+
+This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+
+By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
+`
+banner incoming `
+IOSv - Cisco Systems Confidential -
+
+Supplemental End User License Restrictions
+
+This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+
+By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
+`
+banner login `
+IOSv - Cisco Systems Confidential -
+
+Supplemental End User License Restrictions
+
+This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+
+By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
+`
+!
+line con 0
+ password cisco
+line aux 0
+line vty 0 4
+ exec-timeout 720 0
+ password cisco
+ login
+ transport input telnet ssh
+!
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+        <interface id="2" name="GigabitEthernet0/3"/>
+        <interface id="3" name="GigabitEthernet1/0"/>
+        <interface id="4" name="GigabitEthernet1/1"/>
+    </node>
+    <node name="aus-sw-001" type="SIMPLE" subtype="IOSvL2" location="477,592">
+        <extensions>
+            <entry key="AutoNetkit.mgmt_ip" type="string"/>
+            <entry key="config" type="String">!
+! Last configuration change at 04:50:25 UTC Tue Jun 20 2017
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec localtime show-timezone
+no service password-encryption
+service compress-config
+!
+hostname aus-sw-001
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+no logging console
+enable password cisco
+!
+no aaa new-model
+!
+!
+!
+!
+!
+vtp domain virl.lab
+vtp mode transparent
+!
+!
+!
+no ip domain-lookup
+ip cef
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+vlan 2
+ name ank_vlan2
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description Loopback
+ no ip address
+!
+interface GigabitEthernet0/1
+ description to aus-rtr-001
+ switchport access vlan 2
+ switchport mode access
+ media-type rj45
+ no negotiation auto
+speed 1000
+duplex full
+!
+interface GigabitEthernet0/2
+ description to aus-srv-001
+ switchport access vlan 2
+ switchport mode access
+ media-type rj45
+ no negotiation auto
+speed 1000
+duplex full
+!
+interface GigabitEthernet0/3
+ description to aus-sw-002
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ no negotiation auto
+speed 1000
+duplex full
+!
+interface GigabitEthernet0/0
+ description OOB management
+ no switchport
+ vrf forwarding Mgmt-intf
+ ip address 172.16.3.228 255.255.255.0
+ speed 1000
+ duplex full
+ no no negotiation auto
+speed 1000
+duplex full
+!
+interface GigabitEthernet1/0
+ description GigabitEthernet1/0
+ media-type rj45
+ no negotiation auto
+speed 1000
+duplex full
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+logging trap debugging
+logging facility local3
+logging host 172.16.3.221
+!
+!
+!
+control-plane
+!
+banner exec `
+IOSv - Cisco Systems Confidential -
+
+Supplemental End User License Restrictions
+
+This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+
+By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
+`
+banner incoming `
+IOSv - Cisco Systems Confidential -
+
+Supplemental End User License Restrictions
+
+This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+
+By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
+`
+banner login `
+IOSv - Cisco Systems Confidential -
+
+Supplemental End User License Restrictions
+
+This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+
+By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
+`
+!
+line con 0
+ password cisco
+line aux 0
+line vty 0 4
+ exec-timeout 720 0
+ password cisco
+ login
+ transport input telnet ssh
+!
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+        <interface id="2" name="GigabitEthernet0/3"/>
+        <interface id="3" name="GigabitEthernet1/0"/>
+    </node>
+    <node name="lon-srv-001" type="SIMPLE" subtype="server" location="939,184">
+        <extensions>
+            <entry key="config" type="String">#cloud-config
+bootcmd:
+- ln -s -t /etc/rc.d /etc/rc.local
+hostname: lon-srv-001
+manage_etc_hosts: true
+runcmd:
+- start ttyS0
+- systemctl start getty@ttyS0.service
+- systemctl start rc-local
+- sed -i '/^\s*PasswordAuthentication\s\+no/d' /etc/ssh/sshd_config
+- echo "UseDNS no" &gt;&gt; /etc/ssh/sshd_config
+- service ssh restart
+- service sshd restart
+users:
+- default
+- gecos: User configured by VIRL Configuration Engine 0.21.7
+  lock-passwd: false
+  name: cisco
+  plain-text-passwd: cisco
+  shell: /bin/bash
+  ssh-authorized-keys:
+  - VIRL-USER-SSH-PUBLIC-KEY
+  sudo: ALL=(ALL) ALL
+write_files:
+- path: /etc/init/ttyS0.conf
+  owner: root:root
+  content: |
+    # ttyS0 - getty
+    # This service maintains a getty on ttyS0 from the point the system is
+    # started until it is shut down again.
+    start on stopped rc or RUNLEVEL=[12345]
+    stop on runlevel [!12345]
+    respawn
+    exec /sbin/getty -L 115200 ttyS0 vt102
+  permissions: '0644'
+- path: /etc/systemd/system/dhclient@.service
+  content: |
+    [Unit]
+    Description=Run dhclient on %i interface
+    After=network.target
+    [Service]
+    Type=oneshot
+    ExecStart=/sbin/dhclient %i -pf /var/run/dhclient.%i.pid -lf /var/lib/dhclient/dhclient.%i.lease
+    RemainAfterExit=yes
+  owner: root:root
+  permissions: '0644'
+- path: /etc/rc.local
+  owner: root:root
+  permissions: '0755'
+  content: |-
+    #!/bin/sh
+    ifconfig eth2 down
+    ifconfig eth1 up 10.0.0.11 netmask 255.255.255.248
+    route add -net 10.0.0.0/16 gw 10.0.0.10 dev eth1
+    route add -net 192.168.0.0/28 gw 10.0.0.10 dev eth1
+    route add -net 10.0.0.0/16 gw 10.0.0.9 dev eth1
+    route add -net 192.168.0.0/28 gw 10.0.0.9 dev eth1
+    exit 0
+</entry>
+        </extensions>
+        <interface id="0" name="eth1" ipv4="10.0.0.11" netPrefixLenV4="29"/>
+        <interface id="1" name="eth2"/>
+    </node>
+    <node name="nyc-srv-001" type="SIMPLE" subtype="server" location="76,184">
+        <extensions>
+            <entry key="config" type="String">#cloud-config
+bootcmd:
+- ln -s -t /etc/rc.d /etc/rc.local
+hostname: nyc-srv-001
+manage_etc_hosts: true
+runcmd:
+- start ttyS0
+- systemctl start getty@ttyS0.service
+- systemctl start rc-local
+- sed -i '/^\s*PasswordAuthentication\s\+no/d' /etc/ssh/sshd_config
+- echo "UseDNS no" &gt;&gt; /etc/ssh/sshd_config
+- service ssh restart
+- service sshd restart
+users:
+- default
+- gecos: User configured by VIRL Configuration Engine 0.21.7
+  lock-passwd: false
+  name: cisco
+  plain-text-passwd: cisco
+  shell: /bin/bash
+  ssh-authorized-keys:
+  - VIRL-USER-SSH-PUBLIC-KEY
+  sudo: ALL=(ALL) ALL
+write_files:
+- path: /etc/init/ttyS0.conf
+  owner: root:root
+  content: |
+    # ttyS0 - getty
+    # This service maintains a getty on ttyS0 from the point the system is
+    # started until it is shut down again.
+    start on stopped rc or RUNLEVEL=[12345]
+    stop on runlevel [!12345]
+    respawn
+    exec /sbin/getty -L 115200 ttyS0 vt102
+  permissions: '0644'
+- path: /etc/systemd/system/dhclient@.service
+  content: |
+    [Unit]
+    Description=Run dhclient on %i interface
+    After=network.target
+    [Service]
+    Type=oneshot
+    ExecStart=/sbin/dhclient %i -pf /var/run/dhclient.%i.pid -lf /var/lib/dhclient/dhclient.%i.lease
+    RemainAfterExit=yes
+  owner: root:root
+  permissions: '0644'
+- path: /etc/rc.local
+  owner: root:root
+  permissions: '0755'
+  content: |-
+    #!/bin/sh
+    ifconfig eth2 down
+    ifconfig eth1 up 10.0.0.34 netmask 255.255.255.248
+    route add -net 10.0.0.0/16 gw 10.0.0.35 dev eth1
+    route add -net 192.168.0.0/28 gw 10.0.0.35 dev eth1
+    route add -net 10.0.0.0/16 gw 10.0.0.33 dev eth1
+    route add -net 192.168.0.0/28 gw 10.0.0.33 dev eth1
+    exit 0
+</entry>
+        </extensions>
+        <interface id="0" name="eth1" ipv4="10.0.0.34" netPrefixLenV4="29"/>
+        <interface id="1" name="eth2"/>
+    </node>
+    <node name="aus-srv-001" type="SIMPLE" subtype="server" location="476,676">
+        <extensions>
+            <entry key="config" type="String">#cloud-config
+bootcmd:
+- ln -s -t /etc/rc.d /etc/rc.local
+hostname: aus-srv-001
+manage_etc_hosts: true
+runcmd:
+- start ttyS0
+- systemctl start getty@ttyS0.service
+- systemctl start rc-local
+- sed -i '/^\s*PasswordAuthentication\s\+no/d' /etc/ssh/sshd_config
+- echo "UseDNS no" &gt;&gt; /etc/ssh/sshd_config
+- service ssh restart
+- service sshd restart
+users:
+- default
+- gecos: User configured by VIRL Configuration Engine 0.21.7
+  lock-passwd: false
+  name: cisco
+  plain-text-passwd: cisco
+  shell: /bin/bash
+  ssh-authorized-keys:
+  - VIRL-USER-SSH-PUBLIC-KEY
+  sudo: ALL=(ALL) ALL
+write_files:
+- path: /etc/init/ttyS0.conf
+  owner: root:root
+  content: |
+    # ttyS0 - getty
+    # This service maintains a getty on ttyS0 from the point the system is
+    # started until it is shut down again.
+    start on stopped rc or RUNLEVEL=[12345]
+    stop on runlevel [!12345]
+    respawn
+    exec /sbin/getty -L 115200 ttyS0 vt102
+  permissions: '0644'
+- path: /etc/systemd/system/dhclient@.service
+  content: |
+    [Unit]
+    Description=Run dhclient on %i interface
+    After=network.target
+    [Service]
+    Type=oneshot
+    ExecStart=/sbin/dhclient %i -pf /var/run/dhclient.%i.pid -lf /var/lib/dhclient/dhclient.%i.lease
+    RemainAfterExit=yes
+  owner: root:root
+  permissions: '0644'
+- path: /etc/rc.local
+  owner: root:root
+  permissions: '0755'
+  content: |-
+    #!/bin/sh
+    ifconfig eth1 down
+    ifconfig eth2 up 10.0.0.1 netmask 255.255.255.248
+    route add -net 10.0.0.0/16 gw 10.0.0.2 dev eth2
+    route add -net 192.168.0.0/28 gw 10.0.0.2 dev eth2
+    route add -net 10.0.0.0/16 gw 10.0.0.3 dev eth2
+    route add -net 192.168.0.0/28 gw 10.0.0.3 dev eth2
+    exit 0
+</entry>
+        </extensions>
+        <interface id="0" name="eth1"/>
+        <interface id="1" name="eth2" ipv4="10.0.0.1" netPrefixLenV4="29"/>
+    </node>
+    <node name="aus-rtr-001" type="SIMPLE" subtype="IOSv" location="477,431" ipv4="192.168.0.3">
+        <extensions>
+            <entry key="AutoNetkit.mgmt_ip" type="string"/>
+            <entry key="config" type="String">!
+! Last configuration change at 04:10:32 UTC Tue Jun 20 2017 by cisco
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec localtime show-timezone
+no service password-encryption
+!
+hostname aus-rtr-001
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+enable password cisco
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip domain name virl.info
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+crypto pki trustpoint TP-self-signed-4294967295
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-4294967295
+ revocation-check none
+ rsakeypair TP-self-signed-4294967295
+!
+!
+crypto pki certificate chain TP-self-signed-4294967295
+ certificate self-signed 01
+  3082022B 30820194 A0030201 02020101 300D0609 2A864886 F70D0101 05050030
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274
+  69666963 6174652D 34323934 39363732 3935301E 170D3137 30363230 30343035
+  35305A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D34 32393439
+  36373239 3530819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281
+  8100C14A FECF0124 70471A91 7A0B7537 8E20A8F2 A1A5574F F48ED040 33058B0A
+  FFF7FCCF C500B42A 487CD9D3 9EAC839B 561F5455 6A0FE73F 1B12D7D3 FA2FDAEB
+  092210CC 50C4FAA4 C0B0AC01 CED4FC95 1D7C3D2C 2421C1CA 43841F66 B1CBC12B
+  D5E1E204 3CEE4542 DC92908B 3DD23610 4A020841 F741BC55 563FB1EE 2C9C0E57
+  F8990203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 301F0603
+  551D2304 18301680 1488CC88 AC77993B 89EFD370 4C5AA833 9A295782 0A301D06
+  03551D0E 04160414 88CC88AC 77993B89 EFD3704C 5AA8339A 2957820A 300D0609
+  2A864886 F70D0101 05050003 81810011 A5481DF6 E963D966 846AD483 A2C77EA6
+  4271BD0B F395564C 2BEB04A5 E605C5FE 01FFC97D 46100A83 A53FD336 64858CE6
+  90E820D1 82A59686 8AE1A0A5 5085BBBD D962685F EBE8FF1B F03D96CE B8CC9218
+  86703FE1 7F300338 F18BBC1A AFBE9B9B EA51E72C A3D29ADE 84E2956A B950EC36
+  C65BDCA5 D2BBD07E C5D354AD 5473F9
+  	quit
+username cisco privilege 15 secret 5 $1$eTJm$C8emtTU0ZexCKJ5268Soi.
+!
+redundancy
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description Loopback
+ ip address 192.168.0.3 255.255.255.255
+!
+interface GigabitEthernet0/0
+ description OOB Management
+ vrf forwarding Mgmt-intf
+ ip address 172.16.3.223 255.255.255.0
+ duplex full
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ description to aus-rtr-002
+ ip address 10.0.0.45 255.255.255.252
+ ip ospf cost 1
+ duplex full
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ description to aus-sw-001
+ ip address 10.0.0.2 255.255.255.248
+ ip ospf cost 1
+ duplex full
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ description to core-003
+ ip address 10.0.0.57 255.255.255.252
+ ip ospf cost 1
+ duplex full
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/4
+ description GigabitEthernet0/4
+ no ip address
+ duplex full
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/5
+ description GigabitEthernet0/5
+ no ip address
+ duplex full
+ speed auto
+ media-type rj45
+!
+router ospf 1
+ passive-interface Loopback0
+ network 10.0.0.0 0.0.0.7 area 0
+ network 10.0.0.44 0.0.0.3 area 0
+ network 10.0.0.56 0.0.0.3 area 0
+ network 192.168.0.3 0.0.0.0 area 0
+!
+router bgp 1
+ bgp router-id 192.168.0.3
+ bgp log-neighbor-changes
+ neighbor 192.168.0.1 remote-as 1
+ neighbor 192.168.0.1 description iBGP peer core-001
+ neighbor 192.168.0.1 update-source Loopback0
+ neighbor 192.168.0.4 remote-as 1
+ neighbor 192.168.0.4 description iBGP peer nyc-rtr-001
+ neighbor 192.168.0.4 update-source Loopback0
+ neighbor 192.168.0.7 remote-as 1
+ neighbor 192.168.0.7 description iBGP peer lon-rtr-001
+ neighbor 192.168.0.7 update-source Loopback0
+ neighbor 192.168.0.8 remote-as 1
+ neighbor 192.168.0.8 description iBGP peer aus-rtr-002
+ neighbor 192.168.0.8 update-source Loopback0
+ neighbor 192.168.0.9 remote-as 1
+ neighbor 192.168.0.9 description iBGP peer core-002
+ neighbor 192.168.0.9 update-source Loopback0
+ neighbor 192.168.0.10 remote-as 1
+ neighbor 192.168.0.10 description iBGP peer core-003
+ neighbor 192.168.0.10 update-source Loopback0
+ neighbor 192.168.0.11 remote-as 1
+ neighbor 192.168.0.11 description iBGP peer core-004
+ neighbor 192.168.0.11 update-source Loopback0
+ !
+ address-family ipv4
+  network 192.168.0.3 mask 255.255.255.255
+  neighbor 192.168.0.1 activate
+  neighbor 192.168.0.4 activate
+  neighbor 192.168.0.7 activate
+  neighbor 192.168.0.8 activate
+  neighbor 192.168.0.9 activate
+  neighbor 192.168.0.10 activate
+  neighbor 192.168.0.11 activate
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm authentication password
+!
+logging trap debugging
+logging facility local3
+logging host 172.16.3.221 vrf Mgmt-intf
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv - Cisco Systems Confidential                                      *
+*                                                                        *
+* Supplemental End User License Restrictions                             *
+*                                                                        *
+* This IOSv software is provided AS-IS without warranty of any kind.     *
+* Under no circumstances may this software be used separate from         *
+* the Cisco Modeling Labs Software that this software was provided       *
+*  with, or deployed or used as part of a production environment.        *
+*                                                                        *
+* By using the software, you agree to abide by the terms and             *
+* conditions of the Cisco End User License Agreement at                  *
+* http://www.cisco.com/go/eula.                                          *
+*                                                                        *
+* Unauthorized use or distribution of this software is expressly         *
+* prohibited.                                                            *
+**************************************************************************
+`
+banner incoming `
+**************************************************************************
+* IOSv - Cisco Systems Confidential                                      *
+*                                                                        *
+* Supplemental End User License Restrictions                             *
+*                                                                        *
+* This IOSv software is provided AS-IS without warranty of any kind.     *
+* Under no circumstances may this software be used separate from         *
+* the Cisco Modeling Labs Software that this software was provided       *
+*  with, or deployed or used as part of a production environment.        *
+*                                                                        *
+* By using the software, you agree to abide by the terms and             *
+* conditions of the Cisco End User License Agreement at                  *
+* http://www.cisco.com/go/eula.                                          *
+*                                                                        *
+* Unauthorized use or distribution of this software is expressly         *
+* prohibited.                                                            *
+**************************************************************************
+`
+banner login `
+**************************************************************************
+* IOSv - Cisco Systems Confidential                                      *
+*                                                                        *
+* Supplemental End User License Restrictions                             *
+*                                                                        *
+* This IOSv software is provided AS-IS without warranty of any kind.     *
+* Under no circumstances may this software be used separate from         *
+* the Cisco Modeling Labs Software that this software was provided       *
+*  with, or deployed or used as part of a production environment.        *
+*                                                                        *
+* By using the software, you agree to abide by the terms and             *
+* conditions of the Cisco End User License Agreement at                  *
+* http://www.cisco.com/go/eula.                                          *
+*                                                                        *
+* Unauthorized use or distribution of this software is expressly         *
+* prohibited.                                                            *
+**************************************************************************
+`
+!
+line con 0
+ password cisco
+line aux 0
+line vty 0 4
+ exec-timeout 720 0
+ password cisco
+ login local
+ transport input telnet ssh
+!
+no scheduler allocate
+onep
+ tls
+  trustpoint server-identity TP-self-signed-4294967295
+ service set vty
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1" ipv4="10.0.0.45" netPrefixLenV4="30"/>
+        <interface id="1" name="GigabitEthernet0/2" ipv4="10.0.0.2" netPrefixLenV4="29"/>
+        <interface id="2" name="GigabitEthernet0/3" ipv4="10.0.0.57" netPrefixLenV4="30"/>
+        <interface id="3" name="GigabitEthernet0/4"/>
+        <interface id="4" name="GigabitEthernet0/5"/>
+    </node>
+    <node name="lon-sw-002" type="SIMPLE" subtype="IOSvL2" location="783,328">
+        <extensions>
+            <entry key="config" type="string">!
+! Last configuration change at 04:51:50 UTC Tue Jun 20 2017
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec localtime show-timezone
+no service password-encryption
+service compress-config
+!
+hostname lon-sw-002
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+no logging console
+enable password cisco
+!
+no aaa new-model
+!
+!
+!
+!
+!
+vtp domain virl.lab
+vtp mode transparent
+!
+!
+!
+no ip domain-lookup
+ip cef
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+vlan 2
+ name ank_vlan2
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description Loopback
+ no ip address
+!
+interface GigabitEthernet0/1
+ description to lon-rtr-001
+ switchport access vlan 2
+ switchport mode access
+ media-type rj45
+ no negotiation auto
+speed 1000
+duplex full
+!
+interface GigabitEthernet0/2
+ description GigabitEthernet0/2
+ media-type rj45
+ no negotiation auto
+speed 1000
+duplex full
+!
+interface GigabitEthernet0/3
+ description GigabitEthernet0/3
+ media-type rj45
+ no negotiation auto
+speed 1000
+duplex full
+!
+interface GigabitEthernet0/0
+ description OOB management
+ no switchport
+ vrf forwarding Mgmt-intf
+ ip address 172.16.3.219 255.255.255.0
+ speed 1000
+ duplex full
+ no no negotiation auto
+speed 1000
+duplex full
+!
+interface GigabitEthernet1/0
+ description to lon-sw-001
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ no negotiation auto
+speed 1000
+duplex full
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+logging trap debugging
+logging facility local3
+logging host 172.16.3.221
+!
+!
+!
+control-plane
+!
+banner exec `
+IOSv - Cisco Systems Confidential -
+
+Supplemental End User License Restrictions
+
+This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+
+By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
+`
+banner incoming `
+IOSv - Cisco Systems Confidential -
+
+Supplemental End User License Restrictions
+
+This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+
+By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
+`
+banner login `
+IOSv - Cisco Systems Confidential -
+
+Supplemental End User License Restrictions
+
+This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+
+By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
+`
+!
+line con 0
+ password cisco
+line aux 0
+line vty 0 4
+ exec-timeout 720 0
+ password cisco
+ login
+ transport input telnet ssh
+!
+!
+end</entry>
+            <entry key="AutoNetkit.mgmt_ip" type="string"/>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+        <interface id="2" name="GigabitEthernet0/3"/>
+        <interface id="3" name="GigabitEthernet1/0"/>
+    </node>
+    <node name="nyc-sw-002" type="SIMPLE" subtype="IOSvL2" location="239,328">
+        <extensions>
+            <entry key="config" type="string">!
+! Last configuration change at 04:49:20 UTC Tue Jun 20 2017
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec localtime show-timezone
+no service password-encryption
+service compress-config
+!
+hostname nyc-sw-002
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+no logging console
+enable password cisco
+!
+no aaa new-model
+!
+!
+!
+!
+!
+vtp domain virl.lab
+vtp mode transparent
+!
+!
+!
+no ip domain-lookup
+ip cef
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+vlan 2
+ name ank_vlan2
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description Loopback
+ no ip address
+!
+interface GigabitEthernet0/1
+ description to nyc-sw-001
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ no negotiation auto
+speed 1000
+duplex full
+!
+interface GigabitEthernet0/2
+ description to nyc-rtr-001
+ switchport access vlan 2
+ switchport mode access
+ media-type rj45
+ no negotiation auto
+speed 1000
+duplex full
+!
+interface GigabitEthernet0/3
+ description GigabitEthernet0/3
+ media-type rj45
+ no negotiation auto
+speed 1000
+duplex full
+!
+interface GigabitEthernet0/0
+ description OOB management
+ no switchport
+ vrf forwarding Mgmt-intf
+ ip address 172.16.3.215 255.255.255.0
+ speed 1000
+ duplex full
+ no no negotiation auto
+speed 1000
+duplex full
+!
+interface GigabitEthernet1/0
+ description GigabitEthernet1/0
+ media-type rj45
+ no negotiation auto
+speed 1000
+duplex full
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+logging trap debugging
+logging facility local3
+logging host 172.16.3.221
+!
+!
+!
+control-plane
+!
+banner exec `
+IOSv - Cisco Systems Confidential -
+
+Supplemental End User License Restrictions
+
+This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+
+By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
+`
+banner incoming `
+IOSv - Cisco Systems Confidential -
+
+Supplemental End User License Restrictions
+
+This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+
+By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
+`
+banner login `
+IOSv - Cisco Systems Confidential -
+
+Supplemental End User License Restrictions
+
+This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+
+By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
+`
+!
+line con 0
+ password cisco
+line aux 0
+line vty 0 4
+ exec-timeout 720 0
+ password cisco
+ login
+ transport input telnet ssh
+!
+!
+end</entry>
+            <entry key="AutoNetkit.mgmt_ip" type="string"/>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+        <interface id="2" name="GigabitEthernet0/3"/>
+        <interface id="3" name="GigabitEthernet1/0"/>
+    </node>
+    <node name="aus-rtr-002" type="SIMPLE" subtype="IOSv" location="588,431" ipv4="192.168.0.8">
+        <extensions>
+            <entry key="config" type="string">!
+! Last configuration change at 04:10:33 UTC Tue Jun 20 2017 by cisco
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec localtime show-timezone
+no service password-encryption
+!
+hostname aus-rtr-002
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+enable password cisco
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip domain name virl.info
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+crypto pki trustpoint TP-self-signed-4294967295
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-4294967295
+ revocation-check none
+ rsakeypair TP-self-signed-4294967295
+!
+!
+crypto pki certificate chain TP-self-signed-4294967295
+ certificate self-signed 01
+  3082022B 30820194 A0030201 02020101 300D0609 2A864886 F70D0101 05050030
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274
+  69666963 6174652D 34323934 39363732 3935301E 170D3137 30363230 30343035
+  35365A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D34 32393439
+  36373239 3530819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281
+  8100DCE8 F08C4867 15969455 03B9F7E3 3077FAC1 152A4FDB B735C6EC E4C8BF36
+  152F2E95 98FB94E7 E3D92BAC FE39D686 FB069906 3E5231E1 DF3244CB 18DEAA61
+  CFDF00FA 171F356C C854FDEC BBD453DD 7F470CC0 E4FEBECC 2B52394E C6F1080F
+  1CF57F08 C5720B1D 6FA2A44B D69488D6 4D217BE6 58CD27A1 D4C8FD25 2A1F11D5
+  04DB0203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 301F0603
+  551D2304 18301680 14818852 6E665CDA 2FD51895 156F128F 9B0A3CA5 BD301D06
+  03551D0E 04160414 8188526E 665CDA2F D5189515 6F128F9B 0A3CA5BD 300D0609
+  2A864886 F70D0101 05050003 8181000A 864AA596 A751144F 487005EF AC62B9FF
+  F50B7F19 36FD7D64 1470B282 1401D778 783A213E 34187EB7 FB947B0B 7E2615E4
+  DC74A873 089D6C93 87B0C5D9 7ED770F8 2F2D7398 16B8CB80 8F132C86 3C318FC6
+  4862A8D4 225E8243 CEE375B7 7E86EB83 44392668 1A7A643F F255A51D EF33206F
+  20D24FDC D3631CE8 D5D5D25C CC928A
+  	quit
+username cisco privilege 15 secret 5 $1$Ceet$4Wzbt3AC1h9Tg3KxLzFdE/
+!
+redundancy
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description Loopback
+ ip address 192.168.0.8 255.255.255.255
+!
+interface GigabitEthernet0/0
+ description OOB Management
+ vrf forwarding Mgmt-intf
+ ip address 172.16.3.224 255.255.255.0
+ duplex full
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ description to aus-rtr-001
+ ip address 10.0.0.46 255.255.255.252
+ ip ospf cost 1
+ duplex full
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ description to aus-sw-002
+ ip address 10.0.0.3 255.255.255.248
+ ip ospf cost 1
+ duplex full
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ description to core-004
+ ip address 10.0.128.13 255.255.255.252
+ ip ospf cost 1
+ duplex full
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/4
+ description GigabitEthernet0/4
+ no ip address
+ duplex full
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/5
+ description GigabitEthernet0/5
+ no ip address
+ duplex full
+ speed auto
+ media-type rj45
+!
+router ospf 1
+ passive-interface Loopback0
+ network 10.0.0.0 0.0.0.7 area 0
+ network 10.0.0.44 0.0.0.3 area 0
+ network 10.0.128.12 0.0.0.3 area 0
+ network 192.168.0.8 0.0.0.0 area 0
+!
+router bgp 1
+ bgp router-id 192.168.0.8
+ bgp log-neighbor-changes
+ neighbor 192.168.0.1 remote-as 1
+ neighbor 192.168.0.1 description iBGP peer core-001
+ neighbor 192.168.0.1 update-source Loopback0
+ neighbor 192.168.0.3 remote-as 1
+ neighbor 192.168.0.3 description iBGP peer aus-rtr-001
+ neighbor 192.168.0.3 update-source Loopback0
+ neighbor 192.168.0.4 remote-as 1
+ neighbor 192.168.0.4 description iBGP peer nyc-rtr-001
+ neighbor 192.168.0.4 update-source Loopback0
+ neighbor 192.168.0.7 remote-as 1
+ neighbor 192.168.0.7 description iBGP peer lon-rtr-001
+ neighbor 192.168.0.7 update-source Loopback0
+ neighbor 192.168.0.9 remote-as 1
+ neighbor 192.168.0.9 description iBGP peer core-002
+ neighbor 192.168.0.9 update-source Loopback0
+ neighbor 192.168.0.10 remote-as 1
+ neighbor 192.168.0.10 description iBGP peer core-003
+ neighbor 192.168.0.10 update-source Loopback0
+ neighbor 192.168.0.11 remote-as 1
+ neighbor 192.168.0.11 description iBGP peer core-004
+ neighbor 192.168.0.11 update-source Loopback0
+ !
+ address-family ipv4
+  network 192.168.0.8 mask 255.255.255.255
+  neighbor 192.168.0.1 activate
+  neighbor 192.168.0.3 activate
+  neighbor 192.168.0.4 activate
+  neighbor 192.168.0.7 activate
+  neighbor 192.168.0.9 activate
+  neighbor 192.168.0.10 activate
+  neighbor 192.168.0.11 activate
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm authentication password
+!
+logging trap debugging
+logging facility local3
+logging host 172.16.3.221 vrf Mgmt-intf
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv - Cisco Systems Confidential                                      *
+*                                                                        *
+* Supplemental End User License Restrictions                             *
+*                                                                        *
+* This IOSv software is provided AS-IS without warranty of any kind.     *
+* Under no circumstances may this software be used separate from         *
+* the Cisco Modeling Labs Software that this software was provided       *
+*  with, or deployed or used as part of a production environment.        *
+*                                                                        *
+* By using the software, you agree to abide by the terms and             *
+* conditions of the Cisco End User License Agreement at                  *
+* http://www.cisco.com/go/eula.                                          *
+*                                                                        *
+* Unauthorized use or distribution of this software is expressly         *
+* prohibited.                                                            *
+**************************************************************************
+`
+banner incoming `
+**************************************************************************
+* IOSv - Cisco Systems Confidential                                      *
+*                                                                        *
+* Supplemental End User License Restrictions                             *
+*                                                                        *
+* This IOSv software is provided AS-IS without warranty of any kind.     *
+* Under no circumstances may this software be used separate from         *
+* the Cisco Modeling Labs Software that this software was provided       *
+*  with, or deployed or used as part of a production environment.        *
+*                                                                        *
+* By using the software, you agree to abide by the terms and             *
+* conditions of the Cisco End User License Agreement at                  *
+* http://www.cisco.com/go/eula.                                          *
+*                                                                        *
+* Unauthorized use or distribution of this software is expressly         *
+* prohibited.                                                            *
+**************************************************************************
+`
+banner login `
+**************************************************************************
+* IOSv - Cisco Systems Confidential                                      *
+*                                                                        *
+* Supplemental End User License Restrictions                             *
+*                                                                        *
+* This IOSv software is provided AS-IS without warranty of any kind.     *
+* Under no circumstances may this software be used separate from         *
+* the Cisco Modeling Labs Software that this software was provided       *
+*  with, or deployed or used as part of a production environment.        *
+*                                                                        *
+* By using the software, you agree to abide by the terms and             *
+* conditions of the Cisco End User License Agreement at                  *
+* http://www.cisco.com/go/eula.                                          *
+*                                                                        *
+* Unauthorized use or distribution of this software is expressly         *
+* prohibited.                                                            *
+**************************************************************************
+`
+!
+line con 0
+ password cisco
+line aux 0
+line vty 0 4
+ exec-timeout 720 0
+ password cisco
+ login local
+ transport input telnet ssh
+!
+no scheduler allocate
+onep
+ tls
+  trustpoint server-identity TP-self-signed-4294967295
+ service set vty
+!
+end</entry>
+            <entry key="AutoNetkit.mgmt_ip" type="string"/>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1" ipv4="10.0.0.46" netPrefixLenV4="30"/>
+        <interface id="1" name="GigabitEthernet0/2" ipv4="10.0.0.3" netPrefixLenV4="29"/>
+        <interface id="2" name="GigabitEthernet0/3" ipv4="10.0.128.13" netPrefixLenV4="30"/>
+        <interface id="3" name="GigabitEthernet0/4"/>
+        <interface id="4" name="GigabitEthernet0/5"/>
+    </node>
+    <node name="aus-sw-002" type="SIMPLE" subtype="IOSvL2" location="588,593">
+        <extensions>
+            <entry key="config" type="string">!
+! Last configuration change at 04:53:26 UTC Tue Jun 20 2017
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec localtime show-timezone
+no service password-encryption
+service compress-config
+!
+hostname aus-sw-002
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+no logging console
+enable password cisco
+!
+no aaa new-model
+!
+!
+!
+!
+!
+vtp domain virl.lab
+vtp mode transparent
+!
+!
+!
+no ip domain-lookup
+ip cef
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+vlan 2
+ name ank_vlan2
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description Loopback
+ no ip address
+!
+interface GigabitEthernet0/1
+ description to aus-rtr-002
+ switchport access vlan 2
+ switchport mode access
+ media-type rj45
+ no negotiation auto
+speed 1000
+duplex full
+!
+interface GigabitEthernet0/2
+ description to aus-sw-001
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ no negotiation auto
+speed 1000
+duplex full
+!
+interface GigabitEthernet0/3
+ description GigabitEthernet0/3
+ media-type rj45
+ no negotiation auto
+speed 1000
+duplex full
+!
+interface GigabitEthernet0/0
+ description OOB management
+ no switchport
+ vrf forwarding Mgmt-intf
+ ip address 172.16.3.227 255.255.255.0
+ speed 1000
+ duplex full
+ no no negotiation auto
+speed 1000
+duplex full
+!
+interface GigabitEthernet1/0
+ description GigabitEthernet1/0
+ media-type rj45
+ no negotiation auto
+speed 1000
+duplex full
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+logging trap debugging
+logging facility local3
+logging host 172.16.3.221
+!
+!
+!
+control-plane
+!
+banner exec `
+IOSv - Cisco Systems Confidential -
+
+Supplemental End User License Restrictions
+
+This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+
+By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
+`
+banner incoming `
+IOSv - Cisco Systems Confidential -
+
+Supplemental End User License Restrictions
+
+This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+
+By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
+`
+banner login `
+IOSv - Cisco Systems Confidential -
+
+Supplemental End User License Restrictions
+
+This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+
+By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
+`
+!
+line con 0
+ password cisco
+line aux 0
+line vty 0 4
+ exec-timeout 720 0
+ password cisco
+ login
+ transport input telnet ssh
+!
+!
+end</entry>
+            <entry key="AutoNetkit.mgmt_ip" type="string"/>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+        <interface id="2" name="GigabitEthernet0/3"/>
+        <interface id="3" name="GigabitEthernet1/0"/>
+    </node>
+    <node name="core-001" type="SIMPLE" subtype="IOSv" location="484,186" ipv4="192.168.0.1">
+        <extensions>
+            <entry key="config" type="string">!
+! Last configuration change at 04:10:33 UTC Tue Jun 20 2017 by cisco
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec localtime show-timezone
+no service password-encryption
+!
+hostname core-001
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+enable password cisco
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip domain name virl.info
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+crypto pki trustpoint TP-self-signed-4294967295
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-4294967295
+ revocation-check none
+ rsakeypair TP-self-signed-4294967295
+!
+!
+crypto pki certificate chain TP-self-signed-4294967295
+ certificate self-signed 01
+  3082022B 30820194 A0030201 02020101 300D0609 2A864886 F70D0101 05050030
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274
+  69666963 6174652D 34323934 39363732 3935301E 170D3137 30363230 30343035
+  34335A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D34 32393439
+  36373239 3530819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281
+  8100A83D BD230C21 6659013B B336FAAD FB991C63 E6986358 0755F97A 38EE4017
+  7FDE598C D3FA4608 B75771C1 4397D2ED B1B784DC DC982F13 C9ED330E F0BDF383
+  8F74C725 6385C393 0C6AB443 C09A7CF2 3DFC1D02 18C07959 45645593 407612E5
+  C0807F72 E1A8ACE4 A033CCF3 BB37444D 50D5A4C3 519E27C7 57FB2B18 D71DD762
+  0C010203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 301F0603
+  551D2304 18301680 149DBEAC EA2589A8 6EE68D29 D20CD9A0 C845F501 41301D06
+  03551D0E 04160414 9DBEACEA 2589A86E E68D29D2 0CD9A0C8 45F50141 300D0609
+  2A864886 F70D0101 05050003 8181007F F05E637E A01D52CB 8D0165CF 25A236AB
+  8532026C 8CB8B19D 39A8C85B E3B8F2B5 F9E44DDB F99E4282 9B4B0B9B 97A4D03D
+  6DCCDE60 DE86AE29 788D7D7B A5CA109A 041EC7CA 7B619475 DEFB106D C205192E
+  0EC2335E 14D288B3 7622182E 2905FB5E BE9A8C88 AAC66B04 5BA1C4BE 93FB91A9
+  74FA5594 682DD830 A365E523 A261DD
+  	quit
+username cisco privilege 15 secret 5 $1$Hl97$Wyu8b28M/gmnpWhB6uKOw0
+!
+redundancy
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description Loopback
+ ip address 192.168.0.1 255.255.255.255
+!
+interface GigabitEthernet0/0
+ description OOB Management
+ vrf forwarding Mgmt-intf
+ ip address 172.16.3.222 255.255.255.0
+ duplex full
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ description to nyc-rtr-001
+ ip address 10.0.0.42 255.255.255.252
+ ip ospf cost 1
+ duplex full
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ description to core-002
+ ip address 10.0.0.53 255.255.255.252
+ ip ospf cost 1
+ duplex full
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ description to core-003
+ ip address 10.0.0.61 255.255.255.252
+ ip ospf cost 1
+ duplex full
+ speed auto
+ media-type rj45
+!
+router ospf 1
+ passive-interface Loopback0
+ network 10.0.0.40 0.0.0.3 area 0
+ network 10.0.0.52 0.0.0.3 area 0
+ network 10.0.0.60 0.0.0.3 area 0
+ network 192.168.0.1 0.0.0.0 area 0
+!
+router bgp 1
+ bgp router-id 192.168.0.1
+ bgp log-neighbor-changes
+ neighbor 192.168.0.3 remote-as 1
+ neighbor 192.168.0.3 description iBGP peer aus-rtr-001
+ neighbor 192.168.0.3 update-source Loopback0
+ neighbor 192.168.0.4 remote-as 1
+ neighbor 192.168.0.4 description iBGP peer nyc-rtr-001
+ neighbor 192.168.0.4 update-source Loopback0
+ neighbor 192.168.0.7 remote-as 1
+ neighbor 192.168.0.7 description iBGP peer lon-rtr-001
+ neighbor 192.168.0.7 update-source Loopback0
+ neighbor 192.168.0.8 remote-as 1
+ neighbor 192.168.0.8 description iBGP peer aus-rtr-002
+ neighbor 192.168.0.8 update-source Loopback0
+ neighbor 192.168.0.9 remote-as 1
+ neighbor 192.168.0.9 description iBGP peer core-002
+ neighbor 192.168.0.9 update-source Loopback0
+ neighbor 192.168.0.10 remote-as 1
+ neighbor 192.168.0.10 description iBGP peer core-003
+ neighbor 192.168.0.10 update-source Loopback0
+ neighbor 192.168.0.11 remote-as 1
+ neighbor 192.168.0.11 description iBGP peer core-004
+ neighbor 192.168.0.11 update-source Loopback0
+ !
+ address-family ipv4
+  network 192.168.0.1 mask 255.255.255.255
+  neighbor 192.168.0.3 activate
+  neighbor 192.168.0.4 activate
+  neighbor 192.168.0.7 activate
+  neighbor 192.168.0.8 activate
+  neighbor 192.168.0.9 activate
+  neighbor 192.168.0.10 activate
+  neighbor 192.168.0.11 activate
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm authentication password
+!
+logging trap debugging
+logging facility local3
+logging host 172.16.3.221 vrf Mgmt-intf
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv - Cisco Systems Confidential                                      *
+*                                                                        *
+* Supplemental End User License Restrictions                             *
+*                                                                        *
+* This IOSv software is provided AS-IS without warranty of any kind.     *
+* Under no circumstances may this software be used separate from         *
+* the Cisco Modeling Labs Software that this software was provided       *
+*  with, or deployed or used as part of a production environment.        *
+*                                                                        *
+* By using the software, you agree to abide by the terms and             *
+* conditions of the Cisco End User License Agreement at                  *
+* http://www.cisco.com/go/eula.                                          *
+*                                                                        *
+* Unauthorized use or distribution of this software is expressly         *
+* prohibited.                                                            *
+**************************************************************************
+`
+banner incoming `
+**************************************************************************
+* IOSv - Cisco Systems Confidential                                      *
+*                                                                        *
+* Supplemental End User License Restrictions                             *
+*                                                                        *
+* This IOSv software is provided AS-IS without warranty of any kind.     *
+* Under no circumstances may this software be used separate from         *
+* the Cisco Modeling Labs Software that this software was provided       *
+*  with, or deployed or used as part of a production environment.        *
+*                                                                        *
+* By using the software, you agree to abide by the terms and             *
+* conditions of the Cisco End User License Agreement at                  *
+* http://www.cisco.com/go/eula.                                          *
+*                                                                        *
+* Unauthorized use or distribution of this software is expressly         *
+* prohibited.                                                            *
+**************************************************************************
+`
+banner login `
+**************************************************************************
+* IOSv - Cisco Systems Confidential                                      *
+*                                                                        *
+* Supplemental End User License Restrictions                             *
+*                                                                        *
+* This IOSv software is provided AS-IS without warranty of any kind.     *
+* Under no circumstances may this software be used separate from         *
+* the Cisco Modeling Labs Software that this software was provided       *
+*  with, or deployed or used as part of a production environment.        *
+*                                                                        *
+* By using the software, you agree to abide by the terms and             *
+* conditions of the Cisco End User License Agreement at                  *
+* http://www.cisco.com/go/eula.                                          *
+*                                                                        *
+* Unauthorized use or distribution of this software is expressly         *
+* prohibited.                                                            *
+**************************************************************************
+`
+!
+line con 0
+ password cisco
+line aux 0
+line vty 0 4
+ exec-timeout 720 0
+ password cisco
+ login local
+ transport input telnet ssh
+!
+no scheduler allocate
+onep
+ tls
+  trustpoint server-identity TP-self-signed-4294967295
+ service set vty
+!
+end</entry>
+            <entry key="AutoNetkit.mgmt_ip" type="string"/>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1" ipv4="10.0.0.42" netPrefixLenV4="30"/>
+        <interface id="1" name="GigabitEthernet0/2" ipv4="10.0.0.53" netPrefixLenV4="30"/>
+        <interface id="2" name="GigabitEthernet0/3" ipv4="10.0.0.61" netPrefixLenV4="30"/>
+    </node>
+    <node name="core-002" type="SIMPLE" subtype="IOSv" location="595,186" ipv4="192.168.0.9">
+        <extensions>
+            <entry key="config" type="string">!
+! Last configuration change at 04:10:33 UTC Tue Jun 20 2017 by cisco
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec localtime show-timezone
+no service password-encryption
+!
+hostname core-002
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+enable password cisco
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip domain name virl.info
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+crypto pki trustpoint TP-self-signed-4294967295
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-4294967295
+ revocation-check none
+ rsakeypair TP-self-signed-4294967295
+!
+!
+crypto pki certificate chain TP-self-signed-4294967295
+ certificate self-signed 01
+  3082022B 30820194 A0030201 02020101 300D0609 2A864886 F70D0101 05050030
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274
+  69666963 6174652D 34323934 39363732 3935301E 170D3137 30363230 30343034
+  35355A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D34 32393439
+  36373239 3530819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281
+  8100F485 AD0A80B5 99FAFB65 695D3820 9AECE1F6 167CFAE1 077128CF 07A97256
+  68A84A81 915DD1A6 01637EC4 04C57249 B78E919D 49A70498 6CDE83C7 75A47DD9
+  92D162D3 E80EC2F8 1BC898AA 8CB4F43C 3BD53931 D43F0D9A C269D0A7 EC897A74
+  0364E8FB D0C7ED5D 74F7147A A129C642 4196535D 2BFF85EE D8EFF91D 9808734D
+  44570203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 301F0603
+  551D2304 18301680 1411C030 B54EF8F4 500DCF17 B064BBB3 CC0253FA 7B301D06
+  03551D0E 04160414 11C030B5 4EF8F450 0DCF17B0 64BBB3CC 0253FA7B 300D0609
+  2A864886 F70D0101 05050003 818100D1 A9D3DF1C 6931E6DC B4357E67 609A1C28
+  2036CCE7 1E76CFED 2B7DFC42 30450A84 421D567E C46C7D7A 85D52EF5 F24740B7
+  215DF504 CC089061 7EEB7693 D8357E00 B8061B51 E8721857 8767FFDC 0CD02434
+  C13DF4C9 8C2AE623 2900724C E4AFA424 44FF08E6 6574572A 08B5A6E1 3A04E8CB
+  DC18E647 6E83DE8B 519660EF A5420A
+  	quit
+username cisco privilege 15 secret 5 $1$VLJp$XstgpGwFUQrAUIdukC.u6/
+!
+redundancy
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description Loopback
+ ip address 192.168.0.9 255.255.255.255
+!
+interface GigabitEthernet0/0
+ description OOB Management
+ vrf forwarding Mgmt-intf
+ ip address 172.16.3.214 255.255.255.0
+ duplex full
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ description to core-001
+ ip address 10.0.0.54 255.255.255.252
+ ip ospf cost 1
+ duplex full
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ description to core-004
+ ip address 10.0.128.9 255.255.255.252
+ ip ospf cost 1
+ duplex full
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ description to lon-rtr-001
+ ip address 10.0.0.50 255.255.255.252
+ ip ospf cost 1
+ duplex full
+ speed auto
+ media-type rj45
+!
+router ospf 1
+ passive-interface Loopback0
+ network 10.0.0.48 0.0.0.3 area 0
+ network 10.0.0.52 0.0.0.3 area 0
+ network 10.0.128.8 0.0.0.3 area 0
+ network 192.168.0.9 0.0.0.0 area 0
+!
+router bgp 1
+ bgp router-id 192.168.0.9
+ bgp log-neighbor-changes
+ neighbor 192.168.0.1 remote-as 1
+ neighbor 192.168.0.1 description iBGP peer core-001
+ neighbor 192.168.0.1 update-source Loopback0
+ neighbor 192.168.0.3 remote-as 1
+ neighbor 192.168.0.3 description iBGP peer aus-rtr-001
+ neighbor 192.168.0.3 update-source Loopback0
+ neighbor 192.168.0.4 remote-as 1
+ neighbor 192.168.0.4 description iBGP peer nyc-rtr-001
+ neighbor 192.168.0.4 update-source Loopback0
+ neighbor 192.168.0.7 remote-as 1
+ neighbor 192.168.0.7 description iBGP peer lon-rtr-001
+ neighbor 192.168.0.7 update-source Loopback0
+ neighbor 192.168.0.8 remote-as 1
+ neighbor 192.168.0.8 description iBGP peer aus-rtr-002
+ neighbor 192.168.0.8 update-source Loopback0
+ neighbor 192.168.0.10 remote-as 1
+ neighbor 192.168.0.10 description iBGP peer core-003
+ neighbor 192.168.0.10 update-source Loopback0
+ neighbor 192.168.0.11 remote-as 1
+ neighbor 192.168.0.11 description iBGP peer core-004
+ neighbor 192.168.0.11 update-source Loopback0
+ !
+ address-family ipv4
+  network 192.168.0.9 mask 255.255.255.255
+  neighbor 192.168.0.1 activate
+  neighbor 192.168.0.3 activate
+  neighbor 192.168.0.4 activate
+  neighbor 192.168.0.7 activate
+  neighbor 192.168.0.8 activate
+  neighbor 192.168.0.10 activate
+  neighbor 192.168.0.11 activate
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm authentication password
+!
+logging trap debugging
+logging facility local3
+logging host 172.16.3.221 vrf Mgmt-intf
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv - Cisco Systems Confidential                                      *
+*                                                                        *
+* Supplemental End User License Restrictions                             *
+*                                                                        *
+* This IOSv software is provided AS-IS without warranty of any kind.     *
+* Under no circumstances may this software be used separate from         *
+* the Cisco Modeling Labs Software that this software was provided       *
+*  with, or deployed or used as part of a production environment.        *
+*                                                                        *
+* By using the software, you agree to abide by the terms and             *
+* conditions of the Cisco End User License Agreement at                  *
+* http://www.cisco.com/go/eula.                                          *
+*                                                                        *
+* Unauthorized use or distribution of this software is expressly         *
+* prohibited.                                                            *
+**************************************************************************
+`
+banner incoming `
+**************************************************************************
+* IOSv - Cisco Systems Confidential                                      *
+*                                                                        *
+* Supplemental End User License Restrictions                             *
+*                                                                        *
+* This IOSv software is provided AS-IS without warranty of any kind.     *
+* Under no circumstances may this software be used separate from         *
+* the Cisco Modeling Labs Software that this software was provided       *
+*  with, or deployed or used as part of a production environment.        *
+*                                                                        *
+* By using the software, you agree to abide by the terms and             *
+* conditions of the Cisco End User License Agreement at                  *
+* http://www.cisco.com/go/eula.                                          *
+*                                                                        *
+* Unauthorized use or distribution of this software is expressly         *
+* prohibited.                                                            *
+**************************************************************************
+`
+banner login `
+**************************************************************************
+* IOSv - Cisco Systems Confidential                                      *
+*                                                                        *
+* Supplemental End User License Restrictions                             *
+*                                                                        *
+* This IOSv software is provided AS-IS without warranty of any kind.     *
+* Under no circumstances may this software be used separate from         *
+* the Cisco Modeling Labs Software that this software was provided       *
+*  with, or deployed or used as part of a production environment.        *
+*                                                                        *
+* By using the software, you agree to abide by the terms and             *
+* conditions of the Cisco End User License Agreement at                  *
+* http://www.cisco.com/go/eula.                                          *
+*                                                                        *
+* Unauthorized use or distribution of this software is expressly         *
+* prohibited.                                                            *
+**************************************************************************
+`
+!
+line con 0
+ password cisco
+line aux 0
+line vty 0 4
+ exec-timeout 720 0
+ password cisco
+ login local
+ transport input telnet ssh
+!
+no scheduler allocate
+onep
+ tls
+  trustpoint server-identity TP-self-signed-4294967295
+ service set vty
+!
+end</entry>
+            <entry key="AutoNetkit.mgmt_ip" type="string"/>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1" ipv4="10.0.0.54" netPrefixLenV4="30"/>
+        <interface id="1" name="GigabitEthernet0/2" ipv4="10.0.128.9" netPrefixLenV4="30"/>
+        <interface id="2" name="GigabitEthernet0/3" ipv4="10.0.0.50" netPrefixLenV4="30"/>
+    </node>
+    <node name="core-003" type="SIMPLE" subtype="IOSv" location="484,322" ipv4="192.168.0.10">
+        <extensions>
+            <entry key="config" type="string">!
+! Last configuration change at 04:10:33 UTC Tue Jun 20 2017 by cisco
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec localtime show-timezone
+no service password-encryption
+!
+hostname core-003
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+enable password cisco
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip domain name virl.info
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+crypto pki trustpoint TP-self-signed-4294967295
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-4294967295
+ revocation-check none
+ rsakeypair TP-self-signed-4294967295
+!
+!
+crypto pki certificate chain TP-self-signed-4294967295
+ certificate self-signed 01
+  3082022B 30820194 A0030201 02020101 300D0609 2A864886 F70D0101 05050030
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274
+  69666963 6174652D 34323934 39363732 3935301E 170D3137 30363230 30343036
+  30315A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D34 32393439
+  36373239 3530819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281
+  81009FE0 F6E34728 F7AC1BBF 9AA8BD12 F8278626 1BBF455C A56E6BAB B661114A
+  627BCFAB 2DDEE0EA 06C52EE2 422C84F6 A419AEDC D5F9C72F 42D736DD BF0F5DBB
+  C4A51E08 D02893F0 D618A86D 088FFEAD 2ED30D5C 7064BC85 AA4BD343 C0DF984A
+  107E9786 047E9978 589E2DE5 5ABD2B10 435E3D5D 11E5BEDF 1DA02885 6DB78F61
+  98C10203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 301F0603
+  551D2304 18301680 14AD8326 42F269BB 676687BE EA89E527 912FF18A 77301D06
+  03551D0E 04160414 AD832642 F269BB67 6687BEEA 89E52791 2FF18A77 300D0609
+  2A864886 F70D0101 05050003 8181008C 5A7F2675 F53F78AA 6ED73D08 01369F83
+  B775FD65 0F345A6A 5E1CAB48 B4E4BF19 E40AF92D 4865D368 60F549F5 5F2FFE36
+  0A7909AC CFF41C10 2887FF40 FD62BF8B DBFED600 31FD5521 9DF16C3E 4964886B
+  468A68BC D699388B 7BDF0FE0 C2F49FAA 6D49E822 7D891755 E9EB802A 67222F02
+  6173E207 4F44BE6C B57A131E 83CD73
+  	quit
+username cisco privilege 15 secret 5 $1$vPlF$Tvfm1JUene5drYH/cmtAr1
+!
+redundancy
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description Loopback
+ ip address 192.168.0.10 255.255.255.255
+!
+interface GigabitEthernet0/0
+ description OOB Management
+ vrf forwarding Mgmt-intf
+ ip address 172.16.3.225 255.255.255.0
+ duplex full
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ description to nyc-rtr-001
+ ip address 10.0.128.2 255.255.255.252
+ ip ospf cost 1
+ duplex full
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ description to core-001
+ ip address 10.0.0.62 255.255.255.252
+ ip ospf cost 1
+ duplex full
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ description to core-004
+ ip address 10.0.0.17 255.255.255.252
+ ip ospf cost 1
+ duplex full
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/4
+ description to aus-rtr-001
+ ip address 10.0.0.58 255.255.255.252
+ ip ospf cost 1
+ duplex full
+ speed auto
+ media-type rj45
+!
+router ospf 1
+ passive-interface Loopback0
+ network 10.0.0.16 0.0.0.3 area 0
+ network 10.0.0.56 0.0.0.3 area 0
+ network 10.0.0.60 0.0.0.3 area 0
+ network 10.0.128.0 0.0.0.3 area 0
+ network 192.168.0.10 0.0.0.0 area 0
+!
+router bgp 1
+ bgp router-id 192.168.0.10
+ bgp log-neighbor-changes
+ neighbor 192.168.0.1 remote-as 1
+ neighbor 192.168.0.1 description iBGP peer core-001
+ neighbor 192.168.0.1 update-source Loopback0
+ neighbor 192.168.0.3 remote-as 1
+ neighbor 192.168.0.3 description iBGP peer aus-rtr-001
+ neighbor 192.168.0.3 update-source Loopback0
+ neighbor 192.168.0.4 remote-as 1
+ neighbor 192.168.0.4 description iBGP peer nyc-rtr-001
+ neighbor 192.168.0.4 update-source Loopback0
+ neighbor 192.168.0.7 remote-as 1
+ neighbor 192.168.0.7 description iBGP peer lon-rtr-001
+ neighbor 192.168.0.7 update-source Loopback0
+ neighbor 192.168.0.8 remote-as 1
+ neighbor 192.168.0.8 description iBGP peer aus-rtr-002
+ neighbor 192.168.0.8 update-source Loopback0
+ neighbor 192.168.0.9 remote-as 1
+ neighbor 192.168.0.9 description iBGP peer core-002
+ neighbor 192.168.0.9 update-source Loopback0
+ neighbor 192.168.0.11 remote-as 1
+ neighbor 192.168.0.11 description iBGP peer core-004
+ neighbor 192.168.0.11 update-source Loopback0
+ !
+ address-family ipv4
+  network 192.168.0.10 mask 255.255.255.255
+  neighbor 192.168.0.1 activate
+  neighbor 192.168.0.3 activate
+  neighbor 192.168.0.4 activate
+  neighbor 192.168.0.7 activate
+  neighbor 192.168.0.8 activate
+  neighbor 192.168.0.9 activate
+  neighbor 192.168.0.11 activate
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm authentication password
+!
+logging trap debugging
+logging facility local3
+logging host 172.16.3.221 vrf Mgmt-intf
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv - Cisco Systems Confidential                                      *
+*                                                                        *
+* Supplemental End User License Restrictions                             *
+*                                                                        *
+* This IOSv software is provided AS-IS without warranty of any kind.     *
+* Under no circumstances may this software be used separate from         *
+* the Cisco Modeling Labs Software that this software was provided       *
+*  with, or deployed or used as part of a production environment.        *
+*                                                                        *
+* By using the software, you agree to abide by the terms and             *
+* conditions of the Cisco End User License Agreement at                  *
+* http://www.cisco.com/go/eula.                                          *
+*                                                                        *
+* Unauthorized use or distribution of this software is expressly         *
+* prohibited.                                                            *
+**************************************************************************
+`
+banner incoming `
+**************************************************************************
+* IOSv - Cisco Systems Confidential                                      *
+*                                                                        *
+* Supplemental End User License Restrictions                             *
+*                                                                        *
+* This IOSv software is provided AS-IS without warranty of any kind.     *
+* Under no circumstances may this software be used separate from         *
+* the Cisco Modeling Labs Software that this software was provided       *
+*  with, or deployed or used as part of a production environment.        *
+*                                                                        *
+* By using the software, you agree to abide by the terms and             *
+* conditions of the Cisco End User License Agreement at                  *
+* http://www.cisco.com/go/eula.                                          *
+*                                                                        *
+* Unauthorized use or distribution of this software is expressly         *
+* prohibited.                                                            *
+**************************************************************************
+`
+banner login `
+**************************************************************************
+* IOSv - Cisco Systems Confidential                                      *
+*                                                                        *
+* Supplemental End User License Restrictions                             *
+*                                                                        *
+* This IOSv software is provided AS-IS without warranty of any kind.     *
+* Under no circumstances may this software be used separate from         *
+* the Cisco Modeling Labs Software that this software was provided       *
+*  with, or deployed or used as part of a production environment.        *
+*                                                                        *
+* By using the software, you agree to abide by the terms and             *
+* conditions of the Cisco End User License Agreement at                  *
+* http://www.cisco.com/go/eula.                                          *
+*                                                                        *
+* Unauthorized use or distribution of this software is expressly         *
+* prohibited.                                                            *
+**************************************************************************
+`
+!
+line con 0
+ password cisco
+line aux 0
+line vty 0 4
+ exec-timeout 720 0
+ password cisco
+ login local
+ transport input telnet ssh
+!
+no scheduler allocate
+onep
+ tls
+  trustpoint server-identity TP-self-signed-4294967295
+ service set vty
+!
+end</entry>
+            <entry key="AutoNetkit.mgmt_ip" type="string"/>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1" ipv4="10.0.128.2" netPrefixLenV4="30"/>
+        <interface id="1" name="GigabitEthernet0/2" ipv4="10.0.0.62" netPrefixLenV4="30"/>
+        <interface id="2" name="GigabitEthernet0/3" ipv4="10.0.0.17" netPrefixLenV4="30"/>
+        <interface id="3" name="GigabitEthernet0/4" ipv4="10.0.0.58" netPrefixLenV4="30"/>
+    </node>
+    <node name="core-004" type="SIMPLE" subtype="IOSv" location="595,322" ipv4="192.168.0.11">
+        <extensions>
+            <entry key="config" type="string">!
+! Last configuration change at 04:10:33 UTC Tue Jun 20 2017 by cisco
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec localtime show-timezone
+no service password-encryption
+!
+hostname core-004
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+enable password cisco
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip domain name virl.info
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+crypto pki trustpoint TP-self-signed-4294967295
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-4294967295
+ revocation-check none
+ rsakeypair TP-self-signed-4294967295
+!
+!
+crypto pki certificate chain TP-self-signed-4294967295
+ certificate self-signed 01
+  3082022B 30820194 A0030201 02020101 300D0609 2A864886 F70D0101 05050030
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274
+  69666963 6174652D 34323934 39363732 3935301E 170D3137 30363230 30343036
+  30385A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D34 32393439
+  36373239 3530819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281
+  8100B7E8 130E685D A4EF9BBA 36B364AD B818A3B9 F2F6E093 0A9D9CC7 363FA877
+  0A20224D 52B31D38 98D14564 F964A972 14FB1B19 14347EDA 1D14FE46 C41F9231
+  5FA3B7F2 92F4B66B 76603389 38819F97 750E5D30 A7BF8B6C 2E2BF32F E125EFCC
+  D07B338E 7156C957 CA1F681B B5E48C9B 9EFCBFD5 F4F2E490 50587FE4 C9AC2B4B
+  6BDD0203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 301F0603
+  551D2304 18301680 1441EE40 FF570C52 91DC9259 BEA59D2A 8268E5DD 77301D06
+  03551D0E 04160414 41EE40FF 570C5291 DC9259BE A59D2A82 68E5DD77 300D0609
+  2A864886 F70D0101 05050003 8181004C 43EC6902 A7D964B2 CFD09196 88F7781F
+  967485E7 7F495A89 6C0C4B55 25B35439 308721FE A668A07E 66A9D899 C312B377
+  6BF735D1 62D54BCF 1F26DFC3 6D64FAB6 BCB49755 F5950FD6 6E93126B 748E5A3E
+  A38C95A2 0E0DE19D DA37751B 4ED6CA8C 156EBD36 7C1D55AF CAEAFE2F 95A823DC
+  AFB53AF7 0A234D9B 1FF12B91 74988D
+  	quit
+username cisco privilege 15 secret 5 $1$lgAk$HwQixUcC5AbpF1PVRnq2X0
+!
+redundancy
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description Loopback
+ ip address 192.168.0.11 255.255.255.255
+!
+interface GigabitEthernet0/0
+ description OOB Management
+ vrf forwarding Mgmt-intf
+ ip address 172.16.3.226 255.255.255.0
+ duplex full
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ description to core-002
+ ip address 10.0.128.10 255.255.255.252
+ ip ospf cost 1
+ duplex full
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ description to core-003
+ ip address 10.0.0.18 255.255.255.252
+ ip ospf cost 1
+ duplex full
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ description to lon-rtr-001
+ ip address 10.0.128.6 255.255.255.252
+ ip ospf cost 1
+ duplex full
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/4
+ description to aus-rtr-002
+ ip address 10.0.128.14 255.255.255.252
+ ip ospf cost 1
+ duplex full
+ speed auto
+ media-type rj45
+!
+router ospf 1
+ passive-interface Loopback0
+ network 10.0.0.16 0.0.0.3 area 0
+ network 10.0.128.4 0.0.0.3 area 0
+ network 10.0.128.8 0.0.0.3 area 0
+ network 10.0.128.12 0.0.0.3 area 0
+ network 192.168.0.11 0.0.0.0 area 0
+!
+router bgp 1
+ bgp router-id 192.168.0.11
+ bgp log-neighbor-changes
+ neighbor 192.168.0.1 remote-as 1
+ neighbor 192.168.0.1 description iBGP peer core-001
+ neighbor 192.168.0.1 update-source Loopback0
+ neighbor 192.168.0.3 remote-as 1
+ neighbor 192.168.0.3 description iBGP peer aus-rtr-001
+ neighbor 192.168.0.3 update-source Loopback0
+ neighbor 192.168.0.4 remote-as 1
+ neighbor 192.168.0.4 description iBGP peer nyc-rtr-001
+ neighbor 192.168.0.4 update-source Loopback0
+ neighbor 192.168.0.7 remote-as 1
+ neighbor 192.168.0.7 description iBGP peer lon-rtr-001
+ neighbor 192.168.0.7 update-source Loopback0
+ neighbor 192.168.0.8 remote-as 1
+ neighbor 192.168.0.8 description iBGP peer aus-rtr-002
+ neighbor 192.168.0.8 update-source Loopback0
+ neighbor 192.168.0.9 remote-as 1
+ neighbor 192.168.0.9 description iBGP peer core-002
+ neighbor 192.168.0.9 update-source Loopback0
+ neighbor 192.168.0.10 remote-as 1
+ neighbor 192.168.0.10 description iBGP peer core-003
+ neighbor 192.168.0.10 update-source Loopback0
+ !
+ address-family ipv4
+  network 192.168.0.11 mask 255.255.255.255
+  neighbor 192.168.0.1 activate
+  neighbor 192.168.0.3 activate
+  neighbor 192.168.0.4 activate
+  neighbor 192.168.0.7 activate
+  neighbor 192.168.0.8 activate
+  neighbor 192.168.0.9 activate
+  neighbor 192.168.0.10 activate
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm authentication password
+!
+logging trap debugging
+logging facility local3
+logging host 172.16.3.221 vrf Mgmt-intf
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv - Cisco Systems Confidential                                      *
+*                                                                        *
+* Supplemental End User License Restrictions                             *
+*                                                                        *
+* This IOSv software is provided AS-IS without warranty of any kind.     *
+* Under no circumstances may this software be used separate from         *
+* the Cisco Modeling Labs Software that this software was provided       *
+*  with, or deployed or used as part of a production environment.        *
+*                                                                        *
+* By using the software, you agree to abide by the terms and             *
+* conditions of the Cisco End User License Agreement at                  *
+* http://www.cisco.com/go/eula.                                          *
+*                                                                        *
+* Unauthorized use or distribution of this software is expressly         *
+* prohibited.                                                            *
+**************************************************************************
+`
+banner incoming `
+**************************************************************************
+* IOSv - Cisco Systems Confidential                                      *
+*                                                                        *
+* Supplemental End User License Restrictions                             *
+*                                                                        *
+* This IOSv software is provided AS-IS without warranty of any kind.     *
+* Under no circumstances may this software be used separate from         *
+* the Cisco Modeling Labs Software that this software was provided       *
+*  with, or deployed or used as part of a production environment.        *
+*                                                                        *
+* By using the software, you agree to abide by the terms and             *
+* conditions of the Cisco End User License Agreement at                  *
+* http://www.cisco.com/go/eula.                                          *
+*                                                                        *
+* Unauthorized use or distribution of this software is expressly         *
+* prohibited.                                                            *
+**************************************************************************
+`
+banner login `
+**************************************************************************
+* IOSv - Cisco Systems Confidential                                      *
+*                                                                        *
+* Supplemental End User License Restrictions                             *
+*                                                                        *
+* This IOSv software is provided AS-IS without warranty of any kind.     *
+* Under no circumstances may this software be used separate from         *
+* the Cisco Modeling Labs Software that this software was provided       *
+*  with, or deployed or used as part of a production environment.        *
+*                                                                        *
+* By using the software, you agree to abide by the terms and             *
+* conditions of the Cisco End User License Agreement at                  *
+* http://www.cisco.com/go/eula.                                          *
+*                                                                        *
+* Unauthorized use or distribution of this software is expressly         *
+* prohibited.                                                            *
+**************************************************************************
+`
+!
+line con 0
+ password cisco
+line aux 0
+line vty 0 4
+ exec-timeout 720 0
+ password cisco
+ login local
+ transport input telnet ssh
+!
+no scheduler allocate
+onep
+ tls
+  trustpoint server-identity TP-self-signed-4294967295
+ service set vty
+!
+end</entry>
+            <entry key="AutoNetkit.mgmt_ip" type="string"/>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1" ipv4="10.0.128.10" netPrefixLenV4="30"/>
+        <interface id="1" name="GigabitEthernet0/2" ipv4="10.0.0.18" netPrefixLenV4="30"/>
+        <interface id="2" name="GigabitEthernet0/3" ipv4="10.0.128.6" netPrefixLenV4="30"/>
+        <interface id="3" name="GigabitEthernet0/4" ipv4="10.0.128.14" netPrefixLenV4="30"/>
+    </node>
+    <node name="nyc-rtr-001" type="SIMPLE" subtype="IOS XRv" location="363,264" ipv4="192.168.0.4">
+        <extensions>
+            <entry key="config" type="string">!! IOS XR Configuration 6.0.1
+!! Last configuration change at Tue Jun 20 04:10:34 2017 by cisco
+!
+!  IOS-XR Config generated on 2017-06-20 00:03
+! by autonetkit_0.21.4
+hostname nyc-rtr-001
+logging 172.16.3.221 vrf Mgmt-intf severity debugging port default
+service timestamps log datetime msec
+service timestamps debug datetime msec
+telnet vrf default ipv4 server max-servers 10
+telnet vrf Mgmt-intf ipv4 server max-servers 10
+domain name virl.info
+domain lookup disable
+cdp
+vrf Mgmt-intf
+ address-family ipv4 unicast
+ !
+ address-family ipv6 unicast
+ !
+!
+line template vty
+ timestamp
+ exec-timeout 720 0
+!
+line console
+ exec-timeout 0 0
+!
+line default
+ exec-timeout 720 0
+!
+vty-pool default 0 50
+control-plane
+ management-plane
+  inband
+   interface all
+    allow all
+   !
+  !
+ !
+!
+interface Loopback0
+ description Loopback
+ ipv4 address 192.168.0.4 255.255.255.255
+!
+interface MgmtEth0/0/CPU0/0
+ description OOB Management
+ cdp
+ ! Configured on launch
+ vrf Mgmt-intf
+ ipv4 address 172.16.3.218 255.255.255.0
+!
+interface GigabitEthernet0/0/0/0
+ description to nyc-sw-001
+ cdp
+ ipv4 address 10.0.0.35 255.255.255.248
+!
+interface GigabitEthernet0/0/0/1
+ description to nyc-sw-002
+ cdp
+ ipv4 address 10.0.0.33 255.255.255.248
+!
+interface GigabitEthernet0/0/0/2
+ description to core-001
+ cdp
+ ipv4 address 10.0.0.41 255.255.255.252
+!
+interface GigabitEthernet0/0/0/3
+ description to core-003
+ cdp
+ ipv4 address 10.0.128.1 255.255.255.252
+!
+route-policy bgp_in
+  pass
+end-policy
+!
+route-policy bgp_out
+  pass
+end-policy
+!
+router ospf 1
+ log adjacency changes
+ area 0
+  interface Loopback0
+   passive enable
+  !
+  interface GigabitEthernet0/0/0/0
+   cost 1
+  !
+  interface GigabitEthernet0/0/0/1
+   cost 1
+  !
+  interface GigabitEthernet0/0/0/2
+   cost 1
+  !
+  interface GigabitEthernet0/0/0/3
+   cost 1
+  !
+ !
+!
+router bgp 1
+ bgp router-id 192.168.0.4
+ address-family ipv4 unicast
+  network 192.168.0.4/32
+ !
+ neighbor 192.168.0.1
+  remote-as 1
+  description iBGP peer core-001
+  update-source Loopback0
+  address-family ipv4 unicast
+  !
+ !
+ ! iBGP
+ ! iBGP peers
+ neighbor 192.168.0.3
+  remote-as 1
+  description iBGP peer aus-rtr-001
+  update-source Loopback0
+  address-family ipv4 unicast
+  !
+ !
+ neighbor 192.168.0.7
+  remote-as 1
+  description iBGP peer lon-rtr-001
+  update-source Loopback0
+  address-family ipv4 unicast
+  !
+ !
+ neighbor 192.168.0.8
+  remote-as 1
+  description iBGP peer aus-rtr-002
+  update-source Loopback0
+  address-family ipv4 unicast
+  !
+ !
+ neighbor 192.168.0.9
+  remote-as 1
+  description iBGP peer core-002
+  update-source Loopback0
+  address-family ipv4 unicast
+  !
+ !
+ neighbor 192.168.0.10
+  remote-as 1
+  description iBGP peer core-003
+  update-source Loopback0
+  address-family ipv4 unicast
+  !
+ !
+ neighbor 192.168.0.11
+  remote-as 1
+  description iBGP peer core-004
+  update-source Loopback0
+  address-family ipv4 unicast
+  !
+ !
+!
+ssh server v2
+ssh server vrf Mgmt-intf
+end</entry>
+            <entry key="AutoNetkit.mgmt_ip" type="string"/>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/0/0/0" ipv4="10.0.0.35" netPrefixLenV4="29"/>
+        <interface id="1" name="GigabitEthernet0/0/0/1" ipv4="10.0.0.33" netPrefixLenV4="29"/>
+        <interface id="2" name="GigabitEthernet0/0/0/2" ipv4="10.0.0.41" netPrefixLenV4="30"/>
+        <interface id="3" name="GigabitEthernet0/0/0/3" ipv4="10.0.128.1" netPrefixLenV4="30"/>
+    </node>
+    <node name="lon-rtr-001" type="SIMPLE" subtype="IOS XRv" location="695,264" ipv4="192.168.0.7">
+        <extensions>
+            <entry key="config" type="string">!! IOS XR Configuration 6.0.1
+!! Last configuration change at Tue Jun 20 04:10:34 2017 by cisco
+!
+!  IOS-XR Config generated on 2017-06-20 00:03
+! by autonetkit_0.21.4
+hostname lon-rtr-001
+logging 172.16.3.221 vrf Mgmt-intf severity debugging port default
+service timestamps log datetime msec
+service timestamps debug datetime msec
+telnet vrf default ipv4 server max-servers 10
+telnet vrf Mgmt-intf ipv4 server max-servers 10
+domain name virl.info
+domain lookup disable
+cdp
+vrf Mgmt-intf
+ address-family ipv4 unicast
+ !
+ address-family ipv6 unicast
+ !
+!
+line template vty
+ timestamp
+ exec-timeout 720 0
+!
+line console
+ exec-timeout 0 0
+!
+line default
+ exec-timeout 720 0
+!
+vty-pool default 0 50
+control-plane
+ management-plane
+  inband
+   interface all
+    allow all
+   !
+  !
+ !
+!
+interface Loopback0
+ description Loopback
+ ipv4 address 192.168.0.7 255.255.255.255
+!
+interface MgmtEth0/0/CPU0/0
+ description OOB Management
+ cdp
+ ! Configured on launch
+ vrf Mgmt-intf
+ ipv4 address 172.16.3.213 255.255.255.0
+!
+interface GigabitEthernet0/0/0/0
+ description to lon-sw-001
+ cdp
+ ipv4 address 10.0.0.9 255.255.255.248
+!
+interface GigabitEthernet0/0/0/1
+ description to lon-sw-002
+ cdp
+ ipv4 address 10.0.0.10 255.255.255.248
+!
+interface GigabitEthernet0/0/0/2
+ description to core-002
+ cdp
+ ipv4 address 10.0.0.49 255.255.255.252
+!
+interface GigabitEthernet0/0/0/3
+ description to core-004
+ cdp
+ ipv4 address 10.0.128.5 255.255.255.252
+!
+route-policy bgp_in
+  pass
+end-policy
+!
+route-policy bgp_out
+  pass
+end-policy
+!
+router ospf 1
+ log adjacency changes
+ area 0
+  interface Loopback0
+   passive enable
+  !
+  interface GigabitEthernet0/0/0/0
+   cost 1
+  !
+  interface GigabitEthernet0/0/0/1
+   cost 1
+  !
+  interface GigabitEthernet0/0/0/2
+   cost 1
+  !
+  interface GigabitEthernet0/0/0/3
+   cost 1
+  !
+ !
+!
+router bgp 1
+ bgp router-id 192.168.0.7
+ address-family ipv4 unicast
+  network 192.168.0.7/32
+ !
+ neighbor 192.168.0.1
+  remote-as 1
+  description iBGP peer core-001
+  update-source Loopback0
+  address-family ipv4 unicast
+  !
+ !
+ ! iBGP
+ ! iBGP peers
+ neighbor 192.168.0.3
+  remote-as 1
+  description iBGP peer aus-rtr-001
+  update-source Loopback0
+  address-family ipv4 unicast
+  !
+ !
+ neighbor 192.168.0.4
+  remote-as 1
+  description iBGP peer nyc-rtr-001
+  update-source Loopback0
+  address-family ipv4 unicast
+  !
+ !
+ neighbor 192.168.0.8
+  remote-as 1
+  description iBGP peer aus-rtr-002
+  update-source Loopback0
+  address-family ipv4 unicast
+  !
+ !
+ neighbor 192.168.0.9
+  remote-as 1
+  description iBGP peer core-002
+  update-source Loopback0
+  address-family ipv4 unicast
+  !
+ !
+ neighbor 192.168.0.10
+  remote-as 1
+  description iBGP peer core-003
+  update-source Loopback0
+  address-family ipv4 unicast
+  !
+ !
+ neighbor 192.168.0.11
+  remote-as 1
+  description iBGP peer core-004
+  update-source Loopback0
+  address-family ipv4 unicast
+  !
+ !
+!
+ssh server v2
+ssh server vrf Mgmt-intf
+end</entry>
+            <entry key="AutoNetkit.mgmt_ip" type="string"/>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/0/0/0" ipv4="10.0.0.9" netPrefixLenV4="29"/>
+        <interface id="1" name="GigabitEthernet0/0/0/1" ipv4="10.0.0.10" netPrefixLenV4="29"/>
+        <interface id="2" name="GigabitEthernet0/0/0/2" ipv4="10.0.0.49" netPrefixLenV4="30"/>
+        <interface id="3" name="GigabitEthernet0/0/0/3" ipv4="10.0.128.5" netPrefixLenV4="30"/>
+    </node>
+    <connection dst="/virl:topology/virl:node[3]/virl:interface[1]" src="/virl:topology/virl:node[7]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[9]/virl:interface[1]" src="/virl:topology/virl:node[1]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[7]/virl:interface[1]" src="/virl:topology/virl:node[10]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[11]/virl:interface[1]" src="/virl:topology/virl:node[10]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[11]/virl:interface[2]" src="/virl:topology/virl:node[3]/virl:interface[3]"/>
+    <connection dst="/virl:topology/virl:node[2]/virl:interface[4]" src="/virl:topology/virl:node[8]/virl:interface[4]"/>
+    <connection dst="/virl:topology/virl:node[1]/virl:interface[1]" src="/virl:topology/virl:node[5]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[2]/virl:interface[2]" src="/virl:topology/virl:node[4]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[13]/virl:interface[1]" src="/virl:topology/virl:node[12]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[12]/virl:interface[3]" src="/virl:topology/virl:node[14]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[13]/virl:interface[2]" src="/virl:topology/virl:node[15]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[15]/virl:interface[2]" src="/virl:topology/virl:node[14]/virl:interface[3]"/>
+    <connection dst="/virl:topology/virl:node[14]/virl:interface[4]" src="/virl:topology/virl:node[7]/virl:interface[3]"/>
+    <connection dst="/virl:topology/virl:node[15]/virl:interface[4]" src="/virl:topology/virl:node[10]/virl:interface[3]"/>
+    <connection dst="/virl:topology/virl:node[3]/virl:interface[2]" src="/virl:topology/virl:node[6]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[16]/virl:interface[1]" src="/virl:topology/virl:node[1]/virl:interface[3]"/>
+    <connection dst="/virl:topology/virl:node[16]/virl:interface[2]" src="/virl:topology/virl:node[9]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[12]/virl:interface[1]" src="/virl:topology/virl:node[16]/virl:interface[3]"/>
+    <connection dst="/virl:topology/virl:node[16]/virl:interface[4]" src="/virl:topology/virl:node[14]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[2]/virl:interface[1]" src="/virl:topology/virl:node[17]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[8]/virl:interface[1]" src="/virl:topology/virl:node[17]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[17]/virl:interface[3]" src="/virl:topology/virl:node[13]/virl:interface[3]"/>
+    <connection dst="/virl:topology/virl:node[17]/virl:interface[4]" src="/virl:topology/virl:node[15]/virl:interface[3]"/>
+</topology>
