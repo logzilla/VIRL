@@ -1,1 +1,0 @@
-vmcloud netdelete ip_services_initial

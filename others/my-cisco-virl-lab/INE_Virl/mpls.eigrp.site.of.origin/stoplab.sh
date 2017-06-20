@@ -1,1 +1,0 @@
-vmcloud netdelete mpls_eigrp_site_of_origin

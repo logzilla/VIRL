@@ -1,1 +1,0 @@
-vmcloud netdelete object_tracking_initial

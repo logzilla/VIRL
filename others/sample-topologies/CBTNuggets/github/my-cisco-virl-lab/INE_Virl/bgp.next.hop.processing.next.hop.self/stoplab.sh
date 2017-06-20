@@ -1,1 +1,0 @@
-vmcloud netdelete bgp_next_hop_processing_next_hop_self

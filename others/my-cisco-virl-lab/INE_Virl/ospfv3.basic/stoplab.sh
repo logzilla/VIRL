@@ -1,1 +1,0 @@
-vmcloud netdelete ospfv3_basic

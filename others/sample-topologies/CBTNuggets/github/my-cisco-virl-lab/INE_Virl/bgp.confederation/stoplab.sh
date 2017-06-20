@@ -1,1 +1,0 @@
-vmcloud netdelete bgp_confederation

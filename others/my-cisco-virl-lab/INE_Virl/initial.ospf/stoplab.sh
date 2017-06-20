@@ -1,1 +1,0 @@
-vmcloud netdelete initial_ospf

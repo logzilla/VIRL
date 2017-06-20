@@ -1,1 +1,0 @@
-vmcloud netdelete ipv6_global_initial

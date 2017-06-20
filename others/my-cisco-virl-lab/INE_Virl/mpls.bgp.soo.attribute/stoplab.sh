@@ -1,1 +1,0 @@
-vmcloud netdelete mpls_bgp_soo_attribute

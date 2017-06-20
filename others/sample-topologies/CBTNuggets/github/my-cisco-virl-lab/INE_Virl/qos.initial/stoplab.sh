@@ -1,1 +1,0 @@
-vmcloud netdelete qos_initial

@@ -1,1 +1,0 @@
-vmcloud netdelete mpls_internet_access

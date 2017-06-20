@@ -1,1 +1,0 @@
-vmcloud netdelete ibgp_route_reflection
