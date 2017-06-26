@@ -1,0 +1,657 @@
+w-branch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+sw-branch(config)#int gi0/1
+sw-branch(config-if)#dup half
+Autoneg enabled. Duplex cannot be set
+
+sw-branch(config-if)#no neg au
+sw-branch(config-if)#dup half
+sw-branch(config-if)#
+*Jun 25 21:33:59.848: %SPANTREE-5-ROOTCHANGE: Root Changed for vlan 1: New Root Port is Port-channel23. New Root Mac Address is fa16.3e90.ae84
+*Jun 25 21:33:59.848: %EC-5-CANNOT_BUNDLE2: Gi0/1 is not compatible with Gi0/2 and will be suspended (duplex of Gi0/1 is half, Gi0/2 is full)
+*Jun 25 21:34:00.481: %LINK-3-UPDOWN: Interface GigabitEthernet0/1, changed state to down
+*Jun 25 21:34:03.113: %LINK-3-UPDOWN: Interface GigabitEthernet0/1, changed state to up
+*Jun 25 21:34:07.062: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/1 (not full duplex), with sw2-branch.lzil.la GigabitEthernet0/1 (full duplex).
+sw-branch(config-if)#
+sw-branch(config-if)#
+sw-branch(config-if)#dup full
+sw-branch(config-if)#neg au
+*Jun 25 21:34:36.494: %EC-5-COMPATIBLE: Gi0/1 is compatible with port-channel members
+*Jun 25 21:34:36.995: %SPANTREE-5-TOPOTRAP: Topology Change Trap for vlan 1
+*Jun 25 21:34:36.995: %SPANTREE-5-ROOTCHANGE: Root Changed for vlan 1: New Root Port is Port-channel23. New Root Mac Address is fa16.3e90.ae84
+Duplex is configured. Remove duplex configuration before enabling auto-negotiation
+
+sw-branch(config-if)#no dup full
+sw-branch(config-if)#neg au
+sw-branch(config-if)#
+*Jun 25 21:34:42.560: %SPANTREE-5-ROOTCHANGE: Root Changed for vlan 1: New Root Port is Port-channel23. New Root Mac Address is fa16.3e90.ae84^Z
+sw-branch#
+*Jun 25 21:34:44.453: %LINK-3-UPDOWN: Interface GigabitEthernet0/1, changed state to downwr
+Building configuration...
+Compressed configuration from 4173 bytes to 2130 bytes[OK]
+*Jun 25 21:34:44.996: %SYS-5-CONFIG_I: Configured from console by cisco on vty0 (172.16.1.213)
+*Jun 25 21:34:45.910: %GRUB-5-CONFIG_WRITING: GRUB configuration is being updated on disk. Please wait...
+sw-branch#
+sw-branch#
+sw-branch#
+*Jun 25 21:34:46.528: %GRUB-5-CONFIG_WRITTEN: GRUB configuration was written to disk successfully.
+*Jun 25 21:34:47.113: %LINK-3-UPDOWN: Interface GigabitEthernet0/1, changed state to up
+sw-branch#
+sw-branch#
+sw-branch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+sw-branch(config)#int gi0/1
+sw-branch(config-if)#no neg au
+sw-branch(config-if)#speed 100
+sw-branch(config-if)#
+*Jun 25 21:35:11.822: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/1, changed state to down
+*Jun 25 21:35:14.125: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/1, changed state to up
+sw-branch(config-if)#
+sw-branch(config-if)#
+sw-branch(config-if)#do sh int gi0/1
+GigabitEthernet0/1 is up, line protocol is up (connected)
+  Hardware is iGbE, address is fa16.3ecd.5b07 (bia fa16.3ecd.5b07)
+  Description: to sw2-branch
+  MTU 1500 bytes, BW 100000 Kbit/sec, DLY 100 usec,
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+  Keepalive set (10 sec)
+  Auto Duplex, 100Mbps, link type is force-up, media type is unknown media type
+  output flow-control is unsupported, input flow-control is unsupported
+  Full-duplex, 100Mb/s, link type is force-up, media type is RJ45
+  input flow-control is off, output flow-control is unsupported
+  ARP type: ARPA, ARP Timeout 04:00:00
+  Last input 00:00:01, output 00:00:01, output hang never
+  Last clearing of "show interface" counters never
+  Input queue: 0/75/0/0 (size/max/drops/flushes); Total output drops: 0
+  Queueing strategy: fifo
+  Output queue: 0/0 (size/max)
+  5 minute input rate 0 bits/sec, 0 packets/sec
+  5 minute output rate 0 bits/sec, 0 packets/sec
+     2446 packets input, 169125 bytes, 0 no buffer
+     Received 0 broadcasts (0 multicasts)
+     0 runts, 0 giants, 0 throttles
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored
+     0 watchdog, 0 multicast, 0 pause input
+     686 packets output, 66812 bytes, 0 underruns
+     0 output errors, 0 collisions, 11 interface resets
+
+sw-branch(config-if)#do sh int gi0/1
+GigabitEthernet0/1 is up, line protocol is up (connected)
+  Hardware is iGbE, address is fa16.3ecd.5b07 (bia fa16.3ecd.5b07)
+  Description: to sw2-branch
+  MTU 1500 bytes, BW 100000 Kbit/sec, DLY 100 usec,
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+  Keepalive set (10 sec)
+  Auto Duplex, 100Mbps, link type is force-up, media type is unknown media type
+  output flow-control is unsupported, input flow-control is unsupported
+  Full-duplex, 100Mb/s, link type is force-up, media type is RJ45
+  input flow-control is off, output flow-control is unsupported
+  ARP type: ARPA, ARP Timeout 04:00:00
+  Last input 00:00:00, output 00:00:00, output hang never
+  Last clearing of "show interface" counters never
+  Input queue: 0/75/0/0 (size/max/drops/flushes); Total output drops: 0
+  Queueing strategy: fifo
+  Output queue: 0/0 (size/max)
+  5 minute input rate 0 bits/sec, 0 packets/sec
+  5 minute output rate 0 bits/sec, 0 packets/sec
+     2548 packets input, 175939 bytes, 0 no buffer
+     Received 0 broadcasts (0 multicasts)
+     0 runts, 0 giants, 0 throttles
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored
+     0 watchdog, 0 multicast, 0 pause input
+     729 packets output, 70186 bytes, 0 underruns
+     0 output errors, 0 collisions, 11 interface resets
+
+sw-branch(config-if)#
+sw-branch(config-if)#no speed 100
+sw-branch(config-if)#neg au
+sw-branch(config-if)#
+sw-branch(config-if)#
+sw-branch(config-if)#
+sw-branch(config-if)#
+sw-branch(config-if)#
+sw-branch(config-if)#
+sw-branch(config-if)#
+sw-branch(config-if)#
+sw-branch(config-if)#
+sw-branch(config-if)#
+sw-branch(config-if)#
+sw-branch(config-if)#^Z
+sw-branch#
+*Jun 25 21:38:51.050: %SYS-5-CONFIG_I: Configured from console by cisco on vty0 (172.16.1.213)
+sw-branch#
+sw-branch#
+sw-branch#wr
+Building configuration...
+Compressed configuration from 4173 bytes to 2130 bytes[OK]
+sw-branch#
+*Jun 25 21:38:57.827: %GRUB-5-CONFIG_WRITING: GRUB configuration is being updated on disk. Please wait...
+*Jun 25 21:38:58.446: %GRUB-5-CONFIG_WRITTEN: GRUB configuration was written to disk successfully.
+sw-branch#
+sw-branch#
+sw-branch#
+sw-branch#
+sw-branch#h?
+*h=help
+help
+
+sw-branch#show his
+sw-branch#show history ?
+  all  Display the full command history as in crashinfo
+  |    Output modifiers
+  <cr>
+
+sw-branch#show history
+  conf t
+  wr
+  sh spanning-tree vl 15
+  conf t
+  wr
+  sh spann
+  conf t
+  sh spanning-tree vl 15
+  sh spanning-tree b
+  sh spanning-tree bridge
+  sh vl br
+  sh run
+  conf t
+  wr
+  sh run
+  conf t
+  wr
+  conf t
+  wr
+  show history
+sw-branch#show history all
+or
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+
+*Jun 25 20:47:29.542: %SPANTREE-5-EXTENDED_SYSID: Extended SysId enabled for type vlanCisco IOSv () processor (revision 1.0) with 709889K/74752K bytes of memory.
+Processor board ID 95Z16AA0DYJ
+5 Gigabit Ethernet interfaces
+DRAM configuration is 72 bits wide with parity disabled.
+256K bytes of non-volatile configuration memory.
+2097152K bytes of ATA System CompactFlash 0 (Read/Write)
+0K bytes of ATA CompactFlash 1 (Read/Write)
+0K bytes of ATA CompactFlash 2 (Read/Write)
+10080K bytes of ATA CompactFlash 3 (Read/Write)
+
+*Jun 25 20:47:30.149: %CVAC-7-CONFIG_FOUND: Configuration file flash3:/ios_config.txt was found and will be applied to NVRAM.
+CMD: 'access-list 199 permit icmp host 10.10.10.10 host 20.20.20.20' 20:47:30 UTC Sun Jun 25 2017
+CMD: 'no access-list 199' 20:47:30 UTC Sun Jun 25 2017
+*Jun 25 20:47:30.862: %SYS-5-RESTART: System restarted --
+Cisco IOS Software, vios_l2 Software (vios_l2-ADVENTERPRISEK9-M), Experimental Version 15.2(20170321:233949) [mmen 101]
+Copyright (c) 1986-2017 by Cisco Systems, Inc.
+Compiled Wed 22-Mar-17 08:38 by mmen
+*Jun 25 20:47:30.870: %CVAC-7-CONFIG_FOUND: Configuration file flash3:/ios_config.txt was found and will be applied to NVRAM.
+*Jun 25 20:47:31.074: %LINK-3-UPDOWN: Interface GigabitEthernet0/0, changed state to up
+*Jun 25 20:47:31.075: %LINK-3-UPDOWN: Interface GigabitEthernet0/1, changed state to up
+*Jun 25 20:47:31.075: %LINK-3-UPDOWN: Interface GigabitEthernet0/2, changed state to up
+*Jun 25 20:47:31.075: %LINK-3-UPDOWN: Interface GigabitEthernet0/3, changed state to up
+*Jun 25 20:47:31.075: %LINK-3-UPDOWN: Interface GigabitEthernet1/0, changed state to up
+CMD: 'version 15.2' 20:47:31 UTC Sun Jun 25 2017
+CMD: 'service timestamps debug datetime msec' 20:47:31 UTC Sun Jun 25 2017
+CMD: 'service timestamps log datetime msec' 20:47:31 UTC Sun Jun 25 2017
+CMD: 'no service password-encryption' 20:47:31 UTC Sun Jun 25 2017
+CMD: 'service compress-config' 20:47:31 UTC Sun Jun 25 2017
+CMD: 'no service config' 20:47:31 UTC Sun Jun 25 2017
+CMD: PASSWORD statement not printed
+CMD: 'ip classless' 20:47:31 UTC Sun Jun 25 2017
+CMD: 'ip subnet-zero' 20:47:31 UTC Sun Jun 25 2017
+CMD: 'no ip domain lookup' 20:47:31 UTC Sun Jun 25 2017
+CMD: 'line vty 0 4' 20:47:31 UTC Sun Jun 25 2017
+CMD: ' exec-timeout 720 0' 20:47:31 UTC Sun Jun 25 2017
+CMD: PASSWORD statement not printed
+CMD: ' transport input telnet ssh' 20:47:31 UTC Sun Jun 25 2017
+CMD: ' transport output telnet ssh' 20:47:31 UTC Sun Jun 25 2017
+CMD: 'line con 0' 20:47:31 UTC Sun Jun 25 2017
+CMD: PASSWORD statement not printed
+CMD: 'hostname sw-branch' 20:47:31 UTC Sun Jun 25 2017
+CMD: 'boot-start-marker' 20:47:31 UTC Sun Jun 25 2017
+CMD: 'boot-end-marker' 20:47:31 UTC Sun Jun 25 2017
+CMD: PASSWORD statement not printed
+CMD: 'aaa new-model' 20:47:31 UTC Sun Jun 25 2017
+CMD: 'aaa authentication login default local' 20:47:31 UTC Sun Jun 25 2017
+CMD: 'aaa authorization exec default local' 20:47:31 UTC Sun Jun 25 2017
+CMD: 'aaa accounting commands 15 default' 20:47:31 UTC Sun Jun 25 2017
+CMD: 'vtp domain virl.lab' 20:47:31 UTC Sun Jun 25 2017
+*Jun 25 20:47:32.101: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0, changed state to up
+*Jun 25 20:47:32.102: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/1, changed state to up
+*Jun 25 20:47:32.102: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/2, changed state to up
+*Jun 25 20:47:32.102: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/3, changed state to up
+*Jun 25 20:47:32.102: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0, changed state to up
+*Jun 25 20:47:32.709: %SW_VLAN-6-VTP_DOMAIN_NAME_CHG: VTP domain name changed to virl.lab.
+CMD: 'vtp mode transparent' 20:47:32 UTC Sun Jun 25 2017
+CMD: 'ip domain-name lzil.la' 20:47:33 UTC Sun Jun 25 2017
+CMD: 'spanning-tree mode rapid-pvst' 20:47:33 UTC Sun Jun 25 2017
+CMD: 'spanning-tree extend system-id' 20:47:33 UTC Sun Jun 25 2017
+CMD: 'spanning-tree vlan 15 priority root primary' 20:47:33 UTC Sun Jun 25 2017
+CMD: 'spanning-tree vlan 2 priority root secondary' 20:47:33 UTC Sun Jun 25 2017
+CMD: 'vlan 15' 20:47:33 UTC Sun Jun 25 2017
+CMD: ' name vlan-mismatch-test-po23' 20:47:33 UTC Sun Jun 25 2017
+CMD: 'vlan 2' 20:47:33 UTC Sun Jun 25 2017
+CMD: '  name ank_vlan2' 20:47:33 UTC Sun Jun 25 2017
+CMD: 'cdp run' 20:47:33 UTC Sun Jun 25 2017
+CMD: 'ip cef' 20:47:33 UTC Sun Jun 25 2017
+CMD: 'no ipv6 cef' 20:47:33 UTC Sun Jun 25 2017
+CMD: 'spanning-tree mode pvst' 20:47:33 UTC Sun Jun 25 2017
+CMD: 'spanning-tree extend system-id' 20:47:33 UTC Sun Jun 25 2017
+CMD: 'vlan internal allocation policy ascending' 20:47:33 UTC Sun Jun 25 2017
+CMD: 'vrf definition Mgmt-intf' 20:47:33 UTC Sun Jun 25 2017
+CMD: ' address-family ipv4' 20:47:33 UTC Sun Jun 25 2017
+CMD: ' exit-address-family' 20:47:33 UTC Sun Jun 25 2017
+CMD: ' address-family ipv6' 20:47:33 UTC Sun Jun 25 2017
+CMD: ' exit-address-family' 20:47:33 UTC Sun Jun 25 2017
+CMD: 'interface Loopback0' 20:47:33 UTC Sun Jun 25 2017
+CMD: '  no shutdown' 20:47:33 UTC Sun Jun 25 2017
+CMD: '  description Loopback' 20:47:33 UTC Sun Jun 25 2017
+CMD: 'interface vlan15' 20:47:33 UTC Sun Jun 25 2017
+CMD: '  no shutdown' 20:47:33 UTC Sun Jun 25 2017
+CMD: ' ip add 15.15.15.1 255.255.255.252' 20:47:33 UTC Sun Jun 25 2017
+CMD: 'interface Port-channel23' 20:47:33 UTC Sun Jun 25 2017
+CMD: '  no shutdown' 20:47:33 UTC Sun Jun 25 2017
+CMD: ' switchport trunk encapsulation dot1q' 20:47:33 UTC Sun Jun 25 2017
+CMD: ' switchport mode trunk' 20:47:33 UTC Sun Jun 25 2017
+CMD: ' switchport trunk allowed vlan 1-10,15' 20:47:33 UTC Sun Jun 25 2017
+CMD: 'interface GigabitEthernet0/0' 20:47:33 UTC Sun Jun 25 2017
+CMD: '  no shutdown' 20:47:33 UTC Sun Jun 25 2017
+CMD: '  description OOB management' 20:47:33 UTC Sun Jun 25 2017
+CMD: '  no switchport' 20:47:33 UTC Sun Jun 25 2017
+CMD: '  vrf forwarding Mgmt-intf' 20:47:33 UTC Sun Jun 25 2017
+CMD: '  ip address 172.16.1.219 255.255.255.0' 20:47:33 UTC Sun Jun 25 2017
+CMD: '  no shutdown' 20:47:33 UTC Sun Jun 25 2017
+CMD: 'interface GigabitEthernet0/1' 20:47:33 UTC Sun Jun 25 2017
+CMD: '  no shutdown' 20:47:33 UTC Sun Jun 25 2017
+CMD: ' description to sw2-branch' 20:47:33 UTC Sun Jun 25 2017
+CMD: ' switchport trunk encapsulation dot1q' 20:47:33 UTC Sun Jun 25 2017
+CMD: ' switchport mode trunk' 20:47:33 UTC Sun Jun 25 2017
+CMD: ' media-type rj45' 20:47:33 UTC Sun Jun 25 2017
+CMD: ' negotiation auto' 20:47:33 UTC Sun Jun 25 2017
+CMD: ' channel-group 23 mode on' 20:47:33 UTC Sun Jun 25 2017
+CMD: ' logging event trunk-status' 20:47:33 UTC Sun Jun 25 2017
+CMD: ' logging event link-status' 20:47:33 UTC Sun Jun 25 2017
+CMD: '  no shutdown' 20:47:33 UTC Sun Jun 25 2017
+CMD: 'interface GigabitEthernet0/2' 20:47:33 UTC Sun Jun 25 2017
+CMD: '  no shutdown' 20:47:33 UTC Sun Jun 25 2017
+CMD: ' description to sw2-branch' 20:47:33 UTC Sun Jun 25 2017
+CMD: ' switchport trunk encapsulation dot1q' 20:47:33 UTC Sun Jun 25 2017
+CMD: ' switchport mode trunk' 20:47:33 UTC Sun Jun 25 2017
+CMD: ' media-type rj45' 20:47:33 UTC Sun Jun 25 2017
+CMD: ' negotiation auto' 20:47:33 UTC Sun Jun 25 2017
+CMD: ' channel-group 23 mode on' 20:47:33 UTC Sun Jun 25 2017
+CMD: ' logging event trunk-status' 20:47:33 UTC Sun Jun 25 2017
+CMD: ' logging event link-status' 20:47:33 UTC Sun Jun 25 2017
+CMD: ' no shutdown' 20:47:33 UTC Sun Jun 25 2017
+CMD: 'interface GigabitEthernet0/3' 20:47:33 UTC Sun Jun 25 2017
+CMD: '  no shutdown' 20:47:33 UTC Sun Jun 25 2017
+CMD: '  description to rtr-branch' 20:47:33 UTC Sun Jun 25 2017
+CMD: '  switchport access vlan 2' 20:47:33 UTC Sun Jun 25 2017
+CMD: '  switchport mode access' 20:47:33 UTC Sun Jun 25 2017
+CMD: '  no shutdown' 20:47:33 UTC Sun Jun 25 2017
+CMD: 'interface GigabitEthernet1/0' 20:47:33 UTC Sun Jun 25 2017
+CMD: '  no shutdown' 20:47:33 UTC Sun Jun 25 2017
+CMD: '  description GigabitEthernet1/0' 20:47:33 UTC Sun Jun 25 2017
+CMD: '  no shutdown' 20:47:33 UTC Sun Jun 25 2017
+CMD: 'ip forward-protocol nd' 20:47:33 UTC Sun Jun 25 2017
+CMD: 'no ip http server' 20:47:33 UTC Sun Jun 25 2017
+CMD: 'no ip http secure-server' 20:47:33 UTC Sun Jun 25 2017
+CMD: 'control-plane' 20:47:33 UTC Sun Jun 25 2017
+CMD: 'end' 20:47:33 UTC Sun Jun 25 2017
+*Jun 25 20:47:34.142: %LINEPROTO-5-UPDOWN: Line protocol on Interface Loopback0, changed state to up
+*Jun 25 20:47:34.143: %LINEPROTO-5-UPDOWN: Line protocol on Interface Vlan15, changed state to down
+*Jun 25 20:47:34.483: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/1, changed state to down
+*Jun 25 20:47:34.484: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/2, changed state to down
+*Jun 25 20:47:34.687: %GRUB-5-CONFIG_WRITING: GRUB configuration is being updated on disk. Please wait...
+*Jun 25 20:47:35.098: %PLATFORM-5-SIGNATURE_VERIFIED: Image 'flash0:/vios_l2-adventerprisek9-m' passed code signing verification
+*Jun 25 20:47:35.133: %LINK-3-UPDOWN: Interface Vlan15, changed state to down
+*Jun 25 20:47:35.169: %LINK-3-UPDOWN: Interface GigabitEthernet0/0, changed state to up
+*Jun 25 20:47:35.496: %GRUB-5-CONFIG_WRITTEN: GRUB configuration was written to disk successfully.
+*Jun 25 20:47:35.896: %CVAC-4-CONFIG_DONE: Configuration generated from file flash3:/ios_config.txt was applied and saved to NVRAM. See 'show running-config' or 'show startup-config' for more details.
+CMD: 'parameter-map type subscriber attribute-to-service BUILTIN_DEVICE_TO_TEMPLATE' 20:47:35 UTC Sun Jun 25 2017
+CMD: '10 map device-type regex "Cisco-IP-Phone"' 20:47:35 UTC Sun Jun 25 2017
+CMD: '20 interface-template IP_PHONE_INTERFACE_TEMPLATE' 20:47:35 UTC Sun Jun 25 2017
+
+CMD: '20 map device-type regex "Cisco-IP-Camera"' 20:47:35 UTC Sun Jun 25 2017
+CMD: '20 interface-template IP_CAMERA_INTERFACE_TEMPLATE' 20:47:35 UTC Sun Jun 25 2017
+CMD: '30 map device-type regex "Cisco-DMP"' 20:47:35 UTC Sun Jun 25 2017
+CMD: '20 interface-template DMP_INTERFACE_TEMPLATE' 20:47:35 UTC Sun Jun 25 2017
+CMD: '40 map oui eq 00.0f.44' 20:47:35 UTC Sun Jun 25 2017
+CMD: '20 interface-template DMP_INTERFACE_TEMPLATE' 20:47:35 UTC Sun Jun 25 2017
+CMD: '50 map oui eq 00.23.ac' 20:47:35 UTC Sun Jun 25 2017
+CMD: '20 interface-template DMP_INTERFACE_TEMPLATE' 20:47:35 UTC Sun Jun 25 2017
+CMD: '60 map device-type regex "Cisco-AIR-AP"' 20:47:35 UTC Sun Jun 25 2017
+CMD: '20 interface-template AP_INTERFACE_TEMPLATE' 20:47:35 UTC Sun Jun 25 2017
+CMD: '70 map device-type regex "Cisco-AIR-LAP"' 20:47:35 UTC Sun Jun 25 2017
+CMD: '20 interface-template LAP_INTERFACE_TEMPLATE' 20:47:35 UTC Sun Jun 25 2017
+CMD: '80 map device-type regex "Cisco-TelePresence"' 20:47:35 UTC Sun Jun 25 2017
+CMD: '20 interface-template TP_INTERFACE_TEMPLATE' 20:47:35 UTC Sun Jun 25 2017
+CMD: '90 map device-type regex "Surveillance-Camera"' 20:47:35 UTC Sun Jun 25 2017
+
+CMD: '10 interface-template MSP_CAMERA_INTERFACE_TEMPLATE' 20:47:35 UTC Sun Jun 25 2017
+CMD: '100 map device-type regex "Video-Conference"' 20:47:35 UTC Sun Jun 25 2017
+CMD: '10 interface-template MSP_VC_INTERFACE_TEMPLATE' 20:47:35 UTC Sun Jun 25 2017
+CMD: 'policy-map type control subscriber BUILTIN_AUTOCONF_POLICY' 20:47:35 UTC Sun Jun 25 2017
+CMD: 'event identity-update match-all' 20:47:35 UTC Sun Jun 25 2017
+CMD: '10 class always do-until-failure' 20:47:35 UTC Sun Jun 25 2017
+CMD: '10 map attribute-to-service table BUILTIN_DEVICE_TO_TEMPLATE' 20:47:35 UTC Sun Jun 25 2017
+CMD: 'ip access-list extended preauth_ipv4_acl' 20:47:35 UTC Sun Jun 25 2017
+CMD: 'permit udp any any eq 53' 20:47:35 UTC Sun Jun 25 2017
+CMD: 'permit tcp any any eq 53' 20:47:35 UTC Sun Jun 25 2017
+CMD: 'permit udp any eq bootps any' 20:47:35 UTC Sun Jun 25 2017
+CMD: 'permit udp any any eq bootpc' 20:47:35 UTC Sun Jun 25 2017
+CMD: 'permit udp any eq bootpc any' 20:47:35 UTC Sun Jun 25 2017
+CMD: 'deny ip any any' 20:47:35 UTC Sun Jun 25 2017
+CMD: 'end' 20:47:35 UTC Sun Jun 25 2017
+CMD: 'ipv6 access-list preauth_ipv6_acl' 20:47:35 UTC Sun Jun 25 2017
+CMD: 'permit udp any any eq 53' 20:47:35 UTC Sun Jun 25 2017
+CMD: 'permit tcp any any eq 53' 20:47:35 UTC Sun Jun 25 2017
+CMD: 'permit icmp any any nd-ns' 20:47:35 UTC Sun Jun 25 2017
+CMD: 'permit icmp any any nd-na' 20:47:35 UTC Sun Jun 25 2017
+CMD: 'permit icmp any any router-solicitation' 20:47:35 UTC Sun Jun 25 2017
+CMD: 'permit icmp any any router-advertisement' 20:47:35 UTC Sun Jun 25 2017
+CMD: 'permit icmp any any redirect' 20:47:35 UTC Sun Jun 25 2017
+CMD: 'permit udp any eq 547 any eq 546' 20:47:35 UTC Sun Jun 25 2017
+CMD: 'permit udp any eq 546 any eq 547' 20:47:35 UTC Sun Jun 25 2017
+
+CMD: 'deny ip any any' 20:47:35 UTC Sun Jun 25 2017
+CMD: 'end' 20:47:35 UTC Sun Jun 25 2017
+*Jun 25 20:47:36.169: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0, changed state to up
+*Jun 25 20:47:36.313: %EC-5-CANNOT_BUNDLE2: Gi0/1 is not compatible with Po23 and will be suspended (vlan mask is different)
+*Jun 25 20:47:36.321: %EC-5-CANNOT_BUNDLE2: Gi0/2 is not compatible with Po23 and will be suspended (vlan mask is different)
+*Jun 25 20:47:36.813: %DTP-5-TRUNKPORTON: Port Gi0/1-Gi0/2 has become dot1q trunk
+CMD: 'conf t' 20:51:36 UTC Sun Jun 25 2017
+CMD: PASSWORD statement not printed
+*Jun 25 20:52:24.723: %SSH-5-ENABLED: SSH 1.99 has been enabled
+*Jun 25 20:52:25.233: %SYS-5-CONFIG_I: Configured from console by cisco on vty0 (172.16.1.213)
+CMD: 'conf t' 20:52:28 UTC Sun Jun 25 2017
+CMD: PASSWORD statement not printed
+*Jun 25 20:52:34.419: %SSH-5-DISABLED: SSH 1.99 has been disabled
+*Jun 25 20:52:36.291: %SSH-5-ENABLED: SSH 1.99 has been enabled
+CMD: PASSWORD statement not printed
+*Jun 25 20:52:55.557: %SYS-5-CONFIG_I: Configured from console by cisco on vty0 (172.16.1.213)
+CMD: 'conf t' 20:52:59 UTC Sun Jun 25 2017
+CMD: 'ip ssh v 2' 20:53:14 UTC Sun Jun 25 2017
+*Jun 25 20:53:15.335: %SYS-5-CONFIG_I: Configured from console by cisco on vty0 (172.16.1.213)
+CMD: 'ex' 20:53:17 UTC Sun Jun 25 2017
+*Jun 25 20:53:20.055: %SSH-4-SSH2_UNEXPECTED_MSG: Unexpected message type has arrived. Terminating the connection from 172.16.1.213
+CMD: 'ex' 20:53:43 UTC Sun Jun 25 2017
+
+CMD: 'wr' 20:53:51 UTC Sun Jun 25 2017
+*Jun 25 20:53:52.199: %GRUB-5-CONFIG_WRITING: GRUB configuration is being updated on disk. Please wait...
+*Jun 25 20:53:52.815: %GRUB-5-CONFIG_WRITTEN: GRUB configuration was written to disk successfully.
+CMD: 'ex' 20:53:54 UTC Sun Jun 25 2017
+CMD: 'sh ip int b' 21:02:31 UTC Sun Jun 25 2017
+CMD: 'conf t' 21:02:37 UTC Sun Jun 25 2017
+CMD: 'int po23' 21:02:39 UTC Sun Jun 25 2017
+CMD: 'no shut' 21:02:41 UTC Sun Jun 25 2017
+*Jun 25 21:02:42.250: %SYS-5-CONFIG_I: Configured from console by cisco on vty0 (172.16.1.213)
+CMD: 'ter mon' 21:02:44 UTC Sun Jun 25 2017
+CMD: 'sh ip int b' 21:03:06 UTC Sun Jun 25 2017
+CMD: 'sh tun int gi0/1' 21:03:41 UTC Sun Jun 25 2017
+CMD: 'sh run int gi0/1' 21:03:45 UTC Sun Jun 25 2017
+CMD: 'sh run int gi0/2' 21:03:55 UTC Sun Jun 25 2017
+CMD: 'conf t' 21:04:12 UTC Sun Jun 25 2017
+CMD: 'int po23' 21:04:14 UTC Sun Jun 25 2017
+CMD: 'shut' 21:04:24 UTC Sun Jun 25 2017
+*Jun 25 21:04:24.141: %EC-5-CANNOT_BUNDLE1: Port-channel Po23 is down, port Gi0/2 will remain stand-alone.
+*Jun 25 21:04:24.641: %DTP-5-NONTRUNKPORTON: Port Gi0/1-Gi0/2 has become non-trunk
+*Jun 25 21:04:26.117: %LINK-5-CHANGED: Interface GigabitEthernet0/1, changed state to administratively down
+*Jun 25 21:04:26.141: %LINK-5-CHANGED: Interface GigabitEthernet0/2, changed state to administratively down
+*Jun 25 21:04:26.166: %LINK-5-CHANGED: Interface Port-channel23, changed state to administratively down
+*Jun 25 21:04:27.166: %LINEPROTO-5-UPDOWN: Line protocol on Interface Port-channel23, changed state to down
+CMD: 'int rang gi0/1-2' 21:04:30 UTC Sun Jun 25 2017
+CMD: 'interface GigabitEthernet0/2' 21:04:30 UTC Sun Jun 25 2017
+
+CMD: 'interface GigabitEthernet0/1' 21:04:30 UTC Sun Jun 25 2017
+CMD: 'shut' 21:04:32 UTC Sun Jun 25 2017
+CMD: 'interface GigabitEthernet0/2' 21:04:32 UTC Sun Jun 25 2017
+CMD: 'shut' 21:04:32 UTC Sun Jun 25 2017
+CMD: 'interface GigabitEthernet0/1' 21:04:32 UTC Sun Jun 25 2017
+CMD: 'no shut' 21:05:26 UTC Sun Jun 25 2017
+*Jun 25 21:05:26.016: %EC-5-STAYDOWN: Gi0/1 will remain down as its port-channel Po23 is admin-down
+CMD: 'do sh run int gi0/1' 21:05:41 UTC Sun Jun 25 2017
+CMD: 'sh run int gi0/1' 21:05:41 UTC Sun Jun 25 2017
+CMD: 'int gi0/1' 21:05:46 UTC Sun Jun 25 2017
+CMD: 'no shut' 21:05:48 UTC Sun Jun 25 2017
+*Jun 25 21:05:48.287: %EC-5-STAYDOWN: Gi0/1 will remain down as its port-channel Po23 is admin-down
+CMD: 'int gi0/2' 21:05:49 UTC Sun Jun 25 2017
+CMD: 'no shut' 21:05:50 UTC Sun Jun 25 2017
+*Jun 25 21:05:50.800: %EC-5-STAYDOWN: Gi0/2 will remain down as its port-channel Po23 is admin-down
+CMD: 'int po23' 21:06:09 UTC Sun Jun 25 2017
+CMD: 'no shut' 21:06:12 UTC Sun Jun 25 2017
+*Jun 25 21:06:14.338: %LINK-3-UPDOWN: Interface Port-channel23, changed state to down
+*Jun 25 21:06:14.338: %LINK-3-UPDOWN: Interface GigabitEthernet0/1, changed state to up
+*Jun 25 21:06:14.470: %LINK-3-UPDOWN: Interface GigabitEthernet0/2, changed state to up
+*Jun 25 21:06:15.338: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/1, changed state to up
+*Jun 25 21:06:15.470: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/2, changed state to up
+*Jun 25 21:06:15.602: %EC-5-CANNOT_BUNDLE2: Gi0/1 is not compatible with Po23 and will be suspended (vlan mask is different)
+*Jun 25 21:06:15.602: %EC-5-CANNOT_BUNDLE2: Gi0/2 is not compatible with Po23 and will be suspended (vlan mask is different)
+*Jun 25 21:06:16.102: %DTP-5-TRUNKPORTON: Port Gi0/1-Gi0/2 has become dot1q trunk
+*Jun 25 21:06:16.602: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/1, changed state to down
+*Jun 25 21:06:16.602: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/2, changed state to down
+CMD: 'do sh run | inc vla' 21:06:50 UTC Sun Jun 25 2017
+CMD: 'sh run | inc vla' 21:06:50 UTC Sun Jun 25 2017
+CMD: 'int po23' 21:07:28 UTC Sun Jun 25 2017
+CMD: 'shut' 21:07:30 UTC Sun Jun 25 2017
+*Jun 25 21:07:30.091: %EC-5-CANNOT_BUNDLE1: Port-channel Po23 is down, port Gi0/2 will remain stand-alone.
+*Jun 25 21:07:30.591: %DTP-5-NONTRUNKPORTON: Port Gi0/1-Gi0/2 has become non-trunk
+*Jun 25 21:07:32.067: %LINK-5-CHANGED: Interface GigabitEthernet0/1, changed state to administratively down
+*Jun 25 21:07:32.091: %LINK-5-CHANGED: Interface GigabitEthernet0/2, changed state to administratively down
+*Jun 25 21:07:32.115: %LINK-5-CHANGED: Interface Port-channel23, changed state to administratively down
+CMD: 'int rang gi0/1-2' 21:07:52 UTC Sun Jun 25 2017
+CMD: 'interface GigabitEthernet0/2' 21:07:52 UTC Sun Jun 25 2017
+CMD: 'interface GigabitEthernet0/1' 21:07:52 UTC Sun Jun 25 2017
+CMD: 'shut' 21:07:53 UTC Sun Jun 25 2017
+CMD: 'interface GigabitEthernet0/2' 21:07:53 UTC Sun Jun 25 2017
+CMD: 'shut' 21:07:53 UTC Sun Jun 25 2017
+CMD: 'interface GigabitEthernet0/1' 21:07:53 UTC Sun Jun 25 2017
+CMD: 'no switchport trunk allowed vlan ' 21:08:08 UTC Sun Jun 25 2017
+CMD: 'interface GigabitEthernet0/2' 21:08:08 UTC Sun Jun 25 2017
+CMD: 'no switchport trunk allowed vlan ' 21:08:08 UTC Sun Jun 25 2017
+CMD: 'interface GigabitEthernet0/1' 21:08:08 UTC Sun Jun 25 2017
+CMD: 'do sh run int g0/1' 21:08:33 UTC Sun Jun 25 2017
+CMD: 'sh run int g0/1' 21:08:33 UTC Sun Jun 25 2017
+CMD: 'int gi0/1' 21:08:41 UTC Sun Jun 25 2017
+
+CMD: 'no shut' 21:08:44 UTC Sun Jun 25 2017
+*Jun 25 21:08:44.071: %EC-5-STAYDOWN: Gi0/1 will remain down as its port-channel Po23 is admin-down
+CMD: 'int gi0/2' 21:08:45 UTC Sun Jun 25 2017
+CMD: 'no shut' 21:08:46 UTC Sun Jun 25 2017
+*Jun 25 21:08:46.362: %EC-5-STAYDOWN: Gi0/2 will remain down as its port-channel Po23 is admin-down
+CMD: 'int po23' 21:09:01 UTC Sun Jun 25 2017
+CMD: 'no shut' 21:09:03 UTC Sun Jun 25 2017
+*Jun 25 21:09:05.562: %LINK-3-UPDOWN: Interface Port-channel23, changed state to down
+*Jun 25 21:09:05.562: %LINK-3-UPDOWN: Interface GigabitEthernet0/1, changed state to up
+*Jun 25 21:09:05.694: %LINK-3-UPDOWN: Interface GigabitEthernet0/2, changed state to up
+*Jun 25 21:09:06.562: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/1, changed state to up
+*Jun 25 21:09:06.694: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/2, changed state to up
+*Jun 25 21:09:06.826: %EC-5-CANNOT_BUNDLE2: Gi0/1 is not compatible with Po23 and will be suspended (vlan mask is different)
+*Jun 25 21:09:06.827: %EC-5-CANNOT_BUNDLE2: Gi0/2 is not compatible with Po23 and will be suspended (vlan mask is different)
+*Jun 25 21:09:07.326: %DTP-5-TRUNKPORTON: Port Gi0/1-Gi0/2 has become dot1q trunk
+*Jun 25 21:09:07.826: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/1, changed state to down
+*Jun 25 21:09:07.827: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/2, changed state to down
+CMD: 'no switchport trunk allowed vlan' 21:09:26 UTC Sun Jun 25 2017
+*Jun 25 21:09:26.233: %EC-5-COMPATIBLE: Gi0/1 is compatible with port-channel members
+*Jun 25 21:09:26.234: %EC-5-COMPATIBLE: Gi0/2 is compatible with port-channel members
+*Jun 25 21:09:27.233: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/1, changed state to up
+*Jun 25 21:09:27.234: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/2, changed state to up
+*Jun 25 21:09:28.233: %LINK-3-UPDOWN: Interface Port-channel23, changed state to up
+*Jun 25 21:09:29.233: %LINEPROTO-5-UPDOWN: Line protocol on Interface Port-channel23, changed state to up
+CMD: 'switchport trunk allowed vlan remove 15' 21:09:56 UTC Sun Jun 25 2017
+*Jun 25 21:09:58.234: %LINK-3-UPDOWN: Interface Vlan15, changed state to up
+*Jun 25 21:09:59.234: %LINEPROTO-5-UPDOWN: Line protocol on Interface Vlan15, changed state to up
+CMD: 'do sh int tru' 21:10:27 UTC Sun Jun 25 2017
+CMD: 'sh int tru' 21:10:27 UTC Sun Jun 25 2017
+CMD: 'do sh run int vl15' 21:10:43 UTC Sun Jun 25 2017
+CMD: 'sh run int vl15' 21:10:43 UTC Sun Jun 25 2017
+CMD: 'int vl15' 21:10:54 UTC Sun Jun 25 2017
+CMD: 'no shut' 21:10:58 UTC Sun Jun 25 2017
+*Jun 25 21:11:16.735: %SYS-5-CONFIG_I: Configured from console by cisco on vty0 (172.16.1.213)
+CMD: 'wr' 21:11:18 UTC Sun Jun 25 2017
+*Jun 25 21:11:18.363: %GRUB-5-CONFIG_WRITING: GRUB configuration is being updated on disk. Please wait...
+*Jun 25 21:11:18.978: %GRUB-5-CONFIG_WRITTEN: GRUB configuration was written to disk successfully.
+CMD: 'sh spanning-tree vl 15' 21:11:32 UTC Sun Jun 25 2017
+CMD: 'conf t' 21:11:56 UTC Sun Jun 25 2017
+CMD: 'int po23' 21:12:02 UTC Sun Jun 25 2017
+CMD: 'switchport trunk allowed vlan add 15' 21:12:12 UTC Sun Jun 25 2017
+CMD: 'do sh int tr' 21:12:22 UTC Sun Jun 25 2017
+CMD: 'sh int tr' 21:12:22 UTC Sun Jun 25 2017
+CMD: 'do sh spann 15' 21:12:31 UTC Sun Jun 25 2017
+CMD: 'sh spann 15' 21:12:31 UTC Sun Jun 25 2017
+CMD: 'do sh spann vl 15' 21:12:35 UTC Sun Jun 25 2017
+CMD: 'sh spann vl 15' 21:12:35 UTC Sun Jun 25 2017
+CMD: 'do sh spann vl 15' 21:13:09 UTC Sun Jun 25 2017
+CMD: 'sh spann vl 15' 21:13:09 UTC Sun Jun 25 2017
+
+CMD: 'do sh spann vl 15' 21:13:31 UTC Sun Jun 25 2017
+CMD: 'sh spann vl 15' 21:13:31 UTC Sun Jun 25 2017
+CMD: 'do sh int vl15' 21:14:00 UTC Sun Jun 25 2017
+CMD: 'sh int vl15' 21:14:00 UTC Sun Jun 25 2017
+CMD: 'do sh spann vl 15' 21:14:13 UTC Sun Jun 25 2017
+CMD: 'sh spann vl 15' 21:14:13 UTC Sun Jun 25 2017
+CMD: 'do sh run' 21:14:18 UTC Sun Jun 25 2017
+CMD: 'sh run' 21:14:18 UTC Sun Jun 25 2017
+*Jun 25 21:14:52.356: %SYS-5-CONFIG_I: Configured from console by cisco on vty0 (172.16.1.213)
+CMD: 'conf t' 21:14:53 UTC Sun Jun 25 2017
+CMD: 'spanning-tree mode rapid-pvst' 21:14:54 UTC Sun Jun 25 2017
+CMD: 'spanning-tree extend system-id' 21:14:54 UTC Sun Jun 25 2017
+CMD: 'spanning-tree vlan 15 priority root primary' 21:14:54 UTC Sun Jun 25 2017
+CMD: 'spanning-tree vlan 2 priority root secondary' 21:14:54 UTC Sun Jun 25 2017
+CMD: 'spanning-tree vlan 15 priority 0' 21:15:20 UTC Sun Jun 25 2017
+CMD: 'do sh spann vl 15' 21:16:33 UTC Sun Jun 25 2017
+CMD: 'sh spann vl 15' 21:16:33 UTC Sun Jun 25 2017
+CMD: 'int po23' 21:17:02 UTC Sun Jun 25 2017
+CMD: 'do sh run int po23' 21:17:10 UTC Sun Jun 25 2017
+CMD: 'sh run int po23' 21:17:10 UTC Sun Jun 25 2017
+CMD: 'switchport trunk allowed vlan remove 15' 21:17:26 UTC Sun Jun 25 2017
+CMD: 'switchport trunk allowed vlan add 15' 21:17:50 UTC Sun Jun 25 2017
+CMD: 'do sh spann vl 15' 21:17:56 UTC Sun Jun 25 2017
+CMD: 'sh spann vl 15' 21:17:56 UTC Sun Jun 25 2017
+CMD: 'switchport trunk allowed vlan remove 15' 21:18:34 UTC Sun Jun 25 2017
+
+CMD: 'do sh run' 21:19:43 UTC Sun Jun 25 2017
+CMD: 'sh run' 21:19:43 UTC Sun Jun 25 2017
+CMD: 'do sh run } inc logg' 21:20:11 UTC Sun Jun 25 2017
+CMD: 'sh run } inc logg' 21:20:11 UTC Sun Jun 25 2017
+CMD: 'int po23' 21:20:20 UTC Sun Jun 25 2017
+CMD: 'logging event spanning-tree status' 21:21:08 UTC Sun Jun 25 2017
+CMD: 'int rang gi0/1-2' 21:21:16 UTC Sun Jun 25 2017
+CMD: 'interface GigabitEthernet0/2' 21:21:16 UTC Sun Jun 25 2017
+CMD: 'interface GigabitEthernet0/1' 21:21:16 UTC Sun Jun 25 2017
+CMD: 'logging event spanning-tree status' 21:21:18 UTC Sun Jun 25 2017
+CMD: 'ex' 21:21:34 UTC Sun Jun 25 2017
+CMD: 'spanning-tree logging' 21:22:32 UTC Sun Jun 25 2017
+CMD: 'int po23' 21:23:14 UTC Sun Jun 25 2017
+CMD: 'switchport trunk allowed vlan add 15' 21:23:20 UTC Sun Jun 25 2017
+*Jun 25 21:23:20.862: %SPANTREE-5-TOPOTRAP: Topology Change Trap for vlan 15
+CMD: 'switchport trunk allowed vlan rem 15' 21:23:38 UTC Sun Jun 25 2017
+CMD: 'ex' 21:24:29 UTC Sun Jun 25 2017
+CMD: 'spanning-tree mode pvst ' 21:24:44 UTC Sun Jun 25 2017
+*Jun 25 21:24:48.767: %SPANTREE-5-ROOTCHANGE: Root Changed for vlan 1: New Root Port is Port-channel23. New Root Mac Address is fa16.3e90.ae84
+*Jun 25 21:25:15.578: %SPANTREE-5-TOPOTRAP: Topology Change Trap for vlan 1
+CMD: 'spanning-tree mode rapid-pvst ' 21:25:17 UTC Sun Jun 25 2017
+*Jun 25 21:25:18.777: %SPANTREE-5-ROOTCHANGE: Root Changed for vlan 1: New Root Port is Port-channel23. New Root Mac Address is fa16.3e90.ae84
+*Jun 25 21:25:18.778: %SPANTREE-5-TOPOTRAP: Topology Change Trap for vlan 1
+
+CMD: 'spanning-tree mode pvst ' 21:25:35 UTC Sun Jun 25 2017
+*Jun 25 21:25:38.785: %SPANTREE-5-ROOTCHANGE: Root Changed for vlan 1: New Root Port is Port-channel23. New Root Mac Address is fa16.3e90.ae84
+CMD: 'do sh span' 21:25:41 UTC Sun Jun 25 2017
+CMD: 'sh span' 21:25:41 UTC Sun Jun 25 2017
+CMD: 'do sh span 15' 21:25:45 UTC Sun Jun 25 2017
+CMD: 'sh span 15' 21:25:45 UTC Sun Jun 25 2017
+*Jun 25 21:26:06.205: %SPANTREE-5-TOPOTRAP: Topology Change Trap for vlan 1
+CMD: 'do sh span' 21:26:32 UTC Sun Jun 25 2017
+CMD: 'sh span' 21:26:32 UTC Sun Jun 25 2017
+CMD: 'spanning-tree mode rapid-pvst ' 21:26:41 UTC Sun Jun 25 2017
+*Jun 25 21:26:42.813: %SPANTREE-5-ROOTCHANGE: Root Changed for vlan 1: New Root Port is Port-channel23. New Root Mac Address is fa16.3e90.ae84
+*Jun 25 21:26:42.814: %SPANTREE-5-TOPOTRAP: Topology Change Trap for vlan 1
+CMD: 'do sh run' 21:27:01 UTC Sun Jun 25 2017
+CMD: 'sh run' 21:27:01 UTC Sun Jun 25 2017
+*Jun 25 21:27:12.165: %SYS-5-CONFIG_I: Configured from console by cisco on vty0 (172.16.1.213)
+*Jun 25 21:27:12.424: %SPANTREE-5-TOPOTRAP: Topology Change Trap for vlan 1
+CMD: 'wr' 21:27:12 UTC Sun Jun 25 2017
+*Jun 25 21:27:13.128: %GRUB-5-CONFIG_WRITING: GRUB configuration is being updated on disk. Please wait...
+*Jun 25 21:27:13.745: %GRUB-5-CONFIG_WRITTEN: GRUB configuration was written to disk successfully.
+CMD: 'sh spann' 21:27:25 UTC Sun Jun 25 2017
+CMD: 'conf t' 21:27:59 UTC Sun Jun 25 2017
+CMD: 'do sh spann' 21:28:14 UTC Sun Jun 25 2017
+CMD: 'sh spann' 21:28:14 UTC Sun Jun 25 2017
+
+CMD: 'do sh spann 15' 21:28:20 UTC Sun Jun 25 2017
+CMD: 'sh spann 15' 21:28:20 UTC Sun Jun 25 2017
+CMD: 'do sh spann vl  15' 21:28:26 UTC Sun Jun 25 2017
+CMD: 'sh spann vl  15' 21:28:26 UTC Sun Jun 25 2017
+*Jun 25 21:28:35.033: %SYS-5-CONFIG_I: Configured from console by cisco on vty0 (172.16.1.213)
+CMD: 'sh spanning-tree vl 15' 21:28:41 UTC Sun Jun 25 2017
+CMD: 'sh spanning-tree b' 21:28:44 UTC Sun Jun 25 2017
+CMD: 'sh spanning-tree bridge ' 21:28:46 UTC Sun Jun 25 2017
+CMD: 'sh vl br' 21:28:59 UTC Sun Jun 25 2017
+CMD: 'sh run' 21:29:30 UTC Sun Jun 25 2017
+CMD: 'conf t' 21:30:01 UTC Sun Jun 25 2017
+*Jun 25 21:30:13.823: %SYS-5-CONFIG_I: Configured from console by cisco on vty0 (172.16.1.213)
+CMD: 'conf t' 21:30:15 UTC Sun Jun 25 2017
+CMD: 'int po23' 21:30:16 UTC Sun Jun 25 2017
+CMD: 'switchport trunk allowed vlan add 15' 21:30:17 UTC Sun Jun 25 2017
+*Jun 25 21:30:17.854: %SPANTREE-5-TOPOTRAP: Topology Change Trap for vlan 15
+CMD: 'do sh span' 21:30:26 UTC Sun Jun 25 2017
+CMD: 'sh span' 21:30:26 UTC Sun Jun 25 2017
+*Jun 25 21:30:38.074: %SYS-5-CONFIG_I: Configured from console by cisco on vty0 (172.16.1.213)
+CMD: 'wr' 21:30:38 UTC Sun Jun 25 2017
+*Jun 25 21:30:39.310: %GRUB-5-CONFIG_WRITING: GRUB configuration is being updated on disk. Please wait...
+*Jun 25 21:30:39.928: %GRUB-5-CONFIG_WRITTEN: GRUB configuration was written to disk successfully.
+CMD: 'sh run' 21:30:45 UTC Sun Jun 25 2017
+CMD: 'conf t' 21:33:47 UTC Sun Jun 25 2017
+CMD: 'int gi0/1' 21:33:50 UTC Sun Jun 25 2017
+
+CMD: 'dup half' 21:33:53 UTC Sun Jun 25 2017
+CMD: 'no neg au' 21:33:58 UTC Sun Jun 25 2017
+CMD: 'dup half' 21:33:59 UTC Sun Jun 25 2017
+*Jun 25 21:33:59.848: %SPANTREE-5-ROOTCHANGE: Root Changed for vlan 1: New Root Port is Port-channel23. New Root Mac Address is fa16.3e90.ae84
+*Jun 25 21:33:59.848: %EC-5-CANNOT_BUNDLE2: Gi0/1 is not compatible with Gi0/2 and will be suspended (duplex of Gi0/1 is half, Gi0/2 is full)
+*Jun 25 21:34:00.481: %LINK-3-UPDOWN: Interface GigabitEthernet0/1, changed state to down
+*Jun 25 21:34:03.113: %LINK-3-UPDOWN: Interface GigabitEthernet0/1, changed state to up
+*Jun 25 21:34:07.062: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/1 (not full duplex), with sw2-branch.lzil.la GigabitEthernet0/1 (full duplex).
+CMD: 'dup full' 21:34:36 UTC Sun Jun 25 2017
+*Jun 25 21:34:36.494: %EC-5-COMPATIBLE: Gi0/1 is compatible with port-channel members
+*Jun 25 21:34:36.995: %SPANTREE-5-TOPOTRAP: Topology Change Trap for vlan 1
+*Jun 25 21:34:36.995: %SPANTREE-5-ROOTCHANGE: Root Changed for vlan 1: New Root Port is Port-channel23. New Root Mac Address is fa16.3e90.ae84
+CMD: 'neg au' 21:34:38 UTC Sun Jun 25 2017
+CMD: 'no dup full' 21:34:42 UTC Sun Jun 25 2017
+*Jun 25 21:34:42.560: %SPANTREE-5-ROOTCHANGE: Root Changed for vlan 1: New Root Port is Port-channel23. New Root Mac Address is fa16.3e90.ae84
+CMD: 'neg au' 21:34:43 UTC Sun Jun 25 2017
+*Jun 25 21:34:44.453: %LINK-3-UPDOWN: Interface GigabitEthernet0/1, changed state to down
+*Jun 25 21:34:44.996: %SYS-5-CONFIG_I: Configured from console by cisco on vty0 (172.16.1.213)
+CMD: 'wr' 21:34:45 UTC Sun Jun 25 2017
+*Jun 25 21:34:45.910: %GRUB-5-CONFIG_WRITING: GRUB configuration is being updated on disk. Please wait...
+*Jun 25 21:34:46.528: %GRUB-5-CONFIG_WRITTEN: GRUB configuration was written to disk successfully.
+*Jun 25 21:34:47.113: %LINK-3-UPDOWN: Interface GigabitEthernet0/1, changed state to up
+CMD: 'conf t' 21:34:59 UTC Sun Jun 25 2017
+CMD: 'int gi0/1' 21:35:02 UTC Sun Jun 25 2017
+CMD: 'no neg au' 21:35:08 UTC Sun Jun 25 2017
+CMD: 'speed 100' 21:35:11 UTC Sun Jun 25 2017
+*Jun 25 21:35:11.822: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/1, changed state to down
+*Jun 25 21:35:14.125: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/1, changed state to up
+CMD: 'do sh int gi0/1' 21:35:24 UTC Sun Jun 25 2017
+CMD: 'sh int gi0/1' 21:35:24 UTC Sun Jun 25 2017
+CMD: 'do sh int gi0/1' 21:36:29 UTC Sun Jun 25 2017
+CMD: 'sh int gi0/1' 21:36:29 UTC Sun Jun 25 2017
+CMD: 'no speed 100' 21:36:58 UTC Sun Jun 25 2017
+CMD: 'neg au' 21:37:10 UTC Sun Jun 25 2017
+*Jun 25 21:38:51.050: %SYS-5-CONFIG_I: Configured from console by cisco on vty0 (172.16.1.213)
+CMD: 'wr' 21:38:57 UTC Sun Jun 25 2017
+*Jun 25 21:38:57.827: %GRUB-5-CONFIG_WRITING: GRUB configuration is being updated on disk. Please wait...
+*Jun 25 21:38:58.446: %GRUB-5-CONFIG_WRITTEN: GRUB configuration was written to disk successfully.
+CMD: 'show history' 23:34:04 UTC Sun Jun 25 2017
+CMD: 'show history all' 23:34:08 UTC Sun Jun 25 201
+sw-branch#

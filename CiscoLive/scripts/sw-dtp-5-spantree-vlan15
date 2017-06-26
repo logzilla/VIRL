@@ -1,0 +1,14 @@
+#!/usr/bin/env perl
+use Net::SSH2::Cisco;
+my $ciscoUsername = "cisco";
+my $ciscoPassword = "cisco";
+my $hostname = "sw-branch";
+my $command = "conf t\nint po23\nswitchport trunk allowed vlan remove 15\nswitchport trunk allowed vlan add 15";
+printf "Connecting to %s\n", $hostname;
+my $session = Net::SSH2::Cisco->new(host => $hostname);
+$session->login($ciscoUsername, $ciscoPassword);
+my @output = $session->cmd("$command");
+my $results = join("", @output);
+chomp($results);
+print @output;
+$session->close;

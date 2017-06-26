@@ -1,0 +1,750 @@
+[
+  {
+    "send_webhook": false,
+    "issue_notification": true,
+    "name": "Cisco: Spanning Tree BPDU",
+    "send_email_template": "",
+    "exec_script": false,
+    "mark_actionable": true,
+    "filter": [
+      {
+        "value": "SPANTREE-5-MSGAGEEXPIRY",
+        "field": "cisco_mnemonic"
+      }
+    ],
+    "send_email": false,
+    "send_webhook_ssl_verify": true,
+    "note_text": "",
+    "add_note": false,
+    "mark_known": true,
+    "script_path": "",
+    "snmp_trap": false,
+    "is_private": false,
+    "send_webhook_method": "POST"
+  },
+  {
+    "send_webhook": false,
+    "issue_notification": true,
+    "name": "Cisco: ASIC Module Error",
+    "send_email_template": "",
+    "exec_script": false,
+    "mark_actionable": true,
+    "filter": [
+      {
+        "value": "SYS-3-SYS_LCPERR3",
+        "field": "cisco_mnemonic"
+      }
+    ],
+    "send_email": false,
+    "send_webhook_ssl_verify": true,
+    "note_text": "",
+    "add_note": false,
+    "mark_known": true,
+    "script_path": "",
+    "snmp_trap": false,
+    "is_private": false,
+    "send_webhook_method": "POST"
+  },
+  {
+    "send_webhook": false,
+    "issue_notification": true,
+    "name": "Cisco: OSPF Neighbor Change",
+    "send_email_template": "",
+    "exec_script": false,
+    "mark_actionable": true,
+    "filter": [
+      {
+        "value": "OSPF-5-ADJCHG",
+        "field": "cisco_mnemonic"
+      }
+    ],
+    "send_email": false,
+    "send_webhook_ssl_verify": true,
+    "note_text": "",
+    "add_note": false,
+    "mark_known": true,
+    "script_path": "",
+    "snmp_trap": false,
+    "is_private": false,
+    "send_webhook_method": "POST"
+  },
+  {
+    "send_webhook": false,
+    "issue_notification": true,
+    "name": "Cisco: Non IPSec-encapsulated Crypto",
+    "send_email_template": "",
+    "exec_script": false,
+    "mark_actionable": true,
+    "filter": [
+      {
+        "value": "CRYPTO-4-RECVD_PKT_NOT_IPSEC",
+        "field": "cisco_mnemonic"
+      }
+    ],
+    "send_email": false,
+    "send_webhook_ssl_verify": true,
+    "note_text": "",
+    "add_note": false,
+    "mark_known": true,
+    "script_path": "",
+    "snmp_trap": false,
+    "is_private": false,
+    "send_webhook_method": "POST"
+  },
+  {
+    "send_webhook": false,
+    "issue_notification": true,
+    "name": "Cisco: Crypto IKE Message Failure",
+    "send_email_template": "",
+    "exec_script": false,
+    "mark_actionable": true,
+    "filter": [
+      {
+        "value": "CRYPTO-4-IKMP_BAD_MESSAGE",
+        "field": "cisco_mnemonic"
+      }
+    ],
+    "send_email": false,
+    "send_webhook_ssl_verify": true,
+    "note_text": "",
+    "add_note": false,
+    "mark_known": true,
+    "script_path": "",
+    "snmp_trap": false,
+    "is_private": false,
+    "send_webhook_method": "POST"
+  },
+  {
+    "send_webhook": false,
+    "issue_notification": true,
+    "name": "Cisco: ASIC Port Error",
+    "send_email_template": "",
+    "exec_script": false,
+    "mark_actionable": true,
+    "filter": [
+      {
+        "value": "SYS-5-SYS_LCPERR5",
+        "field": "cisco_mnemonic"
+      }
+    ],
+    "send_email": false,
+    "send_webhook_ssl_verify": true,
+    "note_text": "",
+    "add_note": false,
+    "mark_known": true,
+    "script_path": "",
+    "snmp_trap": false,
+    "is_private": false,
+    "send_webhook_method": "POST"
+  },
+  {
+    "send_webhook": false,
+    "issue_notification": true,
+    "name": "Cisco: IPSec Error - Packet Missing from SADB",
+    "send_email_template": "",
+    "exec_script": false,
+    "mark_actionable": true,
+    "filter": [
+      {
+        "value": "CRYPTO-4-RECVD_PKT_INV_SPI",
+        "field": "cisco_mnemonic"
+      }
+    ],
+    "send_email": false,
+    "send_webhook_ssl_verify": true,
+    "note_text": "",
+    "add_note": false,
+    "mark_known": true,
+    "script_path": "",
+    "snmp_trap": false,
+    "is_private": false,
+    "send_webhook_method": "POST"
+  },
+  {
+    "send_webhook": false,
+    "issue_notification": true,
+    "name": "Cisco: Crypto Packet Security Association Missing",
+    "send_email_template": "",
+    "exec_script": false,
+    "mark_actionable": true,
+    "filter": [
+      {
+        "value": "CRYPTO-4-IKMP_NO_SA",
+        "field": "cisco_mnemonic"
+      }
+    ],
+    "send_email": false,
+    "send_webhook_ssl_verify": true,
+    "note_text": "",
+    "add_note": false,
+    "mark_known": true,
+    "script_path": "",
+    "snmp_trap": false,
+    "is_private": false,
+    "send_webhook_method": "POST"
+  },
+  {
+    "send_webhook": false,
+    "issue_notification": true,
+    "name": "Cisco: Crypto Packet failed MAC verification",
+    "send_email_template": "",
+    "exec_script": false,
+    "mark_actionable": true,
+    "filter": [
+      {
+        "value": "CRYPTO-4-RECVD_PKT_MAC_ERR",
+        "field": "cisco_mnemonic"
+      }
+    ],
+    "send_email": false,
+    "send_webhook_ssl_verify": true,
+    "note_text": "",
+    "add_note": false,
+    "mark_known": true,
+    "script_path": "",
+    "snmp_trap": false,
+    "is_private": false,
+    "send_webhook_method": "POST"
+  },
+  {
+    "send_webhook": false,
+    "issue_notification": true,
+    "name": "Cisco: OSPF process received an invalid packet",
+    "send_email_template": "",
+    "exec_script": false,
+    "mark_actionable": true,
+    "filter": [
+      {
+        "value": "OSPF-4-ERRRCV",
+        "field": "cisco_mnemonic"
+      }
+    ],
+    "send_email": false,
+    "send_webhook_ssl_verify": true,
+    "note_text": "",
+    "add_note": false,
+    "mark_known": true,
+    "script_path": "",
+    "snmp_trap": false,
+    "is_private": false,
+    "send_webhook_method": "POST"
+  },
+  {
+    "send_webhook": false,
+    "issue_notification": true,
+    "name": "Cisco: Error disabled port has been reenabled",
+    "send_email_template": "",
+    "exec_script": false,
+    "mark_actionable": true,
+    "filter": [
+      {
+        "value": "MGMT-5-ERRDISPORTENABLED",
+        "field": "cisco_mnemonic"
+      }
+    ],
+    "send_email": false,
+    "send_webhook_ssl_verify": true,
+    "note_text": "",
+    "add_note": false,
+    "mark_known": true,
+    "script_path": "",
+    "snmp_trap": false,
+    "is_private": false,
+    "send_webhook_method": "POST"
+  },
+  {
+    "send_webhook": false,
+    "issue_notification": true,
+    "name": "Cisco: OSPF received LSA with wrong mask",
+    "send_email_template": "",
+    "exec_script": false,
+    "mark_actionable": true,
+    "filter": [
+      {
+        "value": "OSPF-4-CONFLICTING_LSAID",
+        "field": "cisco_mnemonic"
+      }
+    ],
+    "send_email": false,
+    "send_webhook_ssl_verify": true,
+    "note_text": "",
+    "add_note": false,
+    "mark_known": true,
+    "script_path": "",
+    "snmp_trap": false,
+    "is_private": false,
+    "send_webhook_method": "POST"
+  },
+  {
+    "send_webhook": false,
+    "issue_notification": true,
+    "name": "Cisco: HSRP VIP does not match the standby VIP",
+    "send_email_template": "",
+    "exec_script": false,
+    "mark_actionable": true,
+    "filter": [
+      {
+        "value": "STANDBY-3-DIFFVIP1",
+        "field": "cisco_mnemonic"
+      }
+    ],
+    "send_email": false,
+    "send_webhook_ssl_verify": true,
+    "note_text": "",
+    "add_note": false,
+    "mark_known": true,
+    "script_path": "",
+    "snmp_trap": false,
+    "is_private": false,
+    "send_webhook_method": "POST"
+  },
+  {
+    "send_webhook": false,
+    "issue_notification": true,
+    "name": "Cisco: Unauthorized connection attempt on a secure port.",
+    "send_email_template": "",
+    "exec_script": false,
+    "mark_actionable": true,
+    "filter": [
+      {
+        "value": "PORT_SECURITY-2-PSECURE_VIOLATION",
+        "field": "cisco_mnemonic"
+      }
+    ],
+    "send_email": false,
+    "send_webhook_ssl_verify": true,
+    "note_text": "",
+    "add_note": false,
+    "mark_known": true,
+    "script_path": "",
+    "snmp_trap": false,
+    "is_private": false,
+    "send_webhook_method": "POST"
+  },
+  {
+    "send_webhook": false,
+    "issue_notification": true,
+    "name": "Cisco: OSPF Hello, Unidentified Sender",
+    "send_email_template": "",
+    "exec_script": false,
+    "mark_actionable": true,
+    "filter": [
+      {
+        "value": "OSPF-4-NONEIGHBOR",
+        "field": "cisco_mnemonic"
+      }
+    ],
+    "send_email": false,
+    "send_webhook_ssl_verify": true,
+    "note_text": "",
+    "add_note": false,
+    "mark_known": true,
+    "script_path": "",
+    "snmp_trap": false,
+    "is_private": false,
+    "send_webhook_method": "POST"
+  },
+  {
+    "send_webhook": false,
+    "issue_notification": true,
+    "name": "Cisco: Interface disabled due to misconfiguration",
+    "send_email_template": "",
+    "exec_script": false,
+    "mark_actionable": true,
+    "filter": [
+      {
+        "value": "PM-4-ERR_DISABLE",
+        "field": "cisco_mnemonic"
+      }
+    ],
+    "send_email": false,
+    "send_webhook_ssl_verify": true,
+    "note_text": "",
+    "add_note": false,
+    "mark_known": true,
+    "script_path": "",
+    "snmp_trap": false,
+    "is_private": false,
+    "send_webhook_method": "POST"
+  },
+  {
+    "send_webhook": false,
+    "issue_notification": true,
+    "name": "Cisco: Spanning Tree BPDU received from another bridge",
+    "send_email_template": "",
+    "exec_script": false,
+    "mark_actionable": true,
+    "filter": [
+      {
+        "value": "SPANTREE-2-RX_BPDUGUARD",
+        "field": "cisco_mnemonic"
+      }
+    ],
+    "send_email": false,
+    "send_webhook_ssl_verify": true,
+    "note_text": "",
+    "add_note": false,
+    "mark_known": true,
+    "script_path": "",
+    "snmp_trap": false,
+    "is_private": false,
+    "send_webhook_method": "POST"
+  },
+  {
+    "send_webhook": false,
+    "issue_notification": true,
+    "name": "Windows: Process Started",
+    "send_email_template": "",
+    "exec_script": false,
+    "mark_actionable": true,
+    "filter": [
+      {
+        "value": "4688",
+        "field": "ut_mswin_event_id"
+      }
+    ],
+    "send_email": false,
+    "send_webhook_ssl_verify": true,
+    "note_text": "",
+    "add_note": false,
+    "mark_known": true,
+    "script_path": "",
+    "snmp_trap": false,
+    "is_private": false,
+    "send_webhook_method": "POST"
+  },
+  {
+    "send_webhook": false,
+    "issue_notification": true,
+    "name": "Windows: User Logon",
+    "send_email_template": "",
+    "exec_script": false,
+    "mark_actionable": true,
+    "filter": [
+      {
+        "value": "4624",
+        "field": "ut_mswin_event_id"
+      }
+    ],
+    "send_email": false,
+    "send_webhook_ssl_verify": true,
+    "note_text": "",
+    "add_note": false,
+    "mark_known": true,
+    "script_path": "",
+    "snmp_trap": false,
+    "is_private": false,
+    "send_webhook_method": "POST"
+  },
+  {
+    "send_webhook": false,
+    "issue_notification": true,
+    "name": "Windows: User Fileshare Accesses",
+    "send_email_template": "",
+    "exec_script": false,
+    "mark_actionable": true,
+    "filter": [
+      {
+        "value": "5140",
+        "field": "ut_mswin_event_id"
+      }
+    ],
+    "send_email": false,
+    "send_webhook_ssl_verify": true,
+    "note_text": "",
+    "add_note": false,
+    "mark_known": true,
+    "script_path": "",
+    "snmp_trap": false,
+    "is_private": false,
+    "send_webhook_method": "POST"
+  },
+  {
+    "send_webhook": false,
+    "issue_notification": true,
+    "name": "Windows: New Service Installed",
+    "send_email_template": "",
+    "exec_script": false,
+    "mark_actionable": true,
+    "filter": [
+      {
+        "value": "7045",
+        "field": "ut_mswin_event_id"
+      }
+    ],
+    "send_email": false,
+    "send_webhook_ssl_verify": true,
+    "note_text": "",
+    "add_note": false,
+    "mark_known": true,
+    "script_path": "",
+    "snmp_trap": false,
+    "is_private": false,
+    "send_webhook_method": "POST"
+  },
+  {
+    "send_webhook": false,
+    "issue_notification": true,
+    "name": "Windows: New Network Connection Established",
+    "send_email_template": "",
+    "exec_script": false,
+    "mark_actionable": true,
+    "filter": [
+      {
+        "value": "5156",
+        "field": "ut_mswin_event_id"
+      }
+    ],
+    "send_email": false,
+    "send_webhook_ssl_verify": true,
+    "note_text": "",
+    "add_note": false,
+    "mark_known": true,
+    "script_path": "",
+    "snmp_trap": false,
+    "is_private": false,
+    "send_webhook_method": "POST"
+  },
+  {
+    "send_webhook": false,
+    "issue_notification": true,
+    "name": "Windows: File Added/Modified/Deleted",
+    "send_email_template": "",
+    "exec_script": false,
+    "mark_actionable": true,
+    "filter": [
+      {
+        "value": "4663",
+        "field": "ut_mswin_event_id"
+      }
+    ],
+    "send_email": false,
+    "send_webhook_ssl_verify": true,
+    "note_text": "",
+    "add_note": false,
+    "mark_known": true,
+    "script_path": "",
+    "snmp_trap": false,
+    "is_private": false,
+    "send_webhook_method": "POST"
+  },
+  {
+    "send_webhook": false,
+    "issue_notification": true,
+    "name": "Windows: New Registry Item Added",
+    "send_email_template": "",
+    "exec_script": false,
+    "mark_actionable": true,
+    "filter": [
+      {
+        "value": "4657",
+        "field": "ut_mswin_event_id"
+      }
+    ],
+    "send_email": false,
+    "send_webhook_ssl_verify": true,
+    "note_text": "",
+    "add_note": false,
+    "mark_known": true,
+    "script_path": "",
+    "snmp_trap": false,
+    "is_private": false,
+    "send_webhook_method": "POST"
+  },
+  {
+    "send_webhook": false,
+    "issue_notification": true,
+    "name": "Windows: Powershell Execution",
+    "send_email_template": "",
+    "exec_script": false,
+    "mark_actionable": true,
+    "filter": [
+      {
+        "value": "500",
+        "field": "ut_mswin_event_id"
+      }
+    ],
+    "send_email": false,
+    "send_webhook_ssl_verify": true,
+    "note_text": "",
+    "add_note": false,
+    "mark_known": true,
+    "script_path": "",
+    "snmp_trap": false,
+    "is_private": false,
+    "send_webhook_method": "POST"
+  },
+  {
+    "send_webhook": false,
+    "issue_notification": true,
+    "name": "Windows: New Scheduled Task Added",
+    "send_email_template": "",
+    "exec_script": false,
+    "mark_actionable": true,
+    "filter": [
+      {
+        "value": "106",
+        "field": "ut_mswin_event_id"
+      }
+    ],
+    "send_email": false,
+    "send_webhook_ssl_verify": true,
+    "note_text": "",
+    "add_note": false,
+    "mark_known": true,
+    "script_path": "",
+    "snmp_trap": false,
+    "is_private": false,
+    "send_webhook_method": "POST"
+  },
+  {
+    "send_webhook": false,
+    "issue_notification": true,
+    "name": "Windows: New Firewall Rule Added",
+    "send_email_template": "",
+    "exec_script": false,
+    "mark_actionable": true,
+    "filter": [
+      {
+        "value": "2004",
+        "field": "ut_mswin_event_id"
+      }
+    ],
+    "send_email": false,
+    "send_webhook_ssl_verify": true,
+    "note_text": "",
+    "add_note": false,
+    "mark_known": true,
+    "script_path": "",
+    "snmp_trap": false,
+    "is_private": false,
+    "send_webhook_method": "POST"
+  },
+  {
+    "send_webhook": false,
+    "issue_notification": true,
+    "add_note": false,
+    "name": "Duplex Mismatch",
+    "send_webhook_url": "",
+    "send_email_template": "",
+    "exec_script": true,
+    "mark_actionable": true,
+    "filter": [
+      {
+        "op": "eq",
+        "value": [
+          "192.168.28.253"
+        ],
+        "field": "host"
+      },
+      {
+        "op": "eq",
+        "value": [
+          "CDP-4-DUPLEX_MISMATCH",
+          "ETHPORT-5-IF_DUPLEX",
+          "L2-CDP-4-DUPLEX_MISMATCH"
+        ],
+        "field": "cisco_mnemonic"
+      }
+    ],
+    "send_email": false,
+    "send_webhook_ssl_verify": true,
+    "note_text": "",
+    "send_webhook_template": "",
+    "mark_known": true,
+    "script_path": "/var/lib/logzilla/scripts/duplex-mismatch",
+    "snmp_trap": false,
+    "is_private": false,
+    "send_webhook_method": "GET"
+  },
+  {
+    "send_webhook": false,
+    "issue_notification": true,
+    "add_note": false,
+    "name": "SSH - Show Ver",
+    "send_webhook_url": "",
+    "send_email_template": "",
+    "exec_script": false,
+    "mark_actionable": true,
+    "filter": [
+      {
+        "op": "eq",
+        "value": [
+          "SYS-5-CONFIG_I",
+          "MGBL-CONFIG-6-DB_COMMIT",
+          "MGBL-SYS-5-CONFIG_I"
+        ],
+        "field": "cisco_mnemonic"
+      }
+    ],
+    "send_email": false,
+    "send_webhook_ssl_verify": true,
+    "note_text": "",
+    "send_webhook_template": "",
+    "mark_known": true,
+    "script_path": "",
+    "snmp_trap": false,
+    "is_private": false,
+    "send_webhook_method": "GET"
+  },
+  {
+    "send_webhook": false,
+    "issue_notification": true,
+    "add_note": false,
+    "name": "Cisco: BGP Neighbor Change",
+    "send_webhook_url": "",
+    "send_email_template": "",
+    "exec_script": false,
+    "mark_actionable": true,
+    "filter": [
+      {
+        "op": "eq",
+        "value": [
+          "BGP-5-ADJCHANGE",
+          "BGP_SESSION-5-ADJCHANGE",
+          "ROUTING-BGP-5-ADJCHANGE",
+          "BGP-5-NBR_RESET"
+        ],
+        "field": "cisco_mnemonic"
+      }
+    ],
+    "send_email": false,
+    "send_webhook_ssl_verify": true,
+    "note_text": "",
+    "send_webhook_template": "",
+    "mark_known": true,
+    "script_path": "",
+    "snmp_trap": false,
+    "is_private": false,
+    "send_webhook_method": "GET"
+  },
+  {
+    "send_webhook": false,
+    "issue_notification": true,
+    "add_note": false,
+    "name": "Cisco: Etherchannel Trunks",
+    "send_webhook_url": "",
+    "send_email_template": "",
+    "exec_script": true,
+    "mark_actionable": true,
+    "filter": [
+      {
+        "op": "eq",
+        "value": [
+          "DTP-5-NONTRUNKPORTON",
+          "DTP-5-TRUNKPORTON"
+        ],
+        "field": "cisco_mnemonic"
+      }
+    ],
+    "send_email": false,
+    "send_webhook_ssl_verify": true,
+    "note_text": "",
+    "send_webhook_template": "",
+    "mark_known": true,
+    "script_path": "/var/lib/logzilla/scripts/cisco-etherchannel-slack",
+    "snmp_trap": false,
+    "is_private": false,
+    "send_webhook_method": "GET"
+  }
+]

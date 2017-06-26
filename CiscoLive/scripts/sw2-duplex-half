@@ -1,0 +1,14 @@
+#!/usr/bin/env perl
+use Net::SSH2::Cisco;
+my $ciscoUsername = "cisco";
+my $ciscoPassword = "cisco";
+my $hostname = "sw2-branch";
+my $command = "conf t\nint gi0/1\nduplex half";
+printf "Connecting to %s\n", $hostname;
+my $session = Net::SSH2::Cisco->new(host => $hostname);
+$session->login($ciscoUsername, $ciscoPassword);
+my @output = $session->cmd("$command");
+my $results = join("", @output);
+chomp($results);
+print @output;
+$session->close;

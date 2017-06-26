@@ -1,0 +1,29 @@
+#!/bin/bash
+lz5manage --stop
+service influxdb stop
+rm -rf /var/lib/influxdb/data/lz5
+rm -rf /var/lib/influxdb/wal/lz5
+service influxdb start
+while ! curl -k http://localhost:8086/ping 2> /dev/null
+do
+    echo "Waiting for Influx..."
+    sleep 1
+done
+sleep 2
+curl -POST http://localhost:8086/query --data-urlencode "q=CREATE DATABASE lz5results" >/dev/null 2>&1
+curl -POST http://localhost:8086/query --data-urlencode "q=CREATE DATABASE lz5aggregates" >/dev/null 2>&1
+curl -POST http://localhost:8086/query --data-urlencode "q=CREATE DATABASE lz5rusage" >/dev/null 2>&1
+lz5setup --armageddon=kaboom --db-root-pass "LZ.$(hostid)"
+lz5configmanager -sb UT_ENABLED True
+lz5configmanager -si DEDUP_WINDOW 3600
+lz5configmanager -ss REPORTS_BASE_URL http://beefcake.logzilla.io
+#lz5configmanager -ss INTERNAL_EVENTS_MAX_LEVEL ERROR
+lz5configmanager -ss LOG_MAX_LEVEL INFO
+read -p "Shall I start LogZilla? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    lz5manage --start
+fi
+sleep 5
+[[ -f "${HOME}/default.trig" ]] && lz5triggers import -I ${HOME}/default.trig
+[[ -f "${HOME}/default.dash" ]] && lz5dashboards import -I ${HOME}/default.dash

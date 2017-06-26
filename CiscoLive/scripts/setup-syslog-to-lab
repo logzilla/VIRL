@@ -1,0 +1,2 @@
+#!/bin/bash
+#ssh cllz.lzil.la "arp" | grep "172.16.1" | grep -v "incomple" | awk '{print $1}' | sort -Vu
