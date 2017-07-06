@@ -16,6 +16,7 @@ curl -POST http://localhost:8086/query --data-urlencode "q=CREATE DATABASE lz5ru
 lz5setup --armageddon=kaboom --db-root-pass "LZ.$(hostid)"
 lz5configmanager -si DEDUP_WINDOW 3600
 lz5configmanager -ss LOG_MAX_LEVEL INFO
+lz5configmanager -si ARCHIVE_EXPIRE_DAYS 3
 rm /var/lib/logzilla/scripts/*
 cp ../LogZilla-Files/automations/* /var/lib/logzilla/scripts/
 chown -R logzilla:logzilla /var/lib/logzilla/scripts/
