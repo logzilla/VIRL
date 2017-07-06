@@ -1,3 +1,0 @@
-#!/bin/bash
-# Log all device commands
-printf "%s %s\n" "$EVENT_HOST" "$EVENT_MESSAGE" >> /var/log/logzilla/cisco-audit.log

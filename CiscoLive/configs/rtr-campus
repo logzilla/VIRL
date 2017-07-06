@@ -1,0 +1,272 @@
+!RANCID-CONTENT-TYPE: cisco
+!
+!Chassis type: IOSv
+!
+!Memory: main 460033K/62464K
+!Memory: nvram 256K
+!Memory: flash 0K
+!Memory: flash 0K
+!Memory: flash 10080K
+!
+!Processor ID: 9ESS3MI4WYAJFRXGNHBOB
+!
+!Image: Software: VIOS-ADVENTERPRISEK9-M, 15.6(2)T, RELEASE SOFTWARE (fc2)
+!Image: Compiled: Tue 22-Mar-16 16:19 by prod_rel_team
+!Image: flash0:/vios-adventerprisek9-m
+!
+!
+!BootFlash: BOOT variable does not exist
+!BootFlash: CONFIG_FILE variable does not exist
+!BootFlash: BOOTLDR variable does not exist
+!BootFlash: WARM_REBOOT variable does not exist
+!BootFlash: Configuration register is 0x0
+!BootFlash: IOSv GRUB info:
+!BootFlash: GRUB multiboot info:
+!BootFlash:   IOMEM percent       '25'
+!BootFlash:   Boot loader         'GRUB 2.00'
+!BootFlash:   Command line        '/vios-adventerprisek9-m'
+!BootFlash:   Memory size         510Mb, low 639K, high 523136K
+!BootFlash:   Multiboot info      0x06481630, flags 0x00001A47
+!BootFlash:   Boot device         0x8000FFFF
+!BootFlash:   Memory map          0x0648188E (168 bytes)
+!BootFlash:     0x00000000 .. 0x0009FBFF (     639K, available)
+!BootFlash:     0x0009FC00 .. 0x0009FFFF (       1K, reserved)
+!BootFlash:     0x000F0000 .. 0x000FFFFF (      64K, reserved)
+!BootFlash:     0x00100000 .. 0x1FFDFFFF (  523136K, available)
+!BootFlash:     0x1FFE0000 .. 0x1FFFFFFF (     128K, reserved)
+!BootFlash:     0xFEFFC000 .. 0xFEFFFFFF (      16K, reserved)
+!BootFlash:     0xFFFC0000 .. 0xFFFFFFFF (     256K, reserved)
+!BootFlash: Linker:
+!BootFlash:   _initdata_start     0x77CE92C
+!BootFlash:   _data1_start        0x8562E80
+!BootFlash:   _initdata_end       0x8562E68
+!BootFlash: Router memory: 510Mb, 535036928 bytes
+!
+!BootFlash: BOOT variable does not exist
+!BootFlash: CONFIG_FILE variable does not exist
+!BootFlash: BOOTLDR variable does not exist
+!BootFlash: WARM_REBOOT variable does not exist
+!BootFlash: Configuration register is 0x0
+!BootFlash: IOSv GRUB info:
+!BootFlash: GRUB multiboot info:
+!BootFlash:   IOMEM percent       '25'
+!BootFlash:   Boot loader         'GRUB 2.00'
+!BootFlash:   Command line        '/vios-adventerprisek9-m'
+!BootFlash:   Memory size         510Mb, low 639K, high 523136K
+!BootFlash:   Multiboot info      0x06481630, flags 0x00001A47
+!BootFlash:   Boot device         0x8000FFFF
+!BootFlash:   Memory map          0x0648188E (168 bytes)
+!BootFlash:     0x00000000 .. 0x0009FBFF (     639K, available)
+!BootFlash:     0x0009FC00 .. 0x0009FFFF (       1K, reserved)
+!BootFlash:     0x000F0000 .. 0x000FFFFF (      64K, reserved)
+!BootFlash:     0x00100000 .. 0x1FFDFFFF (  523136K, available)
+!BootFlash:     0x1FFE0000 .. 0x1FFFFFFF (     128K, reserved)
+!BootFlash:     0xFEFFC000 .. 0xFEFFFFFF (      16K, reserved)
+!BootFlash:     0xFFFC0000 .. 0xFFFFFFFF (     256K, reserved)
+!BootFlash: Linker:
+!BootFlash:   _initdata_start     0x77CE92C
+!BootFlash:   _data1_start        0x8562E80
+!BootFlash:   _initdata_end       0x8562E68
+!BootFlash: Router memory: 510Mb, 535036928 bytes
+!
+!Flash: nvram: Directory of nvram:/
+!Flash: nvram:   250  -rw-        4223                    <no date>  startup-config
+!Flash: nvram:   251  ----           5                    <no date>  private-config
+!Flash: nvram:     1  ----          41                    <no date>  udi
+!Flash: nvram:     2  ----          23                    <no date>  persistent-data
+!Flash: nvram: 262144 bytes total (249 KB free)
+!
+!Interface: GigabitEthernet0/0, iGbE 
+!Interface: GigabitEthernet0/1, iGbE 
+!Interface: GigabitEthernet0/2, iGbE 
+!Interface: GigabitEthernet0/3, iGbE 
+!NAME: "IOSv",                  DESCR: "IOSv chassis, Hw Serial#: 9ESS3MI4WYAJFRXGNHBOB, Hw Revision: 1.0"
+!PID: IOSv
+!VID: 1.0
+!SN: 9ESS3MI4WYAJFRXGNHBOB
+!
+!
+config-register 0x0
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec localtime show-timezone
+no service password-encryption
+!
+hostname rtr-campus
+!
+boot-start-marker
+boot-end-marker
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+!enable password <removed>
+!
+no aaa new-model
+ethernet lmi ce
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+no ip domain lookup
+ip domain name virl.info
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+!
+crypto pki trustpoint TP-self-signed-4294967295
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-4294967295
+ revocation-check none
+ rsakeypair TP-self-signed-4294967295
+!
+crypto pki certificate chain TP-self-signed-4294967295
+ certificate self-signed 01
+  3082022B 30820194 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 34323934 39363732 3935301E 170D3137 30363236 31373439 
+  30385A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D34 32393439 
+  36373239 3530819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281 
+  8100BB83 1E4F5BDB 3EFDAD8E D4B77624 7D5D5948 77078E44 0AC7A3AD 2038C30F 
+  29C6A90E AD992C9B CF88E676 C749C805 F3F2680E B61D9A15 06F6EE06 CA444F06 
+  D3E1B484 4C67174C 2AA920B6 2A5855D2 A06FCA7F 8545F1FB 856BD9BC 7DC93A29 
+  C705A973 86C34730 9129690F 3C7299A7 5F8EC179 00357E5F 725C3900 2EA97704 
+  37D90203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 301F0603 
+  551D2304 18301680 14F0A25D 0BF898D8 BC492DAF D0BD9305 F4E33888 57301D06 
+  03551D0E 04160414 F0A25D0B F898D8BC 492DAFD0 BD9305F4 E3388857 300D0609 
+  2A864886 F70D0101 05050003 8181005E F5FD05B2 D7126ADA 5C66AA07 8720A0D8 
+  C803CA51 7685AEAB 6EEB0461 1F276153 C91EA7AE 90D2CF56 2DAC40A5 B3218948 
+  56832CF2 E817F4F6 4A409DE9 80D98ED5 34CC1A1F 52DC090D 27718FD9 0528FE4C 
+  3B149E4F 7DC41831 B10D03F4 B375781E 84230AD7 A1AC95E3 91DD0C2A 840B7DD2 
+  8D43EC52 94DF5CD5 F984A0E4 AE777E
+  	quit
+username cisco privilege 15 secret 5 $1$WwCb$xQXOXM8193HFtUbq5Uj4R0
+!
+redundancy
+!
+interface Loopback0
+ description Loopback
+ ip address 192.168.0.4 255.255.255.255
+!
+interface GigabitEthernet0/0
+ description OOB Management
+ vrf forwarding Mgmt-intf
+ ip address 172.16.1.244 255.255.255.0
+ duplex full
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ description to sw-campus
+ ip address 172.16.1.29 255.255.255.252
+ ip ospf cost 1
+ duplex full
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ description to rtr-dc
+ ip address 172.16.1.9 255.255.255.252
+ ip ospf cost 1
+ duplex full
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ description to rtr-branch
+ ip address 172.16.1.6 255.255.255.252
+ ip ospf cost 1
+ duplex full
+ speed auto
+ media-type rj45
+!
+router ospf 1
+ passive-interface Loopback0
+ network 172.16.1.4 0.0.0.3 area 0
+ network 172.16.1.8 0.0.0.3 area 0
+ network 172.16.1.28 0.0.0.3 area 0
+ network 192.168.0.4 0.0.0.0 area 0
+!
+router bgp 1
+ bgp router-id 192.168.0.4
+ bgp log-neighbor-changes
+ neighbor 192.168.0.3 remote-as 1
+ neighbor 192.168.0.3 description iBGP peer rtr-branch
+ neighbor 192.168.0.3 update-source Loopback0
+ neighbor 192.168.0.7 remote-as 1
+ neighbor 192.168.0.7 description iBGP peer rtr-dc
+ neighbor 192.168.0.7 update-source Loopback0
+ !
+ address-family ipv4
+  network 192.168.0.4 mask 255.255.255.255
+  neighbor 192.168.0.3 activate
+  neighbor 192.168.0.7 activate
+ exit-address-family
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm authentication password
+!
+logging trap debugging
+logging facility local3
+logging host 172.16.1.211 vrf Mgmt-intf
+!
+control-plane
+!
+banner exec ^C
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+banner incoming ^C
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+banner login ^C
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+!
+line con 0
+ password cisco
+line aux 0
+line vty 0 4
+ exec-timeout 720 0
+ password cisco
+ login local
+ transport input telnet ssh
+!
+no scheduler allocate
+onep
+ tls
+  trustpoint server-identity TP-self-signed-4294967295
+ service set vty
+!
+end

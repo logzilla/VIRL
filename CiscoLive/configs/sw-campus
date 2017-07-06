@@ -1,0 +1,249 @@
+!RANCID-CONTENT-TYPE: cisco
+!
+!Chassis type: processor
+!
+!Memory: main 722177K/62464K
+!Memory: nvram 256K
+!Memory: flash 0K
+!Memory: flash 0K
+!Memory: flash 10080K
+!
+!Processor ID: 9NCH33KRH3T
+!
+!Image: Software: vios_l2-ADVENTERPRISEK9-M, 15.2(20170321:233949) [mmen 101]
+!Image: Compiled: Wed 22-Mar-17 08:38 by mmen
+!Image: flash0:/vios_l2-adventerprisek9-m
+!
+!
+!BootFlash: BOOT variable does not exist
+!BootFlash: CONFIG_FILE variable does not exist
+!BootFlash: Configuration register is 0x101
+!BootFlash: IOSv GRUB info:
+!BootFlash: GRUB multiboot info:
+!BootFlash:   IOMEM percent       '25'
+!BootFlash:   Config Register     '0x101'
+!BootFlash:   Boot loader         'GRUB 2.00'
+!BootFlash:   Command line        '/vios_l2-adventerprisek9-m'
+!BootFlash:   Memory size         766Mb, low 639K, high 785280K
+!BootFlash:   Multiboot info      0x04E20BD0, flags 0x00001A47
+!BootFlash:   Boot device         0x8000FFFF
+!BootFlash:   Memory map          0x04E20E2E (168 bytes)
+!BootFlash:     0x00000000 .. 0x0009FBFF (     639K, available)
+!BootFlash:     0x0009FC00 .. 0x0009FFFF (       1K, reserved)
+!BootFlash:     0x000F0000 .. 0x000FFFFF (      64K, reserved)
+!BootFlash:     0x00100000 .. 0x2FFDFFFF (  785280K, available)
+!BootFlash:     0x2FFE0000 .. 0x2FFFFFFF (     128K, reserved)
+!BootFlash:     0xFEFFC000 .. 0xFEFFFFFF (      16K, reserved)
+!BootFlash:     0xFFFC0000 .. 0xFFFFFFFF (     256K, reserved)
+!BootFlash: Linker:
+!BootFlash:   _initdata_start     0x5A16600
+!BootFlash:   _data1_start        0x64ABA20
+!BootFlash:   _initdata_end       0x64ABA14
+!BootFlash: Router memory: 766Mb, 803472384 bytes
+!
+!BootFlash: BOOT variable does not exist
+!BootFlash: CONFIG_FILE variable does not exist
+!BootFlash: Configuration register is 0x101
+!BootFlash: IOSv GRUB info:
+!BootFlash: GRUB multiboot info:
+!BootFlash:   IOMEM percent       '25'
+!BootFlash:   Config Register     '0x101'
+!BootFlash:   Boot loader         'GRUB 2.00'
+!BootFlash:   Command line        '/vios_l2-adventerprisek9-m'
+!BootFlash:   Memory size         766Mb, low 639K, high 785280K
+!BootFlash:   Multiboot info      0x04E20BD0, flags 0x00001A47
+!BootFlash:   Boot device         0x8000FFFF
+!BootFlash:   Memory map          0x04E20E2E (168 bytes)
+!BootFlash:     0x00000000 .. 0x0009FBFF (     639K, available)
+!BootFlash:     0x0009FC00 .. 0x0009FFFF (       1K, reserved)
+!BootFlash:     0x000F0000 .. 0x000FFFFF (      64K, reserved)
+!BootFlash:     0x00100000 .. 0x2FFDFFFF (  785280K, available)
+!BootFlash:     0x2FFE0000 .. 0x2FFFFFFF (     128K, reserved)
+!BootFlash:     0xFEFFC000 .. 0xFEFFFFFF (      16K, reserved)
+!BootFlash:     0xFFFC0000 .. 0xFFFFFFFF (     256K, reserved)
+!BootFlash: Linker:
+!BootFlash:   _initdata_start     0x5A16600
+!BootFlash:   _data1_start        0x64ABA20
+!BootFlash:   _initdata_end       0x64ABA14
+!BootFlash: Router memory: 766Mb, 803472384 bytes
+!
+!Flash: nvram: Directory of nvram:/
+!Flash: nvram:   251  -rw-        1921                    <no date>  startup-config
+!Flash: nvram:   252  ----        1915                    <no date>  private-config
+!Flash: nvram:     1  ----          31                    <no date>  udi
+!Flash: nvram:     2  -rw-         616                    <no date>  vlan.dat
+!Flash: nvram:     3  -rw-           0                    <no date>  ifIndex-table
+!Flash: nvram:     4  ----          35                    <no date>  persistent-data
+!Flash: nvram: 262144 bytes total (248 KB free)
+!
+!Interface: GigabitEthernet0/0, iGbE 
+!Interface: GigabitEthernet0/1, iGbE 
+!Interface: GigabitEthernet0/2, iGbE 
+!Interface: GigabitEthernet0/3, iGbE 
+!
+!VTP: VTP Version capable             : 1 to 3
+!VTP: VTP version running             : 1
+!VTP: VTP Domain Name                 : virl.lab
+!VTP: VTP Pruning Mode                : Disabled
+!VTP: VTP Traps Generation            : Disabled
+!VTP: Device ID                       : fa16.3eaf.8000
+!VTP: Feature VLAN:
+!VTP: --------------
+!VTP: VTP Operating Mode                : Transparent
+!VTP: Maximum VLANs supported locally   : 1005
+!VTP: Number of existing VLANs          : 6
+!VTP: Configuration Revision            : 0
+!VTP: MD5 digest                        : 0x18 0xD3 0xF5 0x2A 0x6F 0xD9 0x85 0xBD 
+!VTP:                                     0x39 0x04 0x41 0x69 0x82 0x0E 0x8D 0x9D 
+!
+!VLAN: VLAN Name                             Status    Ports
+!VLAN: ---- -------------------------------- --------- -------------------------------
+!VLAN: 1    default                          active    Gi0/3
+!VLAN: 2    ank_vlan2                        active    Gi0/1, Gi0/2
+!VLAN: 1002 fddi-default                     act/unsup 
+!VLAN: 1003 token-ring-default               act/unsup 
+!VLAN: 1004 fddinet-default                  act/unsup 
+!VLAN: 1005 trnet-default                    act/unsup 
+!VLAN: VLAN Type  SAID       MTU   Parent RingNo BridgeNo Stp  BrdgMode Trans1 Trans2
+!VLAN: ---- ----- ---------- ----- ------ ------ -------- ---- -------- ------ ------
+!VLAN: 1    enet  100001     1500  -      -      -        -    -        0      0   
+!VLAN: 2    enet  100002     1500  -      -      -        -    -        0      0   
+!VLAN: 1002 fddi  101002     1500  -      -      -        -    -        0      0   
+!VLAN: 1003 tr    101003     1500  -      -      -        -    -        0      0   
+!VLAN: 1004 fdnet 101004     1500  -      -      -        ieee -        0      0   
+!VLAN: 1005 trnet 101005     1500  -      -      -        ibm  -        0      0   
+!VLAN: Remote SPAN VLANs
+!VLAN: ------------------------------------------------------------------------------
+!VLAN: Primary Secondary Type              Ports
+!VLAN: ------- --------- ----------------- ------------------------------------------
+!
+!
+config-register 0x101
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec localtime show-timezone
+no service password-encryption
+service compress-config
+!
+hostname sw-campus
+!
+boot-start-marker
+boot-end-marker
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+!enable password <removed>
+!
+username cisco privilege 15 secret 5 $1$fi.m$FqRbqi4G45zB4oyQiu.ZD0
+aaa new-model
+!
+aaa authentication login default local
+aaa authorization exec default local 
+aaa accounting commands 15 default
+!
+aaa session-id common
+!
+vtp domain virl.lab
+vtp mode transparent
+!
+no ip domain-lookup
+ip domain-name logzilla.net
+ip cef
+no ipv6 cef
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+vlan 2
+ name ank_vlan2
+!
+interface Loopback0
+ description Loopback
+ no ip address
+!
+interface GigabitEthernet0/0
+ description OOB management
+ no switchport
+ vrf forwarding Mgmt-intf
+ ip address 172.16.1.248 255.255.255.0
+ negotiation auto
+!
+interface GigabitEthernet0/1
+ description to rtr-campus
+ switchport access vlan 2
+ switchport mode access
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/2
+ description to srv-campus
+ switchport access vlan 2
+ switchport mode access
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/3
+ description GigabitEthernet0/3
+ media-type rj45
+ negotiation auto
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+ip ssh version 2
+!
+logging trap debugging
+logging facility local3
+logging host 172.16.1.211 vrf Mgmt-intf
+!
+control-plane
+!
+banner exec ^C
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+banner incoming ^C
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+banner login ^C
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+!
+line con 0
+ password cisco
+line aux 0
+line vty 0 4
+ exec-timeout 720 0
+ password cisco
+ transport input telnet ssh
+ transport output telnet ssh
+!
+end

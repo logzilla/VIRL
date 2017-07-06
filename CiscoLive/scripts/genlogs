@@ -1,0 +1,12 @@
+#!/bin/bash
+# Usage:
+# ./replay -e {EPS}
+# e.g.: ./replay -e 10
+if [[ -f "logsamples.log.gz" ]]; then
+    echo "Decompressing logsamples.log.gz"
+    gzip -d logsamples.log.gz
+fi
+while true
+do
+    perl ./logplayer -d 127.0.0.1 -f ./logsamples.log -l 99999 "$@"
+done
