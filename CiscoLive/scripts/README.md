@@ -1,7 +1,8 @@
 # Important!
 You **must** edit any of the files located in `/var/lib/logzilla/scripts/` and change the slack webhooks to the correct URL for your slack token.
 
-# To generate sample logs, use `genlogs -e {eps rate}`, e.g.:
+# Sample log data
+To generate sample logs, use `genlogs -e {eps rate}`, e.g.:
 
 ```sh
 ./genlogs -e 10
