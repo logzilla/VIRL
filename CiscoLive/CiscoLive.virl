@@ -13,7 +13,7 @@
             <entry key="AutoNetkit.mgmt_ip" type="string"/>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 15:00:59 UTC Mon Jun 26 2017 by cisco
+! Last configuration change at 17:48:53 UTC Mon Jun 26 2017
 !
 version 15.6
 service timestamps debug datetime msec
@@ -77,22 +77,22 @@ crypto pki certificate chain TP-self-signed-4294967295
  certificate self-signed 01
   3082022B 30820194 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
   31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
-  69666963 6174652D 34323934 39363732 3935301E 170D3137 30363236 30363334 
-  30395A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  69666963 6174652D 34323934 39363732 3935301E 170D3137 30363236 31373439 
+  30375A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
   4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D34 32393439 
   36373239 3530819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281 
-  8100A073 F384BE73 F356C50A A5737FA2 7B344A23 E1885549 6BB6ACC2 828633DB 
-  B03E7EB5 B2DD9833 115E735D 26150D60 D3C00CF4 D30D2E8E 46DED9FD F741412B 
-  19B25853 203EDDE3 01863668 E91F4690 E57D05FF F5E642C1 960C37C2 5DD85210 
-  352997B2 344C58EF FC338204 380DEE24 F0DBA4E2 D3C04BA5 F4B30582 345E68D9 
-  18370203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 301F0603 
-  551D2304 18301680 14A1EB21 46A4061C B2B3EF42 906D7194 E8278B1B B6301D06 
-  03551D0E 04160414 A1EB2146 A4061CB2 B3EF4290 6D7194E8 278B1BB6 300D0609 
-  2A864886 F70D0101 05050003 81810076 0C89C9BC 15C94958 1F8534ED 69490AD0 
-  3829ACC3 A4649E1B 417F9619 3799A0BD 268170E7 B1EC6524 607F8D20 251D73FB 
-  A42D858C E897578D 0B18A150 8C36EEA7 B064FB5E 604B1743 5BA4820A 8E6A7FEA 
-  F6031206 B779491E DF5341E6 CF82076E 99F811B3 01FBCEB8 92C00B47 E067F0BB 
-  CD48013F 97CD44B4 A2DC1E5D 8F3549
+  8100A432 47404CC5 DABBF7EF BF358B13 2AA3139B 85572706 C4828C0F 469617C4 
+  53FB706C 5EB7D694 0BFD0E08 DA877C28 76AA7FF9 156C9121 1029895D 7032D10A 
+  EB5C8F49 E3604013 A9088046 DFE8F27D 4F326D7D 55EE4FEA 2A9C668D 335CC765 
+  EB20AB93 CCDC9D1F 13E10919 0CA1C9F2 6A37CDE9 0B49E335 1421541F 320259D5 
+  D8790203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 301F0603 
+  551D2304 18301680 1431BFDB 515BA27D 2B52F839 E7E8DC2B 6240E95B B9301D06 
+  03551D0E 04160414 31BFDB51 5BA27D2B 52F839E7 E8DC2B62 40E95BB9 300D0609 
+  2A864886 F70D0101 05050003 8181006A F6B2E221 7CD20CD8 064859A8 07C907BD 
+  1CF95756 24C8BD8C CA532B52 C40B396E EDBC18EA 01662133 7F23A36F 84EAE0B9 
+  D93FBA93 E83B08AB 7C11F9DC 1765F373 6210D228 10181010 8BDB9285 99C5E2F9 
+  4083FBC8 D9C4359D C4162665 4395F28E 9ADA8B65 61001D61 875C58DC FABE670D 
+  E4A8E19A E940DC17 5362A3F8 65F415
   	quit
 username cisco privilege 15 secret 5 $1$ngmn$a./23NYxO32DQClZ9ne7K1
 !
@@ -119,7 +119,7 @@ interface Loopback0
 interface GigabitEthernet0/0
  description OOB Management
  vrf forwarding Mgmt-intf
- ip address 172.16.1.228 255.255.255.0
+ ip address 172.16.1.243 255.255.255.0
  duplex full
  speed auto
  media-type rj45
@@ -181,7 +181,6 @@ ip ssh server algorithm authentication password
 logging trap debugging
 logging facility local3
 logging host 172.16.1.211 vrf Mgmt-intf
-logging host 172.16.1.224 vrf Mgmt-intf
 !
 !
 !
@@ -241,7 +240,7 @@ end</entry>
             <entry key="AutoNetkit.mgmt_ip" type="string"/>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 15:42:09 UTC Mon Jun 26 2017 by cisco
+! Last configuration change at 18:51:42 UTC Thu Jul 6 2017 by cisco
 !
 version 15.2
 service timestamps debug datetime msec
@@ -342,7 +341,7 @@ interface GigabitEthernet0/0
  description OOB management
  no switchport
  vrf forwarding Mgmt-intf
- ip address 172.16.1.232 255.255.255.0
+ ip address 172.16.1.247 255.255.255.0
  negotiation auto
 !
 interface GigabitEthernet0/1
@@ -399,6 +398,15 @@ logging host 172.16.1.25 vrf Mgmt-intf
 !
 control-plane
 !
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
 !
 line con 0
  password cisco
@@ -424,7 +432,7 @@ end</entry>
             <entry key="AutoNetkit.ospf_area" type="String">1</entry>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 15:01:00 UTC Mon Jun 26 2017
+! Last configuration change at 15:08:38 UTC Thu Jul 6 2017
 !
 version 15.2
 service timestamps debug datetime msec
@@ -448,7 +456,21 @@ vrf definition Mgmt-intf
 !
 enable password cisco
 !
-no aaa new-model
+username cisco privilege 15 secret 5 $1$h7E/$9NWWIFCVySTJlYEQQJ1bF/
+aaa new-model
+!
+!
+aaa authentication login default local
+aaa authorization exec default local 
+aaa accounting commands 15 default
+!
+!
+!
+!
+!
+!
+!
+aaa session-id common
 !
 !
 !
@@ -460,6 +482,7 @@ vtp mode transparent
 !
 !
 no ip domain-lookup
+ip domain-name logzilla.net
 ip cef
 no ipv6 cef
 !
@@ -494,7 +517,7 @@ interface GigabitEthernet0/0
  description OOB management
  no switchport
  vrf forwarding Mgmt-intf
- ip address 172.16.1.234 255.255.255.0
+ ip address 172.16.1.249 255.255.255.0
  negotiation auto
 !
 interface GigabitEthernet0/1
@@ -521,12 +544,14 @@ ip forward-protocol nd
 no ip http server
 no ip http secure-server
 !
+ip ssh version 2
 !
 !
 logging trap debugging
 logging facility local3
 logging host 172.16.1.211 vrf Mgmt-intf
-logging host 172.16.1.224 vrf Mgmt-intf
+!
+!
 !
 !
 !
@@ -566,8 +591,8 @@ line aux 0
 line vty 0 4
  exec-timeout 720 0
  password cisco
- login
  transport input telnet ssh
+ transport output telnet ssh
 !
 !
 end</entry>
@@ -581,7 +606,7 @@ end</entry>
             <entry key="AutoNetkit.mgmt_ip" type="string"/>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 15:01:01 UTC Mon Jun 26 2017
+! Last configuration change at 15:06:55 UTC Thu Jul 6 2017
 !
 version 15.2
 service timestamps debug datetime msec
@@ -605,7 +630,21 @@ vrf definition Mgmt-intf
 !
 enable password cisco
 !
-no aaa new-model
+username cisco privilege 15 secret 5 $1$fi.m$FqRbqi4G45zB4oyQiu.ZD0
+aaa new-model
+!
+!
+aaa authentication login default local
+aaa authorization exec default local 
+aaa accounting commands 15 default
+!
+!
+!
+!
+!
+!
+!
+aaa session-id common
 !
 !
 !
@@ -617,6 +656,7 @@ vtp mode transparent
 !
 !
 no ip domain-lookup
+ip domain-name logzilla.net
 ip cef
 no ipv6 cef
 !
@@ -651,7 +691,7 @@ interface GigabitEthernet0/0
  description OOB management
  no switchport
  vrf forwarding Mgmt-intf
- ip address 172.16.1.233 255.255.255.0
+ ip address 172.16.1.248 255.255.255.0
  negotiation auto
 !
 interface GigabitEthernet0/1
@@ -678,12 +718,14 @@ ip forward-protocol nd
 no ip http server
 no ip http secure-server
 !
+ip ssh version 2
 !
 !
 logging trap debugging
 logging facility local3
 logging host 172.16.1.211 vrf Mgmt-intf
-logging host 172.16.1.224 vrf Mgmt-intf
+!
+!
 !
 !
 !
@@ -723,8 +765,8 @@ line aux 0
 line vty 0 4
  exec-timeout 720 0
  password cisco
- login
  transport input telnet ssh
+ transport output telnet ssh
 !
 !
 end</entry>
@@ -744,7 +786,7 @@ end</entry>
             <entry key="AutoNetkit.mgmt_ip" type="string"/>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 15:00:59 UTC Mon Jun 26 2017 by cisco
+! Last configuration change at 17:48:55 UTC Mon Jun 26 2017
 !
 version 15.6
 service timestamps debug datetime msec
@@ -808,22 +850,22 @@ crypto pki certificate chain TP-self-signed-4294967295
  certificate self-signed 01
   3082022B 30820194 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
   31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
-  69666963 6174652D 34323934 39363732 3935301E 170D3137 30363236 30363334 
-  31305A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  69666963 6174652D 34323934 39363732 3935301E 170D3137 30363236 31373439 
+  30395A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
   4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D34 32393439 
   36373239 3530819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281 
-  8100A704 A11793EB CDDC3352 44D11E24 EB17E77C C9DC567C 22F7A852 2CF5DAF9 
-  C5C373BC 123FD61E 9EAE99A6 8673386A 3F5A44B4 B029936F 6745888E 83E89CEE 
-  6193C395 A54AC56D C4D6DFD1 167658FF 7B9D48F6 1687611B 27C3BA03 0EAE368E 
-  D7A6944C 53153B59 6BC49DD8 CCF6EC49 E8F4C0F0 BD949E4A 4DFBEE51 4C4EC634 
-  DFC30203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 301F0603 
-  551D2304 18301680 14F35F08 931A4838 465B49E5 66DD7E6C 850C97F5 EA301D06 
-  03551D0E 04160414 F35F0893 1A483846 5B49E566 DD7E6C85 0C97F5EA 300D0609 
-  2A864886 F70D0101 05050003 81810079 B6801BD5 CAB96E39 FB951959 350532CB 
-  FB780D5A 28A297A7 4DECEFDE 4EA4B4F3 9A4D75EA D9F012ED F4E397EB 3AA7E756 
-  828CF76F 84A8D5ED 8CE007A7 20DA8F02 CEBC92DD 1A61C700 5578CE3F 090F1331 
-  64244059 BE825AA0 3B7B967F C7CF770B 223AB6B4 062CE4D9 0D6304DA 4AE5E15B 
-  ECFDE756 B37830A7 E50C1BAE 329E37
+  81008B9A FAE34EFB A4368D20 701B968F 01417DB1 EC81B0DB 648B7D33 D69E36A4 
+  5D1768F6 9F8984D5 367569FE 447A7CA0 823752DB C670430D B2D022D9 ABD26692 
+  8327C8C8 BB885510 C4838869 026FA4A6 6C0BCFA5 DC0115AA 601BE9E9 96DA351D 
+  51189196 D74E5BA0 E7EBA929 6FDA944C 45D1F024 6AC4DB44 762C34A4 5C66C04C 
+  29B90203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 301F0603 
+  551D2304 18301680 14910D09 A3D9055C DF9DEC0D 9A2F2A94 14BB9BD7 8F301D06 
+  03551D0E 04160414 910D09A3 D9055CDF 9DEC0D9A 2F2A9414 BB9BD78F 300D0609 
+  2A864886 F70D0101 05050003 81810054 9FED21FB 79DBAD05 1F56E5AE 0E533C90 
+  548F4F77 16B766A5 DF1338DD 21A15160 066986AA E1C031A3 4AD4A433 18A319C5 
+  2012D02C 849EADA0 04E51392 ECDA1806 55A5ED69 93D4B096 69D301ED 05AB1445 
+  CBCCFE10 8CB79A3E B5855DAD 90B63EA1 4ECAD0E4 1C69509A C89B431A C18DE1EC 
+  66D36F78 6AECC8DD BABD9A5B 3B8F9F
   	quit
 username cisco privilege 15 secret 5 $1$8eqL$wzxOb4nt9c7oBTpBFa0IJ/
 !
@@ -850,7 +892,7 @@ interface Loopback0
 interface GigabitEthernet0/0
  description OOB Management
  vrf forwarding Mgmt-intf
- ip address 172.16.1.230 255.255.255.0
+ ip address 172.16.1.245 255.255.255.0
  duplex full
  speed auto
  media-type rj45
@@ -865,7 +907,7 @@ interface GigabitEthernet0/1
 !
 interface GigabitEthernet0/2
  description to Lab_Access
- ip address 172.16.2.65 255.255.255.0
+ ip address 172.16.2.66 255.255.255.0
  duplex full
  speed auto
  media-type rj45
@@ -919,7 +961,6 @@ ip ssh server algorithm authentication password
 logging trap debugging
 logging facility local3
 logging host 172.16.1.211 vrf Mgmt-intf
-logging host 172.16.1.224 vrf Mgmt-intf
 !
 !
 !
@@ -980,7 +1021,7 @@ end</entry>
             <entry key="AutoNetkit.mgmt_ip" type="string"/>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 15:34:56 UTC Mon Jun 26 2017 by cisco
+! Last configuration change at 18:50:54 UTC Thu Jul 6 2017 by cisco
 !
 version 15.2
 service timestamps debug datetime msec
@@ -1073,6 +1114,7 @@ interface Loopback0
  no ip address
 !
 interface Port-channel23
+ switchport trunk allowed vlan 2-4094
  switchport trunk encapsulation dot1q
  switchport mode trunk
 !
@@ -1080,11 +1122,12 @@ interface GigabitEthernet0/0
  description OOB management
  no switchport
  vrf forwarding Mgmt-intf
- ip address 172.16.1.235 255.255.255.0
+ ip address 172.16.1.250 255.255.255.0
  negotiation auto
 !
 interface GigabitEthernet0/1
  description to sw-branch
+ switchport trunk allowed vlan 2-4094
  switchport trunk encapsulation dot1q
  switchport mode trunk
  logging event trunk-status
@@ -1095,6 +1138,7 @@ interface GigabitEthernet0/1
 !
 interface GigabitEthernet0/2
  description to sw-branch
+ switchport trunk allowed vlan 2-4094
  switchport trunk encapsulation dot1q
  switchport mode trunk
  logging event trunk-status
@@ -1135,6 +1179,15 @@ logging host 172.16.1.25 vrf Mgmt-intf
 !
 control-plane
 !
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
 !
 line con 0
  password cisco
@@ -1474,7 +1527,7 @@ write_files:
             <entry key="AutoNetkit.mgmt_ip" type="string"/>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 15:01:01 UTC Mon Jun 26 2017 by cisco
+! Last configuration change at 17:48:54 UTC Mon Jun 26 2017
 !
 version 15.6
 service timestamps debug datetime msec
@@ -1538,22 +1591,22 @@ crypto pki certificate chain TP-self-signed-4294967295
  certificate self-signed 01
   3082022B 30820194 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
   31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
-  69666963 6174652D 34323934 39363732 3935301E 170D3137 30363236 30363334 
-  30395A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  69666963 6174652D 34323934 39363732 3935301E 170D3137 30363236 31373439 
+  30385A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
   4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D34 32393439 
   36373239 3530819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281 
-  810097C4 5F363E8F B818719B 3EB0DC33 5F435629 8E147A31 350AAF65 AC1F1199 
-  C606DE74 51423CD1 8EBA8C0C E27FBE14 73A4F3C3 4BC338F8 3B8D2CB8 4B700962 
-  99482C4C B7013067 F4C14822 0C4B5A70 42281F87 361BD4D8 4B2C0114 2555D311 
-  5427F615 4CFF8EF7 48F95F2D B0827DBD ABB2EC5A DA9BDC1B 56E2F46E 19E38867 
-  5E190203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 301F0603 
-  551D2304 18301680 144723B8 67E8EE1B 49CCE5B9 EDAA8FD8 D174E55B 06301D06 
-  03551D0E 04160414 4723B867 E8EE1B49 CCE5B9ED AA8FD8D1 74E55B06 300D0609 
-  2A864886 F70D0101 05050003 8181002A 737D7847 E64BF2EE C28C8EFC D94FB954 
-  AF23539E 79A7F65F E0D74F56 7EAAE40F CAE6D3D1 5D51269D 128841BA 82DD983A 
-  0833CE6D 5012CA35 34CFDA98 EC64DB2C F6851C13 9158B37F 54EBCCAD 7A870FCD 
-  72A4D72D 36B64127 606C5ADF B35D2DEE 5A556955 6E029E05 06CA4B1E AF0AED67 
-  8AF124AA 03A35D26 CEE409A0 EA56F4
+  8100BB83 1E4F5BDB 3EFDAD8E D4B77624 7D5D5948 77078E44 0AC7A3AD 2038C30F 
+  29C6A90E AD992C9B CF88E676 C749C805 F3F2680E B61D9A15 06F6EE06 CA444F06 
+  D3E1B484 4C67174C 2AA920B6 2A5855D2 A06FCA7F 8545F1FB 856BD9BC 7DC93A29 
+  C705A973 86C34730 9129690F 3C7299A7 5F8EC179 00357E5F 725C3900 2EA97704 
+  37D90203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 301F0603 
+  551D2304 18301680 14F0A25D 0BF898D8 BC492DAF D0BD9305 F4E33888 57301D06 
+  03551D0E 04160414 F0A25D0B F898D8BC 492DAFD0 BD9305F4 E3388857 300D0609 
+  2A864886 F70D0101 05050003 8181005E F5FD05B2 D7126ADA 5C66AA07 8720A0D8 
+  C803CA51 7685AEAB 6EEB0461 1F276153 C91EA7AE 90D2CF56 2DAC40A5 B3218948 
+  56832CF2 E817F4F6 4A409DE9 80D98ED5 34CC1A1F 52DC090D 27718FD9 0528FE4C 
+  3B149E4F 7DC41831 B10D03F4 B375781E 84230AD7 A1AC95E3 91DD0C2A 840B7DD2 
+  8D43EC52 94DF5CD5 F984A0E4 AE777E
   	quit
 username cisco privilege 15 secret 5 $1$WwCb$xQXOXM8193HFtUbq5Uj4R0
 !
@@ -1580,7 +1633,7 @@ interface Loopback0
 interface GigabitEthernet0/0
  description OOB Management
  vrf forwarding Mgmt-intf
- ip address 172.16.1.229 255.255.255.0
+ ip address 172.16.1.244 255.255.255.0
  duplex full
  speed auto
  media-type rj45
@@ -1642,7 +1695,6 @@ ip ssh server algorithm authentication password
 logging trap debugging
 logging facility local3
 logging host 172.16.1.211 vrf Mgmt-intf
-logging host 172.16.1.224 vrf Mgmt-intf
 !
 !
 !
