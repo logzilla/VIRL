@@ -1,3 +1,0 @@
-#!/bin/bash
-# Forwards events to a log file which is read by SEC for processing rules
-printf "%s %s\n" "$EVENT_HOST" "$EVENT_MESSAGE" >> /var/log/logzilla/triggers.log
